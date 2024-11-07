@@ -1,3 +1,5 @@
+console.log("JED.js è stato caricato correttamente");
+
 // List of diet options and elements associated with each diet
 const DietsList = [
     "Life Elements", "Air Elements", "Critical Elements", 
