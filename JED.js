@@ -60,13 +60,22 @@ function startNewGame() {
     startGameLoop(ctx);
 }
 
+let snake = [{ x: 100, y: 100 }]; // Definisci il serpente come un array di coordinate
+let dx = SIZE; // Imposta la direzione iniziale (movimento verso destra)
+let dy = 0;
+
 // Example function to start game loop
 function startGameLoop(ctx) {
-    gameInterval = setInterval(() => {
+       gameInterval = setInterval(() => {
+        // Aggiorna la posizione del serpente
+        const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+        snake.unshift(head); // Aggiungi una nuova testa
+        snake.pop(); // Rimuovi l'ultimo blocco della coda
+           
         // Game update logic here (e.g., snake movement, collision checks)
         ctx.clearRect(0, 0, 620, 520);
         ctx.fillStyle = "#96AE21";
-        ctx.fillRect(100, 100, SIZE, SIZE); // Example snake block
+        snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
     }, SPEED);
 }
 
