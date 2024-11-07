@@ -22,10 +22,30 @@ const DietsList = [
 const SPEED = 100;
 const SIZE = 20;
 let gameInterval = null;
+let direction = { x: 1, y: 0 }; // Direzione iniziale (destra)
+
+// Posizione iniziale del serpente
+let snake = [{ x: 100, y: 100 }];
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mainMenu').style.display = 'block';
-    console.log("Menu principale mostrato"); 
+});
+
+document.addEventListener('keydown', (event) => {
+    switch (event.key) {
+        case 'ArrowUp':
+            if (direction.y === 0) direction = { x: 0, y: -1 };
+            break;
+        case 'ArrowDown':
+            if (direction.y === 0) direction = { x: 0, y: 1 };
+            break;
+        case 'ArrowLeft':
+            if (direction.x === 0) direction = { x: -1, y: 0 };
+            break;
+        case 'ArrowRight':
+            if (direction.x === 0) direction = { x: 1, y: 0 };
+            break;
+    }
 });
 
 // Show diet selection dropdown
@@ -48,7 +68,6 @@ function showDietSelection() {
 function startNewGame() {
     const selectedDiet = document.getElementById("dietDropdown").value;
     alert(`Starting game with diet: ${selectedDiet}`);
-    console.log("startNewGame eseguito");
 
     // Initialize canvas and game settings here
     const canvas = document.getElementById('gameCanvas');
@@ -57,21 +76,23 @@ function startNewGame() {
     document.getElementById('dietSelection').style.display = 'none';
     canvas.style.display = 'block';
 
+    snake = [{ x: 100, y: 100 }];
+    direction = { x: 1, y: 0 };
+    
     // Additional setup for game loop
     startGameLoop(ctx);
 }
 
-let snake = [{ x: 100, y: 100 }]; // Definisci il serpente come un array di coordinate
-let dx = SIZE; // Imposta la direzione iniziale (movimento verso destra)
-let dy = 0;
-
 // Example function to start game loop
 function startGameLoop(ctx) {
-       console.log("Game loop started"); // Aggiungi questa riga per il debug
+       if (gameInterval) clearInterval(gameInterval);
     
        gameInterval = setInterval(() => {
-        console.log("Game loop eseguito"); // Ogni ciclo del loop stampa un messaggio
-        
+              updateGame(ctx);
+       }, SPEED);
+   }
+
+        function updateGame(ctx) {
         // Aggiorna la posizione del serpente
         const head = { x: snake[0].x + dx, y: snake[0].y + dy };
         snake.unshift(head); // Aggiungi una nuova testa
@@ -81,7 +102,6 @@ function startGameLoop(ctx) {
         ctx.clearRect(0, 0, 620, 520);
         ctx.fillStyle = "#96AE21";
         snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
-    }, SPEED);
 }
 
 // Function to exit the game
