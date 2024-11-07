@@ -23,6 +23,7 @@ let gameInterval = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mainMenu').style.display = 'block';
+    console.log("Menu principale mostrato"); 
 });
 
 // Show diet selection dropdown
