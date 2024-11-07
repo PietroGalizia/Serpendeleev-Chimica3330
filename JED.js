@@ -66,6 +66,8 @@ let dy = 0;
 
 // Example function to start game loop
 function startGameLoop(ctx) {
+       console.log("Game loop started"); // Aggiungi questa riga per il debug
+    
        gameInterval = setInterval(() => {
         // Aggiorna la posizione del serpente
         const head = { x: snake[0].x + dx, y: snake[0].y + dy };
