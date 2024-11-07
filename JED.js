@@ -48,6 +48,7 @@ function showDietSelection() {
 function startNewGame() {
     const selectedDiet = document.getElementById("dietDropdown").value;
     alert(`Starting game with diet: ${selectedDiet}`);
+    console.log("startNewGame eseguito");
 
     // Initialize canvas and game settings here
     const canvas = document.getElementById('gameCanvas');
@@ -69,6 +70,8 @@ function startGameLoop(ctx) {
        console.log("Game loop started"); // Aggiungi questa riga per il debug
     
        gameInterval = setInterval(() => {
+        console.log("Game loop eseguito"); // Ogni ciclo del loop stampa un messaggio
+        
         // Aggiorna la posizione del serpente
         const head = { x: snake[0].x + dx, y: snake[0].y + dy };
         snake.unshift(head); // Aggiungi una nuova testa
