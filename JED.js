@@ -21,7 +21,10 @@ const DietsList = [
 // Initialize game state
 const SPEED = 80;
 const SIZE = 20;
+const CANVAS_WIDTH = 620;
+const CANVAS_HEIGHT = 520;
 let gameInterval = null;
+let direction = { x: 1, y: 0 };
 
 // Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
@@ -71,6 +74,8 @@ function startNewGame() {
     // Initialize canvas and game settings here
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
+    canvas.width = CANVAS_WIDTH;
+    canvas.height = CANVAS_HEIGHT;
 
     document.getElementById('dietSelection').style.display = 'none';
     canvas.style.display = 'block';
@@ -120,9 +125,9 @@ function startGameLoop(ctx) {
         ctx.fillStyle = "#96AE21";
         snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
 
-                // Disegna il cibo
-    ctx.fillStyle = "red";
-    ctx.fillRect(food.x, food.y, SIZE, SIZE);
+        // Disegna il cibo
+        ctx.fillStyle = "red";
+        ctx.fillRect(food.x, food.y, SIZE, SIZE);
 }
 
 // Function to exit the game
