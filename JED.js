@@ -19,13 +19,14 @@ const DietsList = [
 ];
 
 // Initialize game state
-const SPEED = 100;
+const SPEED = 80;
 const SIZE = 20;
 let gameInterval = null;
 let direction = { x: 1, y: 0 }; // Direzione iniziale (destra)
 
 // Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
+let food = generateFood();
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mainMenu').style.display = 'block';
@@ -78,6 +79,7 @@ function startNewGame() {
 
     snake = [{ x: 100, y: 100 }];
     direction = { x: 1, y: 0 };
+    food = generateFood();
     
     // Additional setup for game loop
     startGameLoop(ctx);
@@ -96,13 +98,25 @@ function startGameLoop(ctx) {
         // Aggiorna la posizione del serpente
         const head = { x: snake[0].x + direction.x * SIZE, y: snake[0].y + direction.y * SIZE };
         snake.unshift(head); // Aggiungi una nuova testa
-        snake.pop(); // Rimuovi l'ultimo blocco della coda
+            
+        // Controlla se il serpente mangia il cibo
+        if (head.x === food.x && head.y === food.y) {
+            food = generateFood(); // Genera un nuovo cibo
+        } else {
+            snake.pop(); // Rimuovi l'ultimo segmento della coda
+        }
            
         // Game update logic here (e.g., snake movement, collision checks)
         ctx.clearRect(0, 0, 620, 520);
         ctx.fillStyle = "#96AE21";
         snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
 }
+
+// Funzione per generare una posizione casuale per il cibo
+function generateFood() {
+    const x = Math.floor(Math.random() * (620 / SIZE)) * SIZE;
+    const y = Math.floor(Math.random() * (520 / SIZE)) * SIZE;
+    return { x, y };
 
 // Function to exit the game
 function exitGame() {
