@@ -94,7 +94,7 @@ function startGameLoop(ctx) {
 
         function updateGame(ctx) {
         // Aggiorna la posizione del serpente
-        const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+        const head = { x: snake[0].x + direction.x * SIZE, y: snake[0].y + direction.y * SIZE };
         snake.unshift(head); // Aggiungi una nuova testa
         snake.pop(); // Rimuovi l'ultimo blocco della coda
            
