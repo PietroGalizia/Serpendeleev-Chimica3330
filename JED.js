@@ -63,7 +63,6 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Show diet selection dropdown
 function showDietSelection() {
     const dietDropdown = document.getElementById("dietDropdown");
     dietDropdown.innerHTML = ""; // Clear existing options
@@ -79,12 +78,10 @@ function showDietSelection() {
     document.getElementById('dietSelection').style.display = 'block';
 }
 
-// Start a new game with the selected diet
 function startNewGame() {
     const selectedDiet = document.getElementById("dietDropdown").value;
     alert(`Starting game with diet: ${selectedDiet}`);
 
-    // Initialize canvas and game settings here
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     canvas.width = CANVAS_WIDTH;
@@ -103,7 +100,6 @@ function startNewGame() {
     startGameLoop(ctx);
 }
 
-// Genera cibo in una posizione casuale
 function generateFood() {
     const maxX = Math.floor(620 / SIZE);
     const maxY = Math.floor(520 / SIZE);
@@ -119,19 +115,12 @@ function generateFood() {
     document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName}`;
 }
 
-
-
 function startGameLoop(ctx) {
     gameInterval = setInterval(() => {
         updateGame(ctx);
     }, SPEED);
 }
 
-function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName}`;
-}
-
-// Function to update score
 function updateScore(newScore) {
     document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName}`;
 }
