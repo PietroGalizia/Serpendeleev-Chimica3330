@@ -25,12 +25,14 @@ const CANVAS_WIDTH = 620;
 const CANVAS_HEIGHT = 520;
 let gameInterval = null;
 let direction = { x: 1, y: 0 };
-
+let score = 0;
+let food = { x: 0, y: 0 }; // Aggiungi la variabile per il cibo
 // Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mainMenu').style.display = 'block';
+    updateScore(score); // Inizializza il punteggio
 });
 
 document.addEventListener('keydown', (event) => {
@@ -100,62 +102,67 @@ function generateFood() {
     };
 }
 
+// Function to update score
+function updateScore(newScore) {
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore}`;
+}
+
 // Example function to start game loop
 function startGameLoop(ctx) {
        if (gameInterval) clearInterval(gameInterval);
-    
        gameInterval = setInterval(() => {
-              updateGame(ctx);
+           updateGame(ctx);
        }, SPEED);
    }
 
-        function updateGame(ctx) {
-        // Aggiorna la posizione del serpente
-        const head = { x: snake[0].x + direction.x * SIZE, y: snake[0].y + direction.y * SIZE };
+function updateGame(ctx) {
+    // Aggiorna la posizione del serpente
+    const head = { x: snake[0].x + direction.x * SIZE, y: snake[0].y + direction.y * SIZE };
     
-       // Controlla se il serpente esce dai bordi del canvas
-            if (head.x < 0 || head.x >= CANVAS_WIDTH || head.y < 0 || head.y >= CANVAS_HEIGHT) {
-                alert("Game Over! You hit the wall.");
-                exitGame();
-                return;
-            }
-
-            
-        // Controlla se il serpente si scontra con se stesso
-        for (let i = 1; i < snake.length; i++) {
-            if (snake[i].x === head.x && snake[i].y === head.y) {
-                alert("Game Over! You ran into yourself.");
-                exitGame();
-                return;
-            }
+    // Controlla se il serpente esce dai bordi del canvas
+    if (head.x < 0 || head.x >= CANVAS_WIDTH || head.y < 0 || head.y >= CANVAS_HEIGHT) {
+        alert("Game Over! You hit the wall.");
+        exitGame();
+        return;
+    }
+ 
+    // Controlla se il serpente si scontra con se stesso
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[i].x === head.x && snake[i].y === head.y) {
+            alert("Game Over! You ran into yourself.");
+            exitGame();
+            return;
         }
+    }
             
-        // Aggiungi la nuova testa
-        snake.unshift(head);
+    // Aggiungi la nuova testa
+    snake.unshift(head);
             
-        // Controlla se il serpente mangia il cibo
-        if (head.x === food.x && head.y === food.y) {
-            score += 10;  // Incrementa il punteggio
-            updateScore(score);
-            generateFood(); // Genera un nuovo cibo
-        } else {
-            snake.pop(); // Rimuovi l'ultimo segmento della coda
-        }
+    // Controlla se il serpente mangia il cibo
+    if (head.x === food.x && head.y === food.y) {
+        score += 10;  // Incrementa il punteggio
+        updateScore(score);
+        generateFood(); // Genera un nuovo cibo
+    } else {
+        snake.pop(); // Rimuovi l'ultimo segmento della coda
+    }
 
-        // Cancella il canvas e disegna il serpente e il cibo
-        ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    // Cancella il canvas e disegna il serpente e il cibo
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-        // Disegna il bordo dell'area di gioco
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 4;
-        ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    // Disegna il serpente
+    ctx.fillStyle = "#96AE21";
+    snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
+
+    // Disegna il cibo
+    ctx.fillStyle = "red";
+    ctx.fillRect(food.x, food.y, SIZE, SIZE);
+
+    // Disegna il bordo dell'area di gioco
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 4;
+    ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
             
-        ctx.fillStyle = "#96AE21";
-        snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
-
-        // Disegna il cibo
-        ctx.fillStyle = "red";
-        ctx.fillRect(food.x, food.y, SIZE, SIZE);
 }
 
 // Function to exit the game
