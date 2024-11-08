@@ -121,40 +121,25 @@ function startNewGame() {
     const selectedDiet = document.getElementById("dietDropdown").value;
     alert(`Starting game with diet: ${selectedDiet}`);
 
-        // Get the elements for the selected diet
-    let selectedElements = [];
-    DietsList.forEach((diet, index) => {
-        if (diet === selectedDiet) {
-            selectedElements = Elements_of_Diet[index];
-        }
-    });
-    
     // Initialize canvas and game settings here
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     canvas.width = CANVAS_WIDTH;
     canvas.height = CANVAS_HEIGHT;
 
+    document.getElementById('dietSelection').style.display = 'none';
+    canvas.style.display = 'block';
+    
     snake = [{ x: 100, y: 100 }];
     direction = { x: 1, y: 0 };
     score = 0;
-    foodElement = getRandomElement(selectedElements);
-    foodElementName = elementNames[elements.indexOf(foodElement)];
-    foodElementNumber = elementNumbers[elements.indexOf(foodElement)];
-
-    gameInterval = setInterval(gameLoop, SPEED);
     updateScore(score);
-}
-    
-// Randomly select an element from the selected diet
-function getRandomElement(elements) {
-    return elements[Math.floor(Math.random() * elements.length)];
+
+    // Additional setup for game loop
+    enerateFood();
+    startGameLoop(ctx);
 }
 
-// Update the score display
-function updateScore(newScore) {
-    document.getElementById('scoreDisplay').textContent = `Score: ${newScore}`;
-}
 
 // Genera cibo in una posizione casuale
 function generateFood() {
