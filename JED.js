@@ -177,25 +177,7 @@ function generateFood() {
 
 // Function to update score
 function updateScore(newScore) {
-    // Ottieni l'indice della dieta selezionata
-    const dietIndex = DietsList.indexOf(selected_diet);
-
-    // Verifica se l'elemento mangiato appartiene alla dieta selezionata
-    if (Elements_of_Diet[dietIndex].includes(element_eaten)) {
-        // Aggiungi punteggio positivo se l'elemento fa parte della dieta selezionata
-        score += ((elements.length - Elements_of_Diet[dietIndex].length) / elements.length) * 100;
-    } else {
-        // Sottrai punteggio se l'elemento non appartiene alla dieta selezionata
-        score -= (Elements_of_Diet[dietIndex].length / elements.length) * 100;
-    }
-
-    // Aggiorna il punteggio visualizzato
-    updateScoreDisplay();
-}
-
-// Funzione per aggiornare la visualizzazione del punteggio
-function updateScoreDisplay() {
-    document.getElementById('scoreBoard').textContent = `Score: ${score.toFixed(2)} |  ${foodElementName} (Z ${foodElementNumber});
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} |  ${foodElementName} (Z ${foodElementNumber});
 }
 
 // Example function to start game loop
