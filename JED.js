@@ -57,6 +57,17 @@ document.addEventListener('keydown', (event) => {
             break;
         case 'ArrowRight':
             if (direction.x === 0) direction = { x: 1, y: 0 };
+         case 'W':
+            if (direction.y === 0) direction = { x: 0, y: -1 };
+            break;
+        case 'S':
+            if (direction.y === 0) direction = { x: 0, y: 1 };
+            break;
+        case 'A':
+            if (direction.x === 0) direction = { x: -1, y: 0 };
+            break;
+        case 'D':
+            if (direction.x === 0) direction = { x: 1, y: 0 };       
             break;
     }
 });
@@ -171,7 +182,7 @@ function updateGame(ctx) {
     ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
 
     // Draw game area border
-    ctx.strokeStyle = "black";
+    ctx.strokeStyle = "#83B7DE";
     ctx.lineWidth = 4;
     ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
             
