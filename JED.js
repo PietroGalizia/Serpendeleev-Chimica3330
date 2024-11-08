@@ -19,7 +19,7 @@ const DietsList = [
 ];
 
 // Initialize game state
-const SPEED = 80;
+const SPEED = 70;
 const SIZE = 20;
 const CANVAS_WIDTH = 620;
 const CANVAS_HEIGHT = 520;
@@ -82,6 +82,8 @@ function startNewGame() {
 
     snake = [{ x: 100, y: 100 }];
     direction = { x: 1, y: 0 };
+    score = 0;
+    updateScore(score);
     
     // Additional setup for game loop
     generateFood();
@@ -133,6 +135,8 @@ function startGameLoop(ctx) {
             
         // Controlla se il serpente mangia il cibo
         if (head.x === food.x && head.y === food.y) {
+            score += 10;  // Incrementa il punteggio
+            updateScore(score);
             generateFood(); // Genera un nuovo cibo
         } else {
             snake.pop(); // Rimuovi l'ultimo segmento della coda
