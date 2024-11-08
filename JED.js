@@ -115,6 +115,9 @@ function generateFood() {
     const elementIndex = Math.floor(Math.random() * elements.length);
     foodElement = elements[elementIndex];
     foodElementName = elementNames[elementIndex];
+
+    // Display the current element name next to the score
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | Element: ${foodElementName}`;
 }
 
 // Function to update score
