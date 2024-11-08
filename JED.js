@@ -110,18 +110,42 @@ function startGameLoop(ctx) {
         function updateGame(ctx) {
         // Aggiorna la posizione del serpente
         const head = { x: snake[0].x + direction.x * SIZE, y: snake[0].y + direction.y * SIZE };
+    
+       // Controlla se il serpente esce dai bordi del canvas
+            if (head.x < 0 || head.x >= CANVAS_WIDTH || head.y < 0 || head.y >= CANVAS_HEIGHT) {
+                alert("Game Over! You hit the wall.");
+                exitGame();
+                return;
+            }
+
+            
+        // Controlla se il serpente si scontra con se stesso
+        for (let i = 1; i < snake.length; i++) {
+            if (snake[i].x === head.x && snake[i].y === head.y) {
+                alert("Game Over! You ran into yourself.");
+                exitGame();
+                return;
+            }
+        }
+            
+        // Aggiungi la nuova testa
+        snake.unshift(head);
             
         // Controlla se il serpente mangia il cibo
         if (head.x === food.x && head.y === food.y) {
-            snake.unshift(head); // Aggiungi una nuova testa
             generateFood(); // Genera un nuovo cibo
         } else {
-            snake.unshift(head); // Aggiungi una nuova testa
             snake.pop(); // Rimuovi l'ultimo segmento della coda
         }
-           
-        // Game update logic here (e.g., snake movement, collision checks)
-        ctx.clearRect(0, 0, 620, 520);
+
+        // Cancella il canvas e disegna il serpente e il cibo
+        ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+        // Disegna il bordo dell'area di gioco
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            
         ctx.fillStyle = "#96AE21";
         snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
 
