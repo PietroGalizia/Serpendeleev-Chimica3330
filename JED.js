@@ -111,14 +111,15 @@ function generateFood() {
         x: Math.floor(Math.random() * maxX) * SIZE,
         y: Math.floor(Math.random() * maxY) * SIZE
     };
-}
-
+    
     const elementIndex = Math.floor(Math.random() * elements.length);
     foodElement = elements[elementIndex];
     foodElementName = elementNames[elementIndex];
 
     document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName}`;
 }
+
+
 
 function startGameLoop(ctx) {
     gameInterval = setInterval(() => {
