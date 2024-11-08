@@ -1,5 +1,10 @@
 console.log("JED.js è stato caricato correttamente");
 
+// Define the elements
+const elements = [
+    "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"
+];
+
 // List of diet options and elements associated with each diet
 const DietsList = [
     "Life Elements", "Air Elements", "Critical Elements", 
@@ -26,7 +31,7 @@ const CANVAS_HEIGHT = 520;
 let gameInterval = null;
 let direction = { x: 1, y: 0 };
 let score = 0;
-let food = { x: 0, y: 0 }; // Aggiungi la variabile per il cibo
+let foodElement = "";
 // Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
 
@@ -100,6 +105,9 @@ function generateFood() {
         x: Math.floor(Math.random() * maxX) * SIZE,
         y: Math.floor(Math.random() * maxY) * SIZE
     };
+    
+    // Seleziona un elemento casuale dalla lista degli elementi
+    foodElement = elements[Math.floor(Math.random() * elements.length)];
 }
 
 // Function to update score
@@ -156,7 +164,10 @@ function updateGame(ctx) {
 
     // Disegna il cibo
     ctx.fillStyle = "red";
-    ctx.fillRect(food.x, food.y, SIZE, SIZE);
+    ctx.font = "20px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
 
     // Disegna il bordo dell'area di gioco
     ctx.strokeStyle = "black";
