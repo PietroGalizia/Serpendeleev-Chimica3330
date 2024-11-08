@@ -28,7 +28,7 @@ const DietsList = [
 ];
 
 // Initialize game state
-const SPEED = 70;
+const SPEED = 50;
 const SIZE = 20;
 const CANVAS_WIDTH = 620;
 const CANVAS_HEIGHT = 520;
@@ -116,22 +116,15 @@ function generateFood() {
     const elementIndex = Math.floor(Math.random() * elements.length);
     foodElement = elements[elementIndex];
     foodElementName = elementNames[elementIndex];
+    
     // Display the current element name next to the score
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | Element: ${foodElementName}`;
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName}`;
 }
 
 // Function to update score
 function updateScore(newScore) {
     document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName}`;
 }
-
-// Example function to start game loop
-function startGameLoop(ctx) {
-       if (gameInterval) clearInterval(gameInterval);
-       gameInterval = setInterval(() => {
-           updateGame(ctx);
-       }, SPEED);
-   }
 
 function updateGame(ctx) {
     // Aggiorna la posizione del serpente
