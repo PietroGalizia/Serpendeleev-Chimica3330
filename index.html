@@ -20,6 +20,11 @@
             height: 520px;
             margin: auto;
         }
+        #scoreBoard {
+            font-size: 24px;
+            color: #96AE21;
+            padding: 10px;
+        }
         .button {
             margin: 10px;
             padding: 10px 20px;
@@ -41,10 +46,9 @@
         <select id="dietDropdown"></select>
         <button class="button" onclick="startNewGame()">Play</button>
     </div>
+    <div id="scoreBoard">Score: 0</div>
     <canvas id="gameCanvas"></canvas>
 
     <script src="JED.js"></script>
-    <div id="scoreBoard" style="font-size: 24px; color: #333; padding: 20px;">Score: 0</div>
-    <canvas id="gameCanvas"></canvas>
 </body>
 </html>
