@@ -25,7 +25,6 @@ const DietsList = [
     "elementi del blocco p", "elementi del blocco d", "elementi del blocco f", "elementi noti fin dai tempi antichi"
 ];
 
-
 // Initialize game state
 const SPEED = 90;
 const SIZE = 20;
@@ -79,7 +78,7 @@ function showDietSelection() {
 
 function startNewGame() {
     const selectedDiet = document.getElementById("dietDropdown").value;
-    alert(`Starting game with diet: ${selectedDiet}`);
+    alert(Starting game with diet: ${selectedDiet});
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -112,7 +111,7 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = Score: ${score} | ${foodElementName} (Z ${foodElementNumber});
 }
 
 function startGameLoop(ctx) {
@@ -122,7 +121,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber});
 }
 
 function updateGame(ctx) {
@@ -170,25 +169,6 @@ function updateGame(ctx) {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
-
-    // Draw game area border
-    ctx.strokeStyle = "#83B7DE";
-    ctx.lineWidth = 4;
-    ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            
-}
-
-// Function to exit the game
-function exitGame() {
-    alert("Exiting the game");
-    document.getElementById('mainMenu').style.display = 'block';
-    document.getElementById('dietSelection').style.display = 'none';
-    document.getElementById('gameCanvas').style.display = 'none';
-
-    if (gameInterval) {
-        clearInterval(gameInterval);
-    }
-}
 
     // Draw game area border
     ctx.strokeStyle = "#83B7DE";
