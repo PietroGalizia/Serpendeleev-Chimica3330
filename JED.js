@@ -37,6 +37,7 @@ let direction = { x: 1, y: 0 };
 let score = 0;
 let foodElement = "";
 let foodElementName = "";
+let foodElementNumber = "";
 // Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
 
@@ -111,13 +112,15 @@ function generateFood() {
         y: Math.floor(Math.random() * maxY) * SIZE
     };
     
-    // Seleziona un elemento casuale dalla lista degli elementi
-    foodElement = elements[Math.floor(Math.random() * elements.length)];
+    // Select a random element and its full name
+    const elementIndex = Math.floor(Math.random() * elements.length);
+    foodElement = elements[elementIndex];
+    foodElementName = elementNames[elementIndex];
 }
 
 // Function to update score
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore}`;
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName}`;
 }
 
 // Example function to start game loop
@@ -163,18 +166,18 @@ function updateGame(ctx) {
     // Cancella il canvas e disegna il serpente e il cibo
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    // Disegna il serpente
+    // Draw the snake
     ctx.fillStyle = "#96AE21";
     snake.forEach(part => ctx.fillRect(part.x, part.y, SIZE, SIZE));
 
-    // Disegna il cibo
+    // Draw the food element symbol
     ctx.fillStyle = "red";
     ctx.font = "20px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
 
-    // Disegna il bordo dell'area di gioco
+    // Draw game area border
     ctx.strokeStyle = "black";
     ctx.lineWidth = 4;
     ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
