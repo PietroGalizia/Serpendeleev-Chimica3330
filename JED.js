@@ -123,12 +123,12 @@ function generateFood() {
     foodElementNumber = elementNumbers[elementIndex];
 
     // Display the current element name next to the score
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | Element: ${foodElementName}, Z: ${foodElementNumber}`;
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | Element: ${foodElementName}, (Z: ${foodElementNumber})`;
 }
 
 // Function to update score
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | Element: ${foodElementName}, Z: ${foodElementNumber}`;
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | Element: ${foodElementName}, (Z: ${foodElementNumber})`;
 }
 
 // Example function to start game loop
