@@ -28,7 +28,7 @@ const DietsList = [
 ];
 
 // Initialize game state
-const SPEED = 50;
+const SPEED = 150;
 const SIZE = 20;
 const CANVAS_WIDTH = 620;
 const CANVAS_HEIGHT = 520;
@@ -111,8 +111,9 @@ function generateFood() {
     const elementIndex = Math.floor(Math.random() * elements.length);
     foodElement = elements[elementIndex];
     foodElementName = elementNames[elementIndex];
+    foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName}`;
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function startGameLoop(ctx) {
@@ -122,7 +123,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName}`;
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
