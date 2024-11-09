@@ -162,6 +162,7 @@ function generateFood() {
     foodElementNumber = elementNumbers[elementIndex];
 
     drawFood();
+    updateScore(score);
 }
 
 function startGameLoop(ctx) {
