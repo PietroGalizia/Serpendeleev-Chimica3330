@@ -64,7 +64,7 @@ const Elements_of_Diet = {
 
 
 // Initialize game state
-const SPEED = 50;
+const SPEED = 20;
 const SIZE = 20;
 const CANVAS_WIDTH = 620;
 const CANVAS_HEIGHT = 520;
@@ -102,7 +102,7 @@ document.addEventListener('keydown', (event) => {
 
 function showDietSelection() {
     const dietDropdown = document.getElementById("dietDropdown");
-    dietDropdown.innerHTML = ""; // Clear existing options
+    dietDropdown.innerHTML = "";
 
     DietsList.forEach(diet => {
         let option = document.createElement("option");
@@ -150,7 +150,7 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} ${foodElement} (Z = ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = `${selectedDiet}\nScore: ${score} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber})`;
 }
 
 function startGameLoop(ctx) {
@@ -160,7 +160,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} ${foodElement} (Z = ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = `${selectedDiet}\nScore: ${newScore} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
