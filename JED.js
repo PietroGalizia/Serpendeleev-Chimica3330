@@ -131,7 +131,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').innerText = `${selectedDiet}\nScore: ${newScore} | ${foodElementName} [${foodElement}], Z = ${foodElementNumber}`;
+    document.getElementById('scoreBoard').innerText = `${selectedDiet}\nScore: ${newScore} | [${foodElement}] ${foodElementName}, Z = ${foodElementNumber}`;
 }
 
 function updateGame(ctx) {
