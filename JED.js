@@ -35,6 +35,7 @@ let gameInterval = null;
 let direction = { x: 1, y: 0 };
 let score = 0;
 let food = {};
+let selectedDiet = "";
 let foodElement = "";
 let foodElementName = "";
 let foodElementNumber = "";
@@ -79,8 +80,8 @@ function showDietSelection() {
 }
 
 function startNewGame() {
-    const selectedDiet = document.getElementById("dietDropdown").value;
-    alert(Starting game with diet: ${selectedDiet});
+    selectedDiet = document.getElementById("dietDropdown").value;
+    alert(`Starting game with diet: ${selectedDiet}`);
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -123,7 +124,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber});
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
