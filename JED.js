@@ -34,6 +34,7 @@ const CANVAS_HEIGHT = 520;
 let gameInterval = null;
 let direction = { x: 1, y: 0 };
 let score = 0;
+let food = {};
 let foodElement = "";
 let foodElementName = "";
 let foodElementNumber = "";
@@ -121,8 +122,8 @@ function startGameLoop(ctx) {
     }, SPEED);
 }
 
-function updateScore(score) {
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
+function updateScore(newScore) {
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
