@@ -74,6 +74,22 @@ document.addEventListener('keydown', (event) => {
             case 'ArrowRight':
                 if (direction.x === 0) direction = { x: 1, y: 0 };
                 break;
+            case 'w':
+            case 'W':
+                if (direction.y === 0) direction = { x: 0, y: -1 };
+                break;
+            case 's':
+            case 'S':
+                if (direction.y === 0) direction = { x: 0, y: 1 };
+                break;
+            case 'a':
+            case 'A':
+                if (direction.x === 0) direction = { x: -1, y: 0 };
+                break;
+            case 'd':
+            case 'D':
+                if (direction.x === 0) direction = { x: 1, y: 0 };
+                break;
         }
     }
 });
