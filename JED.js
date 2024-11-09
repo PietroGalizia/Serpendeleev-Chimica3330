@@ -90,6 +90,7 @@ function changeFoodElement() {
     console.log("New food element:", foodElement, foodElementName, foodElementNumber);
 
     drawFood();
+    updateScore(score); 
 }
 
 function drawFood() {
