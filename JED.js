@@ -9,22 +9,20 @@ const elementNames = [
     "Idrogeno", "Elio", "Litio", "Berillio", "Boro", "Carbonio", "Azoto", "Ossigeno", "Fluoro", "Neon", "Sodio", "Magnesio", "Alluminio", "Silicio", "Fosforo", "Zolfo", "Cloro", "Argon", "Potassio", "Calcio", "Scandio", "Titanio", "Vanadio", "Cromo", "Manganese", "Ferro", "Cobalto", "Nichel", "Rame", "Zinco", "Gallio", "Germanio", "Arsenico", "Selenio", "Bromo", "Kripton", "Rubidio", "Stronzio", "Ittrio", "Zirconio", "Niobio", "Molibdeno", "Tecnezio", "Rutenio", "Rodio", "Palladio", "Argento", "Cadmio", "Indio", "Stagno", "Antimonio", "Tellurio", "Iodio", "Xeno", "Cesio", "Bario", "Lantanio", "Cerio", "Praseodimio", "Neodimio", "Promezio", "Samario", "Europio", "Gadolinio", "Terbio", "Disprosio", "Olmio", "Erbio", "Tulio", "Itterbio", "Lutezio", "Afnio", "Tantalio", "Tungsteno", "Renio", "Osmio", "Iridio", "Platino", "Oro", "Mercurio", "Tallio", "Piombo", "Bismuto", "Polonio", "Astato", "Radon", "Francio", "Radio", "Attinio", "Torio", "Protoattinio", "Uranio", "Nettunio", "Plutonio", "Americio", "Curio", "Berkelio", "Californio", "Einsteinio", "Fermio", "Mendelevio"
 ];
 
+const elementNumbers = [
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102"
+];
+
 // List of diet options and elements associated with each diet
 const DietsList = [
-    "Life Elements", "Air Elements", "Critical Elements", 
-    "Smartphone Elements", "DNA Elements", "Radioactive Elements",
-    "Safe Fusion Reactor Elements", "Elements Dedicated to Scientists", 
-    "Latin Derived Elements", "Greek Derived Elements", 
-    "City or Place Named Elements", "Non-latin/Greek/City Derived Names", 
-    "Solid State Elements", "Liquid State Elements", 
-    "Gaseous State Elements", "Metals", "Non-Metals", 
-    "Group I Elements", "Group II Elements", 
-    "Group XV Elements", "Group XVI Elements", 
-    "Group XVII Elements", "Group XVIII Elements", 
-    "Lanthanoids", "Actinoids", "Transition Metals", 
-    "Post-Transition Metals", "Metalloids", "Reactive Non-Metals", 
-    "s-Block Elements", "p-Block Elements", "d-Block Elements", 
-    "f-Block Elements", "Ancient Known Elements"
+    "elementi della vita", "elemeni dell'aria", "elementi critici", "elementi degli smartphone", "elementi del DNA", "elementi radioattivi (serie di decadimento U-Th)",
+    "elementi considerati sicuri (grado A-E)\n in un reattore nucleare a fusione", "elementi dedicati a scienziati", "elementi con nome di derivazione latina",
+    "elementi con nome di derivazione greca", "elementi con nomi di città,\nstati, o di chissà dove", "elementi con nomi che non derivano nè dal latino, nè dal greco,\ne nemmeno da città o stati",
+    "elementi allo stato solido alle condizioni standard di temperatura e pressione", "elementi allo stato liquido alle condizioni standard di temperatura e pressione",
+    "elementi allo stato gassoso alle condizioni standard di temperatura e pressione", "metalli", "non metalli", "elementi del primo gruppo (idrogeno & metalli alcalini)",
+    "elementi del secondo gruppo (metalli alcalino terrosi)", "elementi del 15esimo gruppo (pnicogeni)", "elementi del gruppo XVI (calcogeni)", "elementi del gruppo XVII (alogeni)",
+    "elementi del 18esimo gruppo (gas nobili)", "lantanoidi", "attinoidi", "metalli di transizione", "metalli post-transizione", "semimetalli", "non metalli reattivi", "elementi del blocco s",
+    "elementi del blocco p", "elementi del blocco d", "elementi del blocco f", "elementi noti fin dai tempi antichi"
 ];
 
 // Initialize game state
@@ -38,6 +36,7 @@ let score = 0;
 let foodElement = "";
 let foodElementName = "";
 let foodElementNumber = "";
+// Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -62,7 +61,6 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Show diet selection dropdown
 function showDietSelection() {
     const dietDropdown = document.getElementById("dietDropdown");
     dietDropdown.innerHTML = ""; // Clear existing options
@@ -95,6 +93,7 @@ function startNewGame() {
     score = 0;
     updateScore(score);
 
+    
     generateFood();
     startGameLoop(ctx);
 }
@@ -110,8 +109,9 @@ function generateFood() {
     const elementIndex = Math.floor(Math.random() * elements.length);
     foodElement = elements[elementIndex];
     foodElementName = elementNames[elementIndex];
+    foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = Score: ${score} | ${foodElementName};
+    document.getElementById('scoreBoard').textContent = Score: ${score} | ${foodElementName} (Z ${foodElementNumber});
 }
 
 function startGameLoop(ctx) {
@@ -121,18 +121,21 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = Score: ${newScore} | ${foodElementName};
+    document.getElementById('scoreBoard').textContent = Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber});
 }
 
 function updateGame(ctx) {
+    // Aggiorna la posizione del serpente
     const head = { x: snake[0].x + direction.x * SIZE, y: snake[0].y + direction.y * SIZE };
     
+    // Controlla se il serpente esce dai bordi del canvas
     if (head.x < 0 || head.x >= CANVAS_WIDTH || head.y < 0 || head.y >= CANVAS_HEIGHT) {
         alert("Game Over! You hit the wall.");
         exitGame();
         return;
     }
  
+    // Controlla se il serpente si scontra con se stesso
     for (let i = 1; i < snake.length; i++) {
         if (snake[i].x === head.x && snake[i].y === head.y) {
             alert("Game Over! You ran into yourself.");
@@ -144,6 +147,7 @@ function updateGame(ctx) {
     // Aggiungi la nuova testa
     snake.unshift(head);
             
+    // Controlla se il serpente mangia il cibo
     if (head.x === food.x && head.y === food.y) {
         score += 10;  // Incrementa il punteggio
         updateScore(score);
