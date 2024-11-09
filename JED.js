@@ -78,6 +78,7 @@ document.addEventListener('keydown', (event) => {
 
 function changeFoodElement() {
     const randomIndex = Math.floor(Math.random() * elements.length);
+    console.log("Changing food element...");
     foodElement = elements[randomIndex];
     foodElementName = elementNames[randomIndex];
     foodElementNumber = elementNumbers[randomIndex];
