@@ -25,6 +25,7 @@ const DietsList = [
     "elementi del blocco p", "elementi del blocco d", "elementi del blocco f", "elementi noti fin dai tempi antichi"
 ];
 
+
 // Initialize game state
 const SPEED = 90;
 const SIZE = 20;
@@ -78,7 +79,7 @@ function showDietSelection() {
 
 function startNewGame() {
     const selectedDiet = document.getElementById("dietDropdown").value;
-    alert(Starting game with diet: ${selectedDiet});
+    alert(`Starting game with diet: ${selectedDiet}`);
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -111,7 +112,7 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = Score: ${score} | ${foodElementName} (Z ${foodElementNumber});
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function startGameLoop(ctx) {
@@ -121,7 +122,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber});
+    document.getElementById('scoreBoard').textContent = `Score: ${Score} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
