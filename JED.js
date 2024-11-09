@@ -25,6 +25,7 @@ const DietsList = [
     "elementi del blocco p", "elementi del blocco d", "elementi del blocco f", "elementi noti fin dai tempi antichi"
 ];
 
+
 // Initialize game state
 const SPEED = 90;
 const SIZE = 20;
@@ -65,7 +66,7 @@ document.addEventListener('keydown', (event) => {
 
 function showDietSelection() {
     const dietDropdown = document.getElementById("dietDropdown");
-    dietDropdown.innerHTML = "";
+    dietDropdown.innerHTML = ""; // Clear existing options
 
     DietsList.forEach(diet => {
         let option = document.createElement("option");
@@ -80,7 +81,7 @@ function showDietSelection() {
 
 function startNewGame() {
     selectedDiet = document.getElementById("dietDropdown").value;
-    alert(`Starting game with diet: ${selectedDiet}`);
+    alert(Starting game with diet: ${selectedDiet});
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -123,8 +124,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').innerText = `${selectedDiet}\nScore: ${newScore} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber})`;
-
+    document.getElementById('scoreBoard').textContent = ${selectedDiet}\nScore: ${newScore} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber});
 }
 
 function updateGame(ctx) {
