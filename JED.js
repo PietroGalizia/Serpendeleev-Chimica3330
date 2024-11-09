@@ -121,19 +121,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'ArrowUp':
-            if (direction.y === 0) direction = { x: 0, y: -1 };
-            break;
-        case 'ArrowDown':
-            if (direction.y === 0) direction = { x: 0, y: 1 };
-            break;
-        case 'ArrowLeft':
-            if (direction.x === 0) direction = { x: -1, y: 0 };
-            break;
-        case 'ArrowRight':
-            if (direction.x === 0) direction = { x: 1, y: 0 };
-            break;
+    if (event.key === ' ') {
+        event.preventDefault();
+        spawnNewFood();
+    } else {
+        switch (event.key) {
+            case 'ArrowUp':
+                if (direction.y === 0) direction = { x: 0, y: -1 };
+                break;
+            case 'ArrowDown':
+                if (direction.y === 0) direction = { x: 0, y: 1 };
+                break;
+            case 'ArrowLeft':
+                if (direction.x === 0) direction = { x: -1, y: 0 };
+                break;
+            case 'ArrowRight':
+                if (direction.x === 0) direction = { x: 1, y: 0 };
+                break;
     }
 });
 
@@ -190,6 +194,15 @@ function generateFood() {
     updateScore(score); 
 }
 
+function spawnNewFood() {
+    const randomIndex = Math.floor(Math.random() * Elements_of_Diet[selectedDietIndex].length);
+    foodElement = Elements_of_Diet[selectedDietIndex][randomIndex];
+    foodElementName = elementNames[elements.indexOf(foodElement)];
+    foodElementNumber = elementNumbers[elements.indexOf(foodElement)];
+    updateFoodPosition(); // Aggiorna la posizione del cibo
+    drawFood(); // Ridisegna l'elemento di cibo
+}
+
 function startGameLoop(ctx) {
     gameInterval = setInterval(() => {
         updateGame(ctx);
@@ -198,6 +211,11 @@ function startGameLoop(ctx) {
 
 function updateScore(newScore) {
     document.getElementById('scoreBoard').innerText = `${selectedDiet}\nScore: ${newScore} | ${foodElementName} [${foodElement}], Z = ${foodElementNumber}`;
+}
+
+function updateFoodPosition() {
+    food.x = Math.floor(Math.random() * (CANVAS_WIDTH / SIZE)) * SIZE;
+    food.y = Math.floor(Math.random() * (CANVAS_HEIGHT / SIZE)) * SIZE;
 }
 
 function updateGame(ctx) {
