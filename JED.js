@@ -252,14 +252,17 @@ function updateGame(ctx) {
             
     // Controlla se il serpente mangia il cibo
     if (head.x === food.x && head.y === food.y) {
-        score += 10;  // Incrementa il punteggio
+        if (diets[selectedDiet] && diets[selectedDiet].includes(foodElement)) {
+            score += 10;
+        } else {
+            score -= 5;
+        }
         updateScore(score);
-        generateFood(); // Genera un nuovo cibo
+        generateFood();
     } else {
-        snake.pop(); // Rimuovi l'ultimo segmento della coda
+        snake.pop();
     }
 
-    // Cancella il canvas e disegna il serpente e il cibo
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     // Draw the snake
