@@ -161,7 +161,6 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    updateScore(score);
     drawFood();
 }
 
