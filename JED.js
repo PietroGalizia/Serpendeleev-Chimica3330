@@ -55,25 +55,53 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'ArrowUp':
-            if (direction.y === 0) direction = { x: 0, y: -1 };
-            break;
-        case 'ArrowDown':
-            if (direction.y === 0) direction = { x: 0, y: 1 };
-            break;
-        case 'ArrowLeft':
-            if (direction.x === 0) direction = { x: -1, y: 0 };
-            break;
-        case 'ArrowRight':
-            if (direction.x === 0) direction = { x: 1, y: 0 };
-            break;
+    if (event.key === ' ') {
+        event.preventDefault(); // Previene il comportamento predefinito della barra spaziatrice
+        changeFoodElement();    // Cambia l'elemento del cibo senza cambiarne la posizione
+    } else {
+        switch (event.key) {
+            case 'ArrowUp':
+                if (direction.y === 0) direction = { x: 0, y: -1 };
+                break;
+            case 'ArrowDown':
+                if (direction.y === 0) direction = { x: 0, y: 1 };
+                break;
+            case 'ArrowLeft':
+                if (direction.x === 0) direction = { x: -1, y: 0 };
+                break;
+            case 'ArrowRight':
+                if (direction.x === 0) direction = { x: 1, y: 0 };
+                break;
+        }
     }
 });
 
+function changeFoodElement() {
+    const randomIndex = Math.floor(Math.random() * elements.length);
+    foodElement = elements[randomIndex];
+    foodElementName = elementNames[randomIndex];
+    foodElementNumber = elementNumbers[randomIndex];
+
+    drawFood();
+}
+
+function drawFood() {
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = "red"; // Colore per il simbolo dell'elemento
+    ctx.font = "20px Arial"; // Imposta la dimensione del font
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // Disegna il simbolo dell'elemento nel punto (x, y) del cibo
+    ctx.clearRect(food.x, food.y, SIZE, SIZE); // Pulisce la vecchia posizione del cibo
+    ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2); // Disegna il nuovo elemento
+}
+
 function showDietSelection() {
     const dietDropdown = document.getElementById("dietDropdown");
-    dietDropdown.innerHTML = ""; // Clear existing options
+    dietDropdown.innerHTML = "";
 
     DietsList.forEach(diet => {
         let option = document.createElement("option");
