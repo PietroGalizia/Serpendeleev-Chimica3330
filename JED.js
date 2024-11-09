@@ -15,16 +15,23 @@ const elementNumbers = [
 
 // List of diet options and elements associated with each diet
 const DietsList = [
-    "elementi della vita", "elemeni dell'aria", "elementi critici", "elementi degli smartphone", "elementi del DNA", "elementi radioattivi (serie di decadimento U-Th)",
-    "elementi considerati sicuri (grado A-E)\n in un reattore nucleare a fusione", "elementi dedicati a scienziati", "elementi con nome di derivazione latina",
-    "elementi con nome di derivazione greca", "elementi con nomi di città,\nstati, o di chissà dove", "elementi con nomi che non derivano nè dal latino, nè dal greco,\ne nemmeno da città o stati",
-    "elementi allo stato solido alle condizioni standard di temperatura e pressione", "elementi allo stato liquido alle condizioni standard di temperatura e pressione",
-    "elementi allo stato gassoso alle condizioni standard di temperatura e pressione", "metalli", "non metalli", "elementi del primo gruppo (idrogeno & metalli alcalini)",
-    "elementi del secondo gruppo (metalli alcalino terrosi)", "elementi del 15esimo gruppo (pnicogeni)", "elementi del gruppo XVI (calcogeni)", "elementi del gruppo XVII (alogeni)",
-    "elementi del 18esimo gruppo (gas nobili)", "lantanoidi", "attinoidi", "metalli di transizione", "metalli post-transizione", "semimetalli", "non metalli reattivi", "elementi del blocco s",
-    "elementi del blocco p", "elementi del blocco d", "elementi del blocco f", "elementi noti fin dai tempi antichi"
+    "elements of life", "critical raw elements", "elements of a smartphone",
+    "elements of DNA", "radioactive elements (U-Th decay series)",
+    "elements considered safety (grades A-E) in the first wall of fusion power plan",
+    "elements dedicated to scientists", "elements with names of latin derivation",
+    "elements with names of greek derivation",
+    "elements with names derived from cities, countries, or elsewhere",
+    "elements with names not derived from latin or greek, nor from cities or countries",
+    "elements in solid state at standard temperature and pressure",
+    "elements in liquid state at standard temperature and pressure",
+    "elements in gas state at standard temperature and pressure", "metals", "nonmetals",
+    "elements of group I (Hydrogen & alkali metals)",
+    "elements of group II (Alkaline earth metals)", "elements of group XV (Pnictogens)",
+    "elements of group XVI (Chalcogens)", "elements of group XVII (Halogens)",
+    "elements of group XVIII (Noblegases)", "lanthanides", "actinides",
+    "transition metals", "post-transition metals", "metalloids", "reactive nonmetals",
+    "s-block elements", "p-block elements", "d-block elements", "f-block elemnts"
 ];
-
 
 // Initialize game state
 const SPEED = 90;
@@ -81,7 +88,7 @@ function showDietSelection() {
 
 function startNewGame() {
     selectedDiet = document.getElementById("dietDropdown").value;
-    alert(`Eat the ${selectedDiet} and skip those that don’t belong to this diet by pressing the spacebar.\nStay Hungry! Stay Periodic!`);
+    alert(`Eat the ${selectedDiet}\n\n skip those that don’t belong to this diet by pressing the spacebar.\n\nStay Hungry! Stay Periodic!`);
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
