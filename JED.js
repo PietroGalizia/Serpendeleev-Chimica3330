@@ -49,7 +49,7 @@ const dietToElements = {
     "elementi del gruppo XVI (calcogeni)": ["O", "S", "Se", "Te", "Po"],
     "elementi del gruppo XVII (alogeni)": ["F", "Cl", "Br", "I", "At"],
     "elementi del 18esimo gruppo (gas nobili)": ["He", "Ne","Ar", "Kr", "Xe", "Rn"],
-    "lantanoidi"["La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu"],
+    "lantanoidi": ["La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu"],
     "attinoidi": ["Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md"],
     "metalli di transizione": ["Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg"],
     "metalli post-transizione": ["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Po"],
