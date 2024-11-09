@@ -113,7 +113,7 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} ${Element} (Z = ${foodElementNumber})`;
 }
 
 function startGameLoop(ctx) {
@@ -123,7 +123,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} ${Element} (Z = ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
@@ -132,7 +132,7 @@ function updateGame(ctx) {
     
     // Controlla se il serpente esce dai bordi del canvas
     if (head.x < 0 || head.x >= CANVAS_WIDTH || head.y < 0 || head.y >= CANVAS_HEIGHT) {
-        alert("Game Over! You hit the wall.");
+        alert("Game Over! \n[Stay Hungry] [Stay Periodic]");
         exitGame();
         return;
     }
@@ -140,7 +140,7 @@ function updateGame(ctx) {
     // Controlla se il serpente si scontra con se stesso
     for (let i = 1; i < snake.length; i++) {
         if (snake[i].x === head.x && snake[i].y === head.y) {
-            alert("Game Over! You ran into yourself.");
+            alert("Game Over! \n[Stay Hungry] [Stay Periodic]");
             exitGame();
             return;
         }
@@ -181,7 +181,7 @@ function updateGame(ctx) {
 
 // Function to exit the game
 function exitGame() {
-    alert("Exiting the game");
+    alert("[Stay Hungry] [Stay Periodic]");
     document.getElementById('mainMenu').style.display = 'block';
     document.getElementById('dietSelection').style.display = 'none';
     document.getElementById('gameCanvas').style.display = 'none';
