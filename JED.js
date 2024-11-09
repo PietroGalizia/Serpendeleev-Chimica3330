@@ -34,7 +34,6 @@ const CANVAS_HEIGHT = 520;
 let gameInterval = null;
 let direction = { x: 1, y: 0 };
 let score = 0;
-let food = {};
 let foodElement = "";
 let foodElementName = "";
 let foodElementNumber = "";
@@ -80,7 +79,7 @@ function showDietSelection() {
 
 function startNewGame() {
     const selectedDiet = document.getElementById("dietDropdown").value;
-    alert(`Starting game with diet: ${selectedDiet}`);
+    alert(Starting game with diet: ${selectedDiet});
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -113,7 +112,8 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
+    updateScore(score); 
+    \\document.getElementById('scoreBoard').textContent = Score: ${score} | ${foodElementName} (Z ${foodElementNumber});
 }
 
 function startGameLoop(ctx) {
@@ -123,7 +123,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber});
 }
 
 function updateGame(ctx) {
