@@ -154,7 +154,7 @@ function showDietSelection() {
 
 function startNewGame() {
     selectedDiet = document.getElementById("dietDropdown").value;
-    alert(`1) Eat the ${selectedDiet},\n\n2) Skip the elements that don’t belong to this diet by pressing the spacebar.\n\n3) Stay Hungry! Stay Periodic!`);
+    alert(`1) Eat the ${selectedDiet},\n2) Skip the elements that don’t belong to this diet by pressing the spacebar.\n\n3) Stay Hungry! Stay Periodic!`);
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
