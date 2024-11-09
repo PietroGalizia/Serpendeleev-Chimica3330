@@ -51,7 +51,7 @@ let snake = [{ x: 100, y: 100 }];
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mainMenu').style.display = 'block';
-    updateScore(score); // Inizializza il punteggio
+    updateScore(score);
 });
 
 document.addEventListener('keydown', (event) => {
@@ -90,7 +90,6 @@ function changeFoodElement() {
     console.log("New food element:", foodElement, foodElementName, foodElementNumber);
 
     drawFood();
-    updateScore(score);
 }
 
 function drawFood() {
