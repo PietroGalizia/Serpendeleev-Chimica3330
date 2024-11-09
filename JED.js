@@ -121,8 +121,8 @@ function startGameLoop(ctx) {
     }, SPEED);
 }
 
-function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `Score: ${Score} | ${foodElementName} (Z ${foodElementNumber})`;
+function updateScore(score) {
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
