@@ -120,6 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScore(score); // Inizializza il punteggio
 });
 
+function spawnNewFood() {
+    const randomIndex = Math.floor(Math.random() * Elements_of_Diet[selectedDietIndex].length);
+    foodElement = Elements_of_Diet[selectedDietIndex][randomIndex];
+    foodElementName = elementNames[elements.indexOf(foodElement)];
+    foodElementNumber = elementNumbers[elements.indexOf(foodElement)];
+    updateFoodPosition(); // Aggiorna la posizione del cibo
+    drawFood(); // Ridisegna l'elemento di cibo
+
+function startGameLoop(ctx) {
+    gameInterval = setInterval(() => {
+        updateGame(ctx);
+    }, SPEED);
+}
+
 document.addEventListener('keydown', (event) => {
     if (event.key === ' ') {
         event.preventDefault();
@@ -194,19 +208,6 @@ function generateFood() {
     updateScore(score); 
 }
 
-function spawnNewFood() {
-    const randomIndex = Math.floor(Math.random() * Elements_of_Diet[selectedDietIndex].length);
-    foodElement = Elements_of_Diet[selectedDietIndex][randomIndex];
-    foodElementName = elementNames[elements.indexOf(foodElement)];
-    foodElementNumber = elementNumbers[elements.indexOf(foodElement)];
-    updateFoodPosition(); // Aggiorna la posizione del cibo
-    drawFood(); // Ridisegna l'elemento di cibo
-}
-
-function startGameLoop(ctx) {
-    gameInterval = setInterval(() => {
-        updateGame(ctx);
-    }, SPEED);
 }
 
 function updateScore(newScore) {
