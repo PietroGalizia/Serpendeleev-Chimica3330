@@ -150,7 +150,8 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    document.getElementById('scoreBoard').textContent = `${selectedDiet}\nScore: ${score} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber})`;
+    \\document.getElementById('scoreBoard').textContent = `${selectedDiet}\nScore: ${score} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber})`;
+    updateScore(score);
 }
 
 function startGameLoop(ctx) {
