@@ -120,8 +120,6 @@ function startNewGame() {
     selectedDiet = document.getElementById("dietDropdown").value;
     alert(`Starting game with diet: ${selectedDiet}`);
 
-    const dietElements = dietToElements[selectedDiet];
-
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     canvas.width = CANVAS_WIDTH;
