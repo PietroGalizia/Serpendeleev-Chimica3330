@@ -34,6 +34,7 @@ const CANVAS_HEIGHT = 520;
 let gameInterval = null;
 let direction = { x: 1, y: 0 };
 let score = 0;
+let food = {};
 let foodElement = "";
 let foodElementName = "";
 let foodElementNumber = "";
