@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('keydown', (event) => {
+    console.log(event.key); 
+    
     if (event.key === ' ') {
         event.preventDefault(); // Previene il comportamento predefinito della barra spaziatrice
         changeFoodElement();    // Cambia l'elemento del cibo senza cambiarne la posizione
@@ -77,11 +79,15 @@ document.addEventListener('keydown', (event) => {
 });
 
 function changeFoodElement() {
+    console.log("Changing food element...");
+    
     const randomIndex = Math.floor(Math.random() * elements.length);
     console.log("Changing food element...");
     foodElement = elements[randomIndex];
     foodElementName = elementNames[randomIndex];
     foodElementNumber = elementNumbers[randomIndex];
+
+    console.log("New food element:", foodElement, foodElementName, foodElementNumber);
 
     drawFood();
 }
@@ -90,14 +96,17 @@ function drawFood() {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
+    console.log(`Clearing old food at (${food.x}, ${food.y})`);
+    ctx.clearRect(food.x, food.y, SIZE, SIZE);
+
     ctx.fillStyle = "red"; // Colore per il simbolo dell'elemento
     ctx.font = "20px Arial"; // Imposta la dimensione del font
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
     // Disegna il simbolo dell'elemento nel punto (x, y) del cibo
-    ctx.clearRect(food.x, food.y, SIZE, SIZE); // Pulisce la vecchia posizione del cibo
-    ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2); // Disegna il nuovo elemento
+    ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
+    console.log(`Drawing new food: ${foodElement} at (${food.x}, ${food.y})`);
 }
 
 function showDietSelection() {
@@ -144,13 +153,16 @@ function generateFood() {
         x: Math.floor(Math.random() * maxX) * SIZE,
         y: Math.floor(Math.random() * maxY) * SIZE
     };
+
+    console.log(`Initial food position: (${food.x}, ${food.y})`);
     
     const elementIndex = Math.floor(Math.random() * elements.length);
     foodElement = elements[elementIndex];
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    updateScore(score); 
+    updateScore(score);
+    drawFood();
 }
 
 function startGameLoop(ctx) {
