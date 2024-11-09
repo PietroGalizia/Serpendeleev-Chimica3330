@@ -114,7 +114,6 @@ function generateFood() {
     foodElementNumber = elementNumbers[elementIndex];
 
     updateScore(score); 
-    \\document.getElementById('scoreBoard').textContent = Score: ${score} | ${foodElementName} (Z ${foodElementNumber});
 }
 
 function startGameLoop(ctx) {
