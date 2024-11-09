@@ -25,46 +25,9 @@ const DietsList = [
     "elementi del blocco p", "elementi del blocco d", "elementi del blocco f", "elementi noti fin dai tempi antichi"
 ];
 
-const Elements_of_Diet = {
-    "elementi della vita": ["O", "C", "H", "N", "P", "Ca", "S", "K", "Na", "Cl", "Mg", "Fe", "Zn", "Cr", "Co", "Cu", "Mn", "Mo", "Ni", "V", "Si", "B", "Se", "F", "I", "Br"],
-    "elemeni dell'aria": ["N", "O", "Ar", "C", "Ne", "He", "Kr", "Xe", "Rn"],
-    "elementi critici": ["Sb", "Ba", "Al", "Be", "Bi", "B", "Co", "F", "Ga", "Ge", "Hf", "In", "Li", "Mg","Nb","P", "Sc","Si","Sr","Ta","Ti","W","V"],
-    "elementi degli smartphone": ["Cu", "Al", "Ba", "Ni", "Ca", "Sn", "Fe", "Zn", "Ti", "Pb", "Ag", "Sr", "Au", "Mn", "Zr", "B", "Mg", "U", "Na", "W", "Cr", "Te", "Ge", "Ta", "Pd", "Nb", "Bi", "Ir", "Pt", "Li", "Y", "V", "Hf", "Be", "As", "In", "K", "Ga", "Co", "Sb", "Mo", "Sc", "Cd", "Re"],
-    "elementi del DNA": ["C", "H", "O", "N", "P"],
-    "elementi radioattivi (serie di decadimento U-Th)": ["U", "Th", "Pa", "Ra", "Rn", "Po", "Pb", "Bi", "Pu", "Ac", "Tl", "Am", "Np"],
-    "elementi considerati sicuri (grado A-E)\n in un reattore nucleare a fusione": ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Mg", "Al", "Si", "P", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Fe", "Co", "Ni", "Cu", "Ge", "Se", "Kr", "Sr", "Y", "Ru", "Sn", "Te", "I", "Xe", "Cs", "Ba", "Ce", "Nd", "Sm", "Dy", "Yb", "Lu", "Tl"],
-    "elementi dedicati a scienziati": ["Ge", "Sm", "Gd", "Bi", "Cm", "Es", "Fm", "Md"],
-    "elementi con nome di derivazione latina": ["B", "C", "F", "Na", "Al", "Si", "S", "K", "Ca", "Sc", "Mn", "Fe", "Cu", "Ga", "Ge", "Rb", "Ru", "Pd", "In", "Sn", "Sb", "Te", "Cs", "La", "Ce", "Pm", "Eu", "Ho", "Tm", "Lu", "Hf", "Ta", "Ir", "Au", "Hg", "Pb", "Bi", "Po", "Rn", "Ra", "Np", "Cm",],
-    "elementi con nome di derivazione greca": ["H", "He", "Li", "Be", "N", "O", "Ne", "P", "Cl", "Ar", "Ti", "Cr", "Co", "As", "Se", "Br", "Kr", "Nb", "Mo", "Tc", "Rh", "Ag", "Cd", "Sb", "I", "Xe", "Ba", "La", "Pr", "Nd", "Dy", "Os", "Tl", "Bi", "At", "Ac", "Pa", "U", "Pu"],
-    "elementi con nomi di città,\nstati, o di chissà dove": ["Mg", "Sc", "Mn", "Ga", "Ge", "Se", "Sr", "Y", "Nb", "Tc", "Ru", "Pd", "Cd", "Te", "Eu", "Tb", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Re", "Bi", "Po", "Fr", "U", "Np", "Am", "Bk", "Cf"],
-    "elementi con nomi che non derivano nè dal latino, nè dal greco,\ne nemmeno da città o stati": ["V", "Ni", "Zn", "Zr", "Sb", "W", "Pt", "Th"],
-    "elementi allo stato solido alle condizioni standard di temperatura e pressione": ["Li", "Be", "B", "C", "Na", "Mg", "Al", "Si", "P", "S",  "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Tl", "Pb", "Bi", "Po", "At", "Fr", "Ra", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md"],
-    "elementi allo stato liquido alle condizioni standard di temperatura e pressione": ["Hg", "Br"],
-    "elementi allo stato gassoso alle condizioni standard di temperatura e pressione": ["H", "He", "N", "O", "F", "Ne","Cl", "Ar", "Kr", "Xe", "Rn"],
-    "metalli": ["Li", "Be", "Na", "Mg", "Al", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "Fr", "Ra", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md"],
-    "non metalli": ["H", "He", "B", "C", "N", "O", "F", "Ne", "Si", "P", "S", "Cl", "Ar", "Ge", "As", "Se", "Br", "Kr", "Sb", "Te", "I", "Xe", "At", "Rn"],
-    "elementi del primo gruppo (idrogeno & metalli alcalini)": ["H", "Li", "Na", "K", "Rb", "Cs", "Fr"],
-    "elementi del secondo gruppo (metalli alcalino terrosi)": ["Be", "Mg", "Ca", "Sr", "Ba", "Ra"],
-    "elementi del 15esimo gruppo (pnicogeni)": ["N", "P", "As", "Sb", "Bi"],
-    "elementi del gruppo XVI (calcogeni)": ["O", "S", "Se", "Te", "Po"],
-    "elementi del gruppo XVII (alogeni)": ["F", "Cl", "Br", "I", "At"],
-    "elementi del 18esimo gruppo (gas nobili)": ["He", "Ne","Ar", "Kr", "Xe", "Rn"],
-    "lantanoidi"["La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu"],
-    "attinoidi": ["Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md"],
-    "metalli di transizione": ["Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg"],
-    "metalli post-transizione": ["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Po"],
-    "semimetalli": ["B", "Si", "Ge", "As", "Sb", "Te", "At"],
-    "non metalli reattivi": ["H", "C", "N", "O", "F", "P", "S", "Cl", "Se", "Br", "I"],
-    "elementi del blocco s": ["H", "He", "Li", "Be", "Na", "Mg", "K", "Ca", "Rb", "Sr", "Cs", "Ba", "Fr", "Ra"],
-    "elementi del blocco p": ["B", "C", "N", "O", "F", "Ne", "Al", "Si", "P", "S", "Cl", "Ar", "Ga", "Ge", "As", "Se", "Br", "Kr", "In", "Sn", "Sb", "Te", "I", "Xe", "Tl", "Pb", "Bi", "Po", "At", "Rn"],
-    "elementi del blocco d": ["Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg"],
-    "elementi del blocco f": ["La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md"],
-    "elementi noti fin dai tempi antichi": ["C", "Al", "S", "Ca", "Fe", "Cu", "As", "Ag", "Sn", "Sb", "Au", "Hg", "Pb"]
-};
-
 
 // Initialize game state
-const SPEED = 20;
+const SPEED = 90;
 const SIZE = 20;
 const CANVAS_WIDTH = 620;
 const CANVAS_HEIGHT = 520;
@@ -102,7 +65,7 @@ document.addEventListener('keydown', (event) => {
 
 function showDietSelection() {
     const dietDropdown = document.getElementById("dietDropdown");
-    dietDropdown.innerHTML = "";
+    dietDropdown.innerHTML = ""; // Clear existing options
 
     DietsList.forEach(diet => {
         let option = document.createElement("option");
@@ -150,8 +113,7 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    \\document.getElementById('scoreBoard').textContent = `${selectedDiet}\nScore: ${score} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber})`;
-    updateScore(score);
+    document.getElementById('scoreBoard').textContent = `Score: ${score} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function startGameLoop(ctx) {
@@ -161,7 +123,7 @@ function startGameLoop(ctx) {
 }
 
 function updateScore(newScore) {
-    document.getElementById('scoreBoard').textContent = `${selectedDiet}\nScore: ${newScore} | ${foodElementName}, ${foodElement} (Z = ${foodElementNumber})`;
+    document.getElementById('scoreBoard').textContent = `Score: ${newScore} | ${foodElementName} (Z ${foodElementNumber})`;
 }
 
 function updateGame(ctx) {
@@ -170,7 +132,7 @@ function updateGame(ctx) {
     
     // Controlla se il serpente esce dai bordi del canvas
     if (head.x < 0 || head.x >= CANVAS_WIDTH || head.y < 0 || head.y >= CANVAS_HEIGHT) {
-        alert("Game Over! \n[Stay Hungry] [Stay Periodic]");
+        alert("Game Over! You hit the wall.");
         exitGame();
         return;
     }
@@ -178,7 +140,7 @@ function updateGame(ctx) {
     // Controlla se il serpente si scontra con se stesso
     for (let i = 1; i < snake.length; i++) {
         if (snake[i].x === head.x && snake[i].y === head.y) {
-            alert("Game Over! \n[Stay Hungry] [Stay Periodic]");
+            alert("Game Over! You ran into yourself.");
             exitGame();
             return;
         }
@@ -219,7 +181,7 @@ function updateGame(ctx) {
 
 // Function to exit the game
 function exitGame() {
-    alert("[Stay Hungry] [Stay Periodic]");
+    alert("Exiting the game");
     document.getElementById('mainMenu').style.display = 'block';
     document.getElementById('dietSelection').style.display = 'none';
     document.getElementById('gameCanvas').style.display = 'none';
