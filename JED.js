@@ -136,21 +136,14 @@ document.addEventListener('keydown', (event) => {
 function changeFoodElement() {
     console.log("Changing food element...");
 
-    let randomIndex;
-    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
-    do {
-        randomIndex = Math.floor(Math.random() * elements.length);
-        foodElement = elements[randomIndex];
-    } while (erasedElements.includes(foodElement));
-
-    foodElementName = elementNames[randomIndex];
-    foodElementNumber = elementNumbers[randomIndex];
+    generateFood();
 
     console.log("New food element:", foodElement, foodElementName, foodElementNumber);
 
     drawFood();
     updateScore(score); 
 }
+
 
 function drawFood() {
     const canvas = document.getElementById('gameCanvas');
