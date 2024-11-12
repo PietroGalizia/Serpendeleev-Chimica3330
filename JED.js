@@ -135,18 +135,11 @@ document.addEventListener('keydown', (event) => {
 
 function changeFoodElement() {
     console.log("Changing food element...");
-
-    let foodElement, foodElementName, foodElementNumber;
-    let randomIndex;
-
-    // Ciclo che continua a cercare un nuovo elemento finché non ne trova uno che non sia in erasedElements
-    do {
-        randomIndex = Math.floor(Math.random() * elements.length);
-        foodElement = elements[randomIndex];
-    } while (erasedElements.includes(foodElement));
-
+    
+    const randomIndex = Math.floor(Math.random() * elements.length);
+    foodElement = elements[randomIndex];
     foodElementName = elementNames[randomIndex];
-    foodElementNumber = elementNumbers[randomIndex]; 
+    foodElementNumber = elementNumbers[randomIndex];
 
     console.log("New food element:", foodElement, foodElementName, foodElementNumber);
 
@@ -218,8 +211,13 @@ function generateFood() {
 
     console.log(`Initial food position: (${food.x}, ${food.y})`);
     
-    const elementIndex = Math.floor(Math.random() * elements.length);
-    foodElement = elements[elementIndex];
+    let elementIndex;
+    do {
+        elementIndex = Math.floor(Math.random() * elements.length);
+        foodElement = elements[elementIndex];
+    } while (erasedElements.includes(foodElement)); // Riprova finché non ottieni un elemento valido
+
+    // Assegna nome e numero dell’elemento selezionato
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
