@@ -135,9 +135,14 @@ document.addEventListener('keydown', (event) => {
 
 function changeFoodElement() {
     console.log("Changing food element...");
-    
-    const randomIndex = Math.floor(Math.random() * elements.length);
-    foodElement = elements[randomIndex];
+
+    let randomIndex;
+    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
+    do {
+        randomIndex = Math.floor(Math.random() * elements.length);
+        foodElement = elements[randomIndex];
+    } while (erasedElements.includes(foodElement));
+
     foodElementName = elementNames[randomIndex];
     foodElementNumber = elementNumbers[randomIndex];
 
