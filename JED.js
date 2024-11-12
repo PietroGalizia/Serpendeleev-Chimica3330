@@ -15,7 +15,7 @@ const elementNumbers = [
 
 // List of diet options and elements associated with each diet
 const DietsList = [
-    "elements of life", "critical raw elements", "elements of a smartphone",
+    "elements of a smartphone", "elements of life", "critical raw elements",
     "elements of DNA", "radioactive elements (U-Th decay series)",
     "elements considered safety (grades A-E) in the first wall of fusion power plan",
     "elements dedicated to scientists", "elements with names of latin derivation",
@@ -34,9 +34,9 @@ const DietsList = [
 ];
 
 const diets = {
+    "elements of a smartphone": ["Cu", "Al", "Ba", "Ni", "Ca", "Sn", "Fe", "Zn", "Ti", "Pb", "Ag", "Sr", "Au", "Mn", "Zr", "B", "Mg", "U", "Na", "W", "Cr", "Te", "Ge", "Ta", "Pd", "Nb", "Bi", "Ir", "Pt", "Li", "Y", "V", "Hf", "Be", "As", "In", "K", "Ga", "Co", "Sb", "Mo", "Sc", "Cd", "Re"],
     "elements of life": ["O", "C", "H", "N", "P", "Ca", "S", "K", "Na", "Cl", "Mg", "Fe", "Zn", "Cr", "Co", "Cu", "Mn", "Mo", "Ni", "V", "Si", "B", "Se", "F", "I", "Br"],
     "critical raw elements": ["Sb", "Ba", "Al", "Be", "Bi", "B", "Co", "F", "Ga", "Ge", "Hf", "In", "Li", "Mg","Nb","P", "Sc","Si","Sr","Ta","Ti","W","V"],
-    "elements of a smartphone": ["Cu", "Al", "Ba", "Ni", "Ca", "Sn", "Fe", "Zn", "Ti", "Pb", "Ag", "Sr", "Au", "Mn", "Zr", "B", "Mg", "U", "Na", "W", "Cr", "Te", "Ge", "Ta", "Pd", "Nb", "Bi", "Ir", "Pt", "Li", "Y", "V", "Hf", "Be", "As", "In", "K", "Ga", "Co", "Sb", "Mo", "Sc", "Cd", "Re"],
     "elements of DNA": ["C", "H", "O", "N", "P"],
     "radioactive elements (U-Th decay series)": ["U", "Th", "Pa", "Ra", "Rn", "Po", "Pb", "Bi", "Pu", "Ac", "Tl", "Am", "Np"],
     "elements considered safety (grades A-E) in the first wall of fusion power plan": ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Mg", "Al", "Si", "P", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Fe", "Co", "Ni", "Cu", "Ge", "Se", "Kr", "Sr", "Y", "Ru", "Sn", "Te", "I", "Xe", "Cs", "Ba", "Ce", "Nd", "Sm", "Dy", "Yb", "Lu", "Tl"],
@@ -68,6 +68,10 @@ const diets = {
     "f-block elements": ["La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm"],
 };
 
+const erasedElements = [
+    "Sc", "V", "Ga", "Ge", "Br", "Kr", "Rb", "Y", "Nb", "Mo", "Tc", "Ru", "Rh", "In", "Te", "Xe", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "Re", "Os", "Tl", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th", "Pa", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md"
+];
+
 // Initialize game state
 const SPEED = 90;
 const SIZE = 20;
@@ -93,8 +97,8 @@ document.addEventListener('keydown', (event) => {
     console.log(event.key); 
     
     if (event.key === ' ') {
-        event.preventDefault(); // Previene il comportamento predefinito della barra spaziatrice
-        changeFoodElement();    // Cambia l'elemento del cibo senza cambiarne la posizione
+        event.preventDefault();
+        changeFoodElement();
     } else {
         switch (event.key) {
             case 'ArrowUp':
@@ -131,11 +135,18 @@ document.addEventListener('keydown', (event) => {
 
 function changeFoodElement() {
     console.log("Changing food element...");
-    
-    const randomIndex = Math.floor(Math.random() * elements.length);
-    foodElement = elements[randomIndex];
+
+    let foodElement, foodElementName, foodElementNumber;
+    let randomIndex;
+
+    // Ciclo che continua a cercare un nuovo elemento finché non ne trova uno che non sia in erasedElements
+    do {
+        randomIndex = Math.floor(Math.random() * elements.length);
+        foodElement = elements[randomIndex];
+    } while (erasedElements.includes(foodElement));
+
     foodElementName = elementNames[randomIndex];
-    foodElementNumber = elementNumbers[randomIndex];
+    foodElementNumber = elementNumbers[randomIndex]; 
 
     console.log("New food element:", foodElement, foodElementName, foodElementNumber);
 
