@@ -3,28 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serpendeleev-Chimica3330</title>
+    <title>Snakeleev</title>
     <style>
+        html,
+         body {
+            height: 100%;
+            margin: 0;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #002F5F;
             color: white;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
         }
-        #mainMenu, #dietSelection, #gameCanvas {
-            display: block; /* Rendi visibili gli elementi per il test */
+
+        #logo-container {
+            position: absolute; /* Rende il posizionamento relativo al bordo della finestra */
+            top: 20px;
+            left: 10px;
+            cursor: pointer;
         }
-        #gameCanvas {
-            background-color: #002F5F;
-            width: 620px;
-            height: 520px;
-            margin: auto;
+        #logo {
+            width: 300px;
+            height: auto;
         }
-        #scoreBoard {
-            font-size: 24px;
-            color: #96AE21;
-            padding: 10px;
+
+        /* Aggiungi spazio sotto il logo */
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra orizzontalmente */
+            justify-content: flex-start; /* Non separa troppo gli elementi */
+            text-align: center;
+            padding-top: 20px;
+            width: 100%;
+            margin-top: 50px
         }
+
+       h1 {
+            font-size: 3rem;
+            margin: 10px;
+        }
+
+        #dietSelection {
+            text-align: center;
+            margin-bottom: 10px; 
+        }
+
+        #dietSelection {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
         .button {
             margin: 10px;
             padding: 10px 20px;
@@ -33,22 +68,151 @@
             color: white;
             cursor: pointer;
         }
+
+        #instructions {
+            margin: 50px auto;
+            text-align: left;
+            width: 80%;
+            color: white;
+        }
+        #instructions h3 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        #instructions ol {
+            padding-left: 20px;
+        }
+
+        #citation {
+            margin: 10px auto;
+            font-size: 14px;
+            text-align: center;
+            color: white;
+            padding: 5px;
+        }
+        
+        #citation a {
+            text-decoration: none;
+            color: #96AE21;
+        }
+        #citation a:hover {
+            color: #e51a4b;
+        }
+
+        #gameCanvas {
+            display: none;
+            background-color: #002F5F;
+            margin: 10px auto;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Serpendeleev-Chimica3330</h1>
-    <div id="mainMenu">
-        <button class="button" onclick="showDietSelection()">New Game</button>
-        <button class="button" onclick="exitGame()">Exit</button>
+    <div id="logo-container" onclick="window.open('https://www.issmc.cnr.it/en/', '_blank')">
+        <img id="logo" src="logo.png" alt="Logo Istituto">
     </div>
+    
+    <div id="content">
+        <h1>Snakeleev</h1>
+
+    <!-- Schermata iniziale: scelta della velocità -->
+    <div id="startScreen">
+        <h2>Choose the Snake's speed</h2>
+        <div id="speedButtons"></div>
+    </div>
+
+    <!-- Selezione della dieta -->
     <div id="dietSelection">
-        <h2>Select Diet</h2>
+        <h2>Select the Snake's Diet</h2>
         <select id="dietDropdown"></select>
         <button class="button" onclick="startNewGame()">Play</button>
+        <div id="instructions">
+            <h3>INSTRUCTIONS</h3>
+            <ol>
+                <li>Move the snake using the arrow keys or the W, A, S, D keys.</li>
+                <li id="eat-instruction">Eat the elements that belong to the selected diet.</li>
+                <li>Skip the elements that don’t belong to this diet by pressing the spacebar.</li>
+                <li>Stay Hungry! Stay Periodic!</li>
+            </ol>
+        </div>
     </div>
-    <div id="scoreBoard">Score: 0</div>
+
+    <!-- Canvas del gioco -->
+    <div id="scoreBoard"></div>
     <canvas id="gameCanvas"></canvas>
 
-    <script src="JED.js"></script>
+    <!-- Citazione -->
+    <div id="citation">
+        <a href="https://zenodo.org/records/10643098" target="_blank">
+            Pietro Galizia <i>"Snakeleev: The Snake videogame for Exploring the Periodic Table of Elements with Real-World Contexts"</i> 
+            <br>J. Chem. Educ. <b>2025</b>, Vol., n., DOI: 10.1021/acs.jchemed.
+        </a>
+    </div>
+
+    <script>
+        // Setup degli elementi principali
+        const SPEED_LEVELS = [250, 200, 150, 100, 50];
+
+        // Mostra la schermata iniziale
+        document.addEventListener('DOMContentLoaded', () => {
+            const speedButtons = document.getElementById('speedButtons');
+            SPEED_LEVELS.forEach((speed, index) => {
+                const button = document.createElement('button');
+                button.className = 'button';
+                button.innerText = `Level ${index + 1}`;
+                button.onclick = () => selectSpeed(speed);
+                speedButtons.appendChild(button);
+            });
+            document.getElementById('startScreen').style.display = 'block';
+        });
+
+        // Funzione per selezionare la velocità e passare alla selezione della dieta
+        function selectSpeed(speed) {
+            window.SPEED = speed;
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('dietSelection').style.display = 'block';
+
+            const dietDropdown = document.getElementById("dietDropdown");
+            const diets = [
+                "Elements of a smartphone", "Elements of life", "Critical raw elements", "Elements of DNA", "Radioactive elements (U-Th decay series)",
+                "Elements considered safety (grades A-E) in the first wall of fusion power plan",
+                "Elements dedicated to scientists", "Elements with names of latin derivation",
+                "Elements with names of greek derivation",
+                "Elements with names derived from cities, countries, or elsewhere",
+                "Elements with names not derived from latin or greek, nor from cities or countries",
+                "Elements in solid state at standard temperature and pressure",
+                "Elements in liquid state at standard temperature and pressure",
+                "Elements in gas state at standard temperature and pressure", "Metals", "Nonmetals",
+                "Elements of group I (Hydrogen & alkali metals)",
+                "Elements of group II (Alkaline earth metals)", "elements of group XV (Pnictogens)",
+                "Elements of group XVI (Chalcogens)", "elements of group XVII (Halogens)",
+                "Elements of group XVIII (Noblegases)", "Lanthanides", "Actinides",
+                "Transition metals", "Post-transition metals", "Metalloids", "Reactive nonmetals",
+                "s-block elements", "p-block elements", "d-block elements", "f-block elemnts"
+            ]; 
+            
+            // Aggiungi altre opzioni
+            diets.forEach(diet => {
+                const option = document.createElement("option");
+                option.value = diet;
+                option.textContent = diet;
+                dietDropdown.appendChild(option);
+            });
+        }
+
+        // Funzione per avviare il gioco
+        function startNewGame() {
+            window.selectedDiet = document.getElementById("dietDropdown").value;
+            document.getElementById('dietSelection').style.display = 'none';
+            document.getElementById('gameCanvas').style.display = 'block';
+            alert(`1) Eat the ${window.selectedDiet}\n2) Skip unrelated elements with the spacebar.\n3) Stay Hungry! Stay Periodic!`);
+            startGame(); // Funzione definita in Snakeleev.js
+        }
+    </script>
+    <script src="Snakeleev.js"></script>
 </body>
 </html>
