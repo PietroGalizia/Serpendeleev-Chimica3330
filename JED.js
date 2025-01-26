@@ -26,7 +26,8 @@ const DietsList = [
     "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
     "Elementi del 18esimo gruppo (gas nobili)", "Lantanidi", "Attinidi",
     "Metalli di transizione", "Metalli post-transizione", "Semimetalli", "Non metalli reattivi",
-    "elementi del blocco s", "elementi del blocco p", "elementi del blocco d", "elementi del blocco f"
+    "Elementi del blocco s", "Elementi del blocco p", "Elementi del blocco d", "Elementi del blocco f",
+    "Elementi noti fin dai tempi antichi"
 ]; 
 
 const diets = {
@@ -59,10 +60,11 @@ const diets = {
     "Metalli post-transizione": ["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Po"],
     "Semimetalli": ["B", "Si", "Ge", "As", "Sb", "Te", "At"],
     "Non metalli reattivi": ["H", "C", "N", "O", "F", "P", "S", "Cl", "Se", "Br", "I"],
-    "elementi del blocco s": ["H", "He", "Li", "Be", "Na", "Mg", "K", "Ca", "Rb", "Sr", "Cs", "Ba", "Fr", "Ra"],
-    "elementi del blocco p": ["B", "C", "N", "O", "F", "Ne", "Al", "Si", "P", "S", "Cl", "Ar", "Ga", "Ge", "As", "Se", "Br", "Kr", "In", "Sn", "Sb", "Te", "I", "Xe", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"],
-    "elementi del blocco d": ["Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn"],
-    "elementi del blocco f": ["La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No"],
+    "Elementi del blocco s": ["H", "He", "Li", "Be", "Na", "Mg", "K", "Ca", "Rb", "Sr", "Cs", "Ba", "Fr", "Ra"],
+    "Elementi del blocco p": ["B", "C", "N", "O", "F", "Ne", "Al", "Si", "P", "S", "Cl", "Ar", "Ga", "Ge", "As", "Se", "Br", "Kr", "In", "Sn", "Sb", "Te", "I", "Xe", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"],
+    "Elementi del blocco d": ["Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn"],
+    "Elementi del blocco f": ["La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No"],
+    "Elementi noti fin dai tempi antichi": ["C", "Al", "S", "Ca", "Fe", "Cu", "As", "Ag", "Sn", "Sb", "Au", "Hg", "Pb"]
 };
 
 const dietMessages = {
@@ -216,6 +218,9 @@ const dietMessages = {
         "Find out more about f-block elements on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>.",
         "Get comprehensive information on the <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>.",
         "Sono un gruppo di elementi chimici situati nella parte inferiore della tavola periodica, sotto il blocco d. Questi elementi sono noti come 'lantanidi' e 'attinidi' e sono caratterizzati dalla presenza di orbitali f parzialmente riempiti nei loro atomi. Molti elementi del blocco f sono radioattivi. Inoltre, alcuni lantanidi, come il neodimio (Nd) e il samario (Sm), sono utilizzati nella produzione di magneti permanenti ad alta potenza. Gli ioni di alcuni lantanidi, come l'europio (Eu) e il terbio (Tb), possono produrre intensi colori fluorescenti, rendendoli utili in applicazioni come le schermature televisive a colori e i tubi catodici."
+    ],
+    "Elementi noti fin dai tempi antichi": [
+        "Le prime tracce di lavorazione dell'oro risalgono a circa 6000 anni fa in Mesopotamia e in Egitto."
     ]
 };
 
