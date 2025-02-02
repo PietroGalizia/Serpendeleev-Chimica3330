@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serpendeleev</title>
     <style>
-        html, body {
+        html,
+         body {
             height: 100%;
             margin: 0;
         }
@@ -19,17 +20,58 @@
             align-items: center;
             justify-content: center;
         }
-        h1 {
+
+        #logoCNR-container {
+            position: absolute; /* Rende il posizionamento relativo al bordo della finestra */
+            top: 20px;
+            left: 10px;
+            cursor: pointer;
+        }
+        #logoCNR {
+            width: 300px;
+            height: auto;
+        }
+
+        #logoCG-container {
+            position: absolute;
+            top: 0px;
+            rigth: 10px;
+            cursor: pointer;
+        }
+
+        #logoCG {
+            width: 100px;
+            height: auto;
+        }
+
+        /* Aggiungi spazio sotto il logo */
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra orizzontalmente */
+            justify-content: flex-start; /* Non separa troppo gli elementi */
+            text-align: center;
+            padding-top: 20px;
+            width: 100%;
+            margin-top: 50px
+        }
+
+       h1 {
             font-size: 3rem;
             margin: 20px;
         }
-        .section {
+
+        #dietSelection {
+            text-align: center;
+            margin-bottom: 10px; 
+        }
+
+        #dietSelection {
             display: none;
-            margin: 20px 0;
+            text-align: center;
+            margin: 25px 0;
         }
-        .section.active {
-            display: block;
-        }
+        
         .button {
             margin: 10px;
             padding: 10px 20px;
@@ -38,41 +80,158 @@
             color: white;
             cursor: pointer;
         }
+
         .button:hover {
             background-color: #739A1A;
             transition: background-color 0.3s;
         }
+
+        #instructions {
+            margin: 40px auto;
+            text-align: left;
+            width: 80%;
+            color: white;
+        }
+        #instructions h3 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #instructions ol {
+            padding-left: 20px;
+        }
+        #instructions h4:last-of-type {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: rgb(229, 26, 75); /* Rosso specifico */
+        }
+
+        #citation {
+            margin: 15px auto;
+            font-size: 14px;
+            text-align: center;
+            color: white;
+            padding: 5px;
+        }
+        
+        #citation a {
+            text-decoration: none;
+            color: #96AE21;
+        }
+        #citation a:hover {
+            color: #e51a4b;
+        }
+
+        #touchArea {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+
+        #gameCanvas {
+            display: none;
+            background-color: #002F5F;
+            margin: 0px auto;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        #hpBarContainer {
+            position: absolute;
+            left: 500px;
+            height: 0px; /* Altezza dei quadratini */
+            margin: 0;
+        }
+
+        .hpSquare {
+            width: 10px;
+            height: 10px;
+            margin: 0 1px;
+            background-color: green; /* Colore iniziale */
+            border: 0px solid black;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Serpendeleev</h1>
+    <div id="logoCNR-container" onclick="window.open('https://www.issmc.cnr.it/en/', '_blank')">
+        <img id="logoCNR" src="logo.png" alt="Logo CNR-ISSMC">
+    </div>
 
-    <!-- Selezione della velocità -->
-    <div id="speedSelection" class="section active">
+    <div id="logoCG-container" onclick="window.open('https://www.changegame.cnr.it/', '_blank')">
+        <img id="logoCG" src="LogoChangeGame.png" alt="Logo ChangeGame">
+    </div>
+    
+    <div id="content">
+        <h1 id="title">Serpendeleev</h1>
+        
+    <!-- Schermata iniziale: scelta della velocità -->
+    <div id="startScreen">
         <h2>Seleziona la velocità del serpente</h2>
         <div id="speedButtons"></div>
     </div>
 
-    <!-- Selezione del numero di elementi -->
-    <div id="elementSelection" class="section">
+    <!-- Schermata per scegliere il numero di elementi -->
+    <div id="elementSelection" style="display: none;">
         <h2>Seleziona il range di elementi</h2>
         <label for="elementRange">Massimo numero atomico (Z):</label>
         <input id="elementRange" type="range" min="1" max="118" value="40" oninput="updateElementCount()">
-        <p id="selectedElementCount">1 ≤ Z ≤ 40</p>
-        <button class="button" onclick="proceedToDietSelection()">Next</button>
-    </div>
+        <p id="selectedElementCount"> 40</p>
+        <button class="button" onclick="proceedToDietSelection()()">Next</button>
+     </div>
 
     <!-- Selezione della dieta -->
-    <div id="dietSelection" class="section">
+    <div id="dietSelection" style="display: none;">
         <h2>Seleziona la dieta di Serpendeleev</h2>
         <select id="dietDropdown"></select>
-        <button class="button" onclick="startGame()">Play</button>
+        <button class="button" onclick="finalSelection()">Play</button>
+        <div id="instructions">
+            <h3>INSTRUCTIONS</h3>
+            <ol>
+                <li>Muovi il serpente usando i tasti freccia oppure i tasti W, A, S, D.</li>
+                <li id="eat-instruction">Mangia gli elementi che appartengono alla dieta selezionata.</li>
+                <li>Evita gli elementi che non appartengono alla dieta premendo la barra spaziatrice.</li>
+                <li>Aggiorna la pagina se desideri iniziare una nuova partita.</li>
+            </ol>
+        </div>
     </div>
 
-    <script>
-        const SPEED_LEVELS = [250, 200, 150, 125, 100];
-        let maxElementsToUse = 40;
+    <!-- Canvas del gioco -->
+    <div id="selectedDietText" style="display: none;"></div>
+    <div id="scoreBoard" style="display: none;"></div>
+    <div id="hpBarContainer" style="display: none;"></div>
+    <div id="touchArea"></div>
+    <canvas id="gameCanvas"></canvas>
 
+
+    <div id="healthBarContainer  style="display: none;">
+        <div id="healthBar  style="display: none;"></div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="gameover" style="display: none;"></div>
+
+    <!-- Citazione -->
+    <div id="citation">
+        <a href="https://zenodo.org/records/10643098" target="_blank">
+            Pietro Galizia <i>"Snakeleev: Gamifying the Periodic Table Through the Snake Game"</i> 
+            <br>J. Chem. Educ. <b>2025</b>, Vol., n., DOI: 10.1021/acs.jchemed.
+        </a>
+    </div>
+        
+    <script>
+        // Setup degli elementi principali
+        const SPEED_LEVELS = [250, 200, 150, 125, 100];
+        let maxElementsToUse = 50;
+
+        // Mostra la schermata iniziale
         document.addEventListener('DOMContentLoaded', () => {
             const speedButtons = document.getElementById('speedButtons');
             SPEED_LEVELS.forEach((speed, index) => {
@@ -82,24 +241,18 @@
                 button.onclick = () => selectSpeed(speed);
                 speedButtons.appendChild(button);
             });
-
-            // Popola il menu a tendina delle diete
-            const dietDropdown = document.getElementById("dietDropdown");
-            const diets = [
-                "Elementi degli smartphone", "Elementi della vita", "Elementi critici", "Elementi del DNA",
-                "Elementi radioattivi (serie di decadimento U-Th)", "Elementi in traccia potenzialmente tossici (PTE)"
-            ];
-            diets.forEach(diet => {
-                const option = document.createElement("option");
-                option.value = diet;
-                option.textContent = diet;
-                dietDropdown.appendChild(option);
-            });
+            document.getElementById('title').style.display = 'block';
+            document.getElementById('gameover').style.display = 'none';
+            document.getElementById('startScreen').style.display = 'block';
         });
 
+        // Funzione per selezionare la velocità e passare alla selezione della dieta
         function selectSpeed(speed) {
             window.SPEED = speed;
-            showSection('elementSelection');
+            document.getElementById('title').style.display = 'block';
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('elementSelection').style.display = 'block';
+            updateElementCount();
         }
 
         function updateElementCount() {
@@ -109,22 +262,67 @@
         }
 
         function proceedToDietSelection() {
-            showSection('dietSelection');
-        }
+                document.getElementById('title').style.display = 'block';
+                document.getElementById('startScreen').style.display = 'none';
+                document.getElementById('elementSelection').style.display = 'none';
+                document.getElementById('dietSelection').style.display = 'block';
 
-        function startGame() {
-            const selectedDiet = document.getElementById('dietDropdown').value;
-            window.selectedDiet = selectedDiet;
-            alert(`Velocità: ${window.SPEED}, Elementi: ${maxElementsToUse}, Dieta: ${selectedDiet}`);
-            // Avvia il gioco qui
-        }
-
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
+            const dietDropdown = document.getElementById("dietDropdown");
+            const diets = [
+                "Elementi degli smartphone", "Elementi della vita", "Elementi critici", "Elementi del DNA", "Elementi radioattivi (serie di decadimento U-Th)",
+                "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione",
+                "Elementi in traccia potenzialmente tossici (PTE)",
+                "Elementi dedicati a scienziati", "Elementi con nome di derivazione latina",
+                "Elementi con nome di derivazione greca",
+                "Elementi con nomi di città, stati, o di chissà dove",
+                "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati",
+                "Elementi allo stato solido alle condizioni standard di temperatura e pressione",
+                "Elementi allo stato liquido alle condizioni standard di temperatura e pressione",
+                "Elementi allo stato gassoso alle condizioni standard di temperatura e pressione", "Metalli", "Nonmetalli",
+                "Elementi del primo gruppo (idrogeno & metalli alcalini)",
+                "Elementi del secondo gruppo (metalli alcalino terrosi)", "Elementi del 15esimo gruppo (pnicogeni)",
+                "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
+                "Elementi del 18esimo gruppo (gas nobili)", "Lantanidi", "Attinidi",
+                "Metalli di transizione", "Metalli post-transizione", "Semimetalli", "Non metalli reattivi",
+                "Elementi del blocco s", "Elementi del blocco p", "Elementi del blocco d", "Elementi del blocco f",
+                "Elementi noti fin dai tempi antichi"
+            ]; 
+            
+            // Aggiungi altre opzioni
+            diets.forEach(diet => {
+                const option = document.createElement("option");
+                option.value = diet;
+                option.textContent = diet;
+                dietDropdown.appendChild(option);
             });
-            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function finalSelection() {
+            selectedDiet = document.getElementById("dietDropdown").value;
+            window.selectedDiet = document.getElementById("dietDropdown").value;
+            document.getElementById('title').style.display = 'none';
+            document.getElementById('dietSelection').style.display = 'none';
+            document.getElementById('gameCanvas').style.display = 'block';
+            document.getElementById('selectedDietText').style.display = 'block';
+            document.getElementById('scoreBoard').style.display = 'block';
+            document.getElementById('touchArea').style.zIndex = 10;
+            startNewGame();
+        }
+
+
+        // Funzione per avviare il gioco
+        function startNewGame() {
+            document.getElementById('title').style.display = 'none';
+            document.getElementById('dietSelection').style.display = 'none'; // Nascondi la schermata
+            document.getElementById('gameCanvas').style.display = 'block'; // Mostra il canvas del gioco
+            startGame(); // Funzione definita in JED.js
+        }
+
+        function resetGameState() {
+            // Ricarica la pagina
+            location.reload();
         }
     </script>
+    <script src="JED.js"></script>
 </body>
 </html>
