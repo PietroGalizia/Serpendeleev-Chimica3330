@@ -258,6 +258,7 @@ let scoreDecrement = 0;
 let hpSquares = 10;
 let touchStartX = 0;
 let touchStartY = 0;
+let lastTouchTime = 0;
 
 // Evitare il comportamento predefinito dei tasti freccia
 document.addEventListener('keydown', (event) => {
@@ -288,6 +289,19 @@ function handleTouchStart(event) {
     touchStartX = touch.clientX;
     touchStartY = touch.clientY;
 }
+
+function handleDoubleTouch(event) {
+    const currentTime = new Date().getTime(); // Timestamp attuale
+    const timeDiff = currentTime - lastTouchTime;
+
+    if (timeDiff < 300) { // Se due tocchi consecutivi avvengono entro 300ms
+        changeFoodElement(); // Cambia l'elemento del cibo
+    }
+    lastTouchTime = currentTime; // Aggiorna il timestamp dell'ultimo tocco
+}
+
+// Aggiungi un listener per "touchstart" per rilevare il doppio tocco
+document.getElementById('touchArea').addEventListener('touchstart', handleDoubleTouch);
 
 function handleTouchMove(event) {
     const touch = event.touches[0];
