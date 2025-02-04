@@ -259,7 +259,6 @@ let infoRectsNo = [];
 let erasedElements = [];
 let scoreIncrement = 0;
 let scoreDecrement = 0;
-let hpSquares = 10;
 let touchStartX = 0;
 let touchStartY = 0;
 let lastTouchTime = 0;
