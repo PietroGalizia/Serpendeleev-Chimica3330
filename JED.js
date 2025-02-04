@@ -240,10 +240,14 @@ let gameInterval = null;
 let direction = { x: 1, y: 0 };
 let score = 0;
 let food = {};
+let foodII = {};
 let selectedDiet = "";
 let foodElement = "";
+let foodIIElement = "";
 let foodElementName = "";
+let foodIIElementName = "";
 let foodElementNumber = "";
+let foodIIElementNumber = "";
 // Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
 let snakeColors = ["green"];
@@ -395,6 +399,21 @@ function drawFood() {
     ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
 }
 
+function drawFoodII() {
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.clearRect(foodII.x, foodII.y, SIZE, SIZE);
+
+    ctx.fillStyle = "red"; // Colore per il simbolo dell'elemento
+    ctx.font = "20px Arial"; // Imposta la dimensione del font
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // Disegna il simbolo dell'elemento nel punto (x, y) del cibo
+    ctx.fillText(foodIIElement, foodII.x + SIZE / 2, foodII.y + SIZE / 2);
+}
+
 function showDietSelection() {
     const dietDropdown = document.getElementById("dietDropdown");
     dietDropdown.innerHTML = "";
@@ -435,6 +454,7 @@ function startNewGame() {
     score = 0;
     updateScore(score);
     generateFood();
+    generateFoodII();
     startGameLoop(ctx);
 }
 
@@ -492,6 +512,39 @@ function generateFood() {
     foodElementNumber = elementNumbers[elementIndex];
 
     drawFood();
+    updateScore(score);
+}
+
+function generateFoodII() {
+    const margin = SIZE;
+    const maxX = Math.floor((CANVAS_WIDTH - margin * 2) / SIZE);
+    const maxY = Math.floor((CANVAS_HEIGHT - margin * 2) / SIZE);
+
+    let foodPositionValid = false;
+
+    // Continua a generare una posizione valida finché non trovi una che non è sopra il serpente
+    while (!foodPositionValid) {
+        foodII = {
+            x: Math.floor(Math.random() * maxX) * SIZE + margin,
+            y: Math.floor(Math.random() * maxY) * SIZE + margin
+        };
+
+        // Verifica che il cibo non sia sopra il serpente
+        foodPositionValid = !snake.some(part => part.x === foodII.x && part.y === foodII.y);
+    }
+    
+    let elementIndex;
+    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
+    do {
+        elementIndex = Math.floor(Math.random() * elements.length);
+        foodIIElement = elements[elementIndex];
+    } while (erasedElements.includes(foodIIElement));
+
+    // Assegna nome e numero dell’elemento selezionato
+    foodIIElementName = elementNames[elementIndex];
+    foodIIElementNumber = elementNumbers[elementIndex];
+
+    drawFoodII();
     updateScore(score);
 }
 
@@ -783,6 +836,8 @@ function updateGame(ctx) {
     // Disegna sfondo cibo
     ctx.fillStyle = "rgb(120, 179, 224)";
     ctx.fillRect(food.x, food.y, SIZE, SIZE);
+    ctx.fillStyle = "rgb(120, 179, 224)";
+    ctx.fillRect(foodII.x, foodII.y, SIZE, SIZE);
 
     // Reset shadowBlur per evitare che influenzi altri elementi
     //ctx.shadowBlur = 0;
@@ -793,10 +848,17 @@ function updateGame(ctx) {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
+    ctx.fillStyle = "rgb(229, 26, 75)"; // Colore del simbolo
+    ctx.font = "14px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(foodIIElement, foodII.x + SIZE / 2, foodII.y + SIZE / 2);
 
     // Disegna il numero atomico sotto il simbolo
     //ctx.font = "12px Arial"; // Numero atomico più piccolo
     //ctx.fillText(foodElementNumber, food.x + SIZE / 2, food.y + (2 * SIZE) / 3);
+    //ctx.font = "12px Arial"; // Numero atomico più piccolo
+    //ctx.fillText(foodIIElementNumber, foodII.x + SIZE / 2, foodII.y + (2 * SIZE) / 3);
 
     // Draw game area border
     ctx.strokeStyle = "#83B7DE";
