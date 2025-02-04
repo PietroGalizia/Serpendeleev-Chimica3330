@@ -529,8 +529,9 @@ function generateFoodII() {
             y: Math.floor(Math.random() * maxY) * SIZE + margin
         };
 
-        // Verifica che il cibo non sia sopra il serpente
-        foodPositionValid = !snake.some(part => part.x === foodII.x && part.y === foodII.y);
+       // Verifica che il cibo non sia sopra il serpente e non sia sopra il cibo già generato
+       foodPositionValid = !snake.some(part => part.x === foodII.x && part.y === foodII.y) &&
+       !(foodII.x === food.x && foodII.y === food.y);
     }
     
     let elementIndex;
