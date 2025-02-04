@@ -494,14 +494,15 @@ function generateFood() {
         foodPositionValid = !snake.some(part => part.x === food.x && part.y === food.y);
     }
     
-    let validElements = elements.filter((el, index) => elementNumbers[index] <= maxAtomicNumber && !erasedElements.includes(el));
-    let elementIndex = Math.floor(Math.random() * validElements.length);
-    foodElement = validElements[elementIndex];
+    let elementIndex;
+    do {
+        elementIndex = Math.floor(Math.random() * elements.length);
+        foodElement = elements[elementIndex];
+    } while (erasedElements.includes(foodElement));
     
     // Assegna nome e numero dell’elemento selezionato
-    let globalIndex = elements.indexOf(foodElement);
-    foodElementName = elementNames[globalIndex];
-    foodElementNumber = elementNumbers[globalIndex];
+    foodElementName = elementNames[elementIndex];
+    foodElementNumber = elementNumbers[elementIndex];
 
     drawFood();
     drawFoodII();
@@ -527,14 +528,14 @@ function generateFoodII() {
        !(foodII.x === food.x && foodII.y === food.y);
     }
     
-    let validElements = elements.filter((el, index) => elementNumbers[index] <= maxAtomicNumber && !erasedElements.includes(el));
-    let elementIndex = Math.floor(Math.random() * validElements.length);
-    foodIIElement = validElements[elementIndex];
+    let elementIndex
+        elementIndex = Math.floor(Math.random() * elements.length);
+        foodIIElement = elements[elementIndex];
+    } while (erasedElements.includes(foodIIElement));
     
     // Assegna nome e numero dell’elemento selezionato
-    let globalIndex = elements.indexOf(foodIIElement);
-    foodIIElementName = elementNames[globalIndex];
-    foodIIElementNumber = elementNumbers[globalIndex];
+    foodIIElementName = elementNames[elementIndex];
+    foodIIElementNumber = elementNumbers[elementIndex];
 
     drawFood();
     drawFoodII();
