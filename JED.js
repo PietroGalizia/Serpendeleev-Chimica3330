@@ -682,6 +682,7 @@ function updateGame(ctx) {
         }
         updateScore(score);
         generateFood();
+        generateFoodII();
     } 
     // Controlla se il serpente mangia foodII
     else if (head.x === foodII.x && head.y === foodII.y) {
@@ -729,6 +730,7 @@ function updateGame(ctx) {
             snakeColors.pop();
         }
         updateScore(score);
+        generateFood();
         generateFoodII();
     } 
     else {
