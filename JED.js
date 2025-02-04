@@ -680,7 +680,56 @@ function updateGame(ctx) {
         }
         updateScore(score);
         generateFood();
-    } else {
+    } 
+    // Controlla se il serpente mangia foodII
+    else if (head.x === foodII.x && head.y === foodII.y) {
+        if (diets[selectedDiet] && diets[selectedDiet].includes(foodIIElement)) {
+            score += scoreIncrement;
+
+            scoreText = {
+                value: `+${scoreIncrement}`,
+                x: foodII.x + SIZE / 2,
+                y: foodII.y - 10,
+                opacity: 1.0 // Trasparenza iniziale
+            };
+
+            createInfoRect({
+                atomicNumber: foodIIElementNumber,
+                symbol: foodIIElement,
+                name: foodIIElementName
+            }, foodII.x, foodII.y);
+
+            snakeColors.unshift("green");
+            expandFoodEffect(foodII.x, foodII.y); // Espansione prima di sparire
+
+        } else {
+            score -= scoreDecrement;
+
+            scoreTextNo = {
+                value: `-${scoreDecrement}`,
+                x: foodII.x + SIZE / 2,
+                y: foodII.y - 10,
+                opacity: 1.0 // Trasparenza iniziale
+            };
+
+            createInfoRectNo({
+                atomicNumber: foodIIElementNumber,
+                symbol: foodIIElement,
+                name: foodIIElementName
+            }, foodII.x, foodII.y);
+
+            snakeColors.unshift("red");
+            flashEffect("rgba(229, 26, 75, 0.5)", foodII.x, foodII.y); // Lampeggio per errore
+        }
+
+        // Rimuove i colori extra se il serpente è più corto della lista colori
+        if (snakeColors.length > snake.length) {
+            snakeColors.pop();
+        }
+        updateScore(score);
+        generateFoodII();
+    } 
+    else {
         snake.pop();
     }
 
