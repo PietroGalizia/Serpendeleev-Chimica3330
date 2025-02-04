@@ -494,17 +494,14 @@ function generateFood() {
         foodPositionValid = !snake.some(part => part.x === food.x && part.y === food.y);
     }
     
-    let elementIndex;
-    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
-    const validElements = diets[selectedDiet] || [];
-    do {
-        elementIndex = elements.findIndex(el => validElements.includes(el));
-        foodElement = elements[elementIndex];
-    } while (elementIndex === -1);
+    let validElements = elements.filter((el, index) => elementNumbers[index] <= maxAtomicNumber && !erasedElements.includes(el));
+    let elementIndex = Math.floor(Math.random() * validElements.length);
+    foodElement = validElements[elementIndex];
     
     // Assegna nome e numero dell’elemento selezionato
-    foodElementName = elementNames[elementIndex];
-    foodElementNumber = elementNumbers[elementIndex];
+    let globalIndex = elements.indexOf(foodElement);
+    foodElementName = elementNames[globalIndex];
+    foodElementNumber = elementNumbers[globalIndex];
 
     drawFood();
     drawFoodII();
@@ -530,17 +527,14 @@ function generateFoodII() {
        !(foodII.x === food.x && foodII.y === food.y);
     }
     
-    let elementIndex;
-    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
-    const invalidElements = diets[selectedDiet] || [];
-    do {
-        elementIndex = elements.findIndex(el => !invalidElements.includes(el));
-        foodIIElement = elements[elementIndex];
-    } while (elementIndex === -1);
-
+    let validElements = elements.filter((el, index) => elementNumbers[index] <= maxAtomicNumber && !erasedElements.includes(el));
+    let elementIndex = Math.floor(Math.random() * validElements.length);
+    foodIIElement = validElements[elementIndex];
+    
     // Assegna nome e numero dell’elemento selezionato
-    foodIIElementName = elementNames[elementIndex];
-    foodIIElementNumber = elementNumbers[elementIndex];
+    let globalIndex = elements.indexOf(foodIIElement);
+    foodIIElementName = elementNames[globalIndex];
+    foodIIElementNumber = elementNumbers[globalIndex];
 
     drawFood();
     drawFoodII();
