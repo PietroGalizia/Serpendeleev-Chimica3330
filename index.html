@@ -143,21 +143,6 @@
             max-height: 90%;
         }
 
-        #hpBarContainer {
-            position: absolute;
-            left: 500px;
-            height: 0px; /* Altezza dei quadratini */
-            margin: 0;
-        }
-
-        .hpSquare {
-            width: 10px;
-            height: 10px;
-            margin: 0 1px;
-            background-color: green; /* Colore iniziale */
-            border: 0px solid black;
-        }
-
     </style>
 </head>
 <body>
@@ -206,14 +191,8 @@
     <!-- Canvas del gioco -->
     <div id="selectedDietText" style="display: none;"></div>
     <div id="scoreBoard" style="display: none;"></div>
-    <div id="hpBarContainer" style="display: none;"></div>
     <div id="touchArea"></div>
     <canvas id="gameCanvas"></canvas>
-
-
-    <div id="healthBarContainer  style="display: none;">
-        <div id="healthBar  style="display: none;"></div>
-    </div>
 
     <!-- Game Over -->
     <div id="gameover" style="display: none;"></div>
