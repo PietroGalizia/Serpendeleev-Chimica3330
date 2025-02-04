@@ -380,21 +380,6 @@ function changeFoodElement() {
      
 }
 
-function selectFood() {
-    if (!selectedDiet || !diets[selectedDiet]) return;
-
-    let dietElements = diets[selectedDiet];  // Elementi che appartengono alla dieta
-    let nonDietElements = elements.filter(el => !dietElements.includes(el)); // Elementi che NON appartengono alla dieta
-
-    if (dietElements.length > 0) {
-        foodElement = dietElements[Math.floor(Math.random() * dietElements.length)];
-    }
-
-    if (nonDietElements.length > 0) {
-        foodIIElement = nonDietElements[Math.floor(Math.random() * nonDietElements.length)];
-    }
-}
-
 function drawFood() {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -520,7 +505,6 @@ function generateFood() {
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
-    selectFood();
     drawFood();
     drawFoodII();
     updateScore(score);
@@ -556,7 +540,6 @@ function generateFoodII() {
     foodIIElementName = elementNames[elementIndex];
     foodIIElementNumber = elementNumbers[elementIndex];
 
-    selectFood();
     drawFood();
     drawFoodII();
     updateScore(score);
