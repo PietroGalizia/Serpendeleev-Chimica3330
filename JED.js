@@ -335,7 +335,6 @@ document.addEventListener('keydown', (event) => {
 
     if (event.key === ' ') {
         event.preventDefault(); // Previene il comportamento predefinito della barra spaziatrice
-        updateHPBar();
         changeFoodElement();    // Cambia l'elemento del cibo senza cambiarne la posizione
         
     } else {
@@ -435,8 +434,6 @@ function startNewGame() {
 
     // Calcola i valori di incremento e decremento del punteggio
     initializeScoreValues();
-
-    initializeHPBar();
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -917,62 +914,6 @@ function updateGame(ctx) {
     ctx.lineWidth = 4;
     ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
             
-}
-
-function initializeHPBar() {
-    const hpBarContainer = document.getElementById('hpBarContainer');
-    hpBarContainer.innerHTML = ''; // Pulisci il contenitore
-
-    for (let i = 0; i < hpSquares; i++) {
-        const square = document.createElement('div');
-        square.className = 'hpSquare';
-        if (i < 3) square.style.backgroundColor = 'rgb(229, 26, 75)';
-        else if (i < 5) square.style.backgroundColor = 'rgb(247, 157, 39)';
-        else if (i < 7) square.style.backgroundColor = 'rgb(150, 174, 33)';
-        else square.style.backgroundColor = 'rgb(65, 127, 69)';
-        hpBarContainer.appendChild(square);
-    }
-
-    hpBarContainer.style.display = 'flex'; // Mostra la barra
-}
-
-function updateHPBar() {
-      if (selectedDiet && diets[selectedDiet]?.includes(foodElement)) {
-        // L'elemento corrente è valido
-        if (hpSquares > 0) {
-            // Rimuovi un quadratino dalla barra HP
-            const hpBarContainer = document.getElementById('hpBarContainer');
-            hpBarContainer.removeChild(hpBarContainer.lastChild);
-            hpSquares--;
-            console.log("Elemento valido! HP -1");
-        } else {
-            console.log("Non ci sono più HP disponibili!");
-        }
-    } else {
-        // L'elemento corrente non è valido
-        if (hpSquares < 10) {
-            const square = document.createElement('div');
-            square.className = 'hpSquare';
-
-            // Imposta il colore in base alla posizione
-            if (hpSquares < 4) {
-                square.style.backgroundColor = 'red';
-            } else if (hpSquares < 6) {
-                square.style.backgroundColor = 'orange';
-            } else {
-                square.style.backgroundColor = 'green';
-            }
-
-            document.getElementById('hpBarContainer').appendChild(square);
-            hpSquares++;
-            console.log("Elemento non valido! HP +1");
-        }
-    }
-
-    // Controlla se la barra HP è a 0, termina il gioco
-    if (hpSquares <= 0) {
-        exitGame();
-    }
 }
 
 // Function to exit the game
