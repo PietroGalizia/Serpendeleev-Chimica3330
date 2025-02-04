@@ -512,6 +512,7 @@ function generateFood() {
     foodElementNumber = elementNumbers[elementIndex];
 
     drawFood();
+    drawFoodII();
     updateScore(score);
 }
 
@@ -539,12 +540,13 @@ function generateFoodII() {
     do {
         elementIndex = Math.floor(Math.random() * elements.length);
         foodIIElement = elements[elementIndex];
-    } while (!erasedElements.includes(foodIIElement));
+    } while (erasedElements.includes(foodIIElement));
 
     // Assegna nome e numero dell’elemento selezionato
     foodIIElementName = elementNames[elementIndex];
     foodIIElementNumber = elementNumbers[elementIndex];
 
+    drawFood();
     drawFoodII();
     updateScore(score);
 }
