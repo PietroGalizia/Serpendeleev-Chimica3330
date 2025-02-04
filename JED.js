@@ -379,9 +379,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 function changeFoodElement() {
-    generateFood();
-    drawFood();
-    updateScore(score); 
+     
 }
 
 function drawFood() {
