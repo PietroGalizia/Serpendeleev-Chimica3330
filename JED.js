@@ -496,11 +496,12 @@ function generateFood() {
     
     let elementIndex;
     // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
+    const validElements = diets[selectedDiet] || [];
     do {
-        elementIndex = Math.floor(Math.random() * elements.length);
+        elementIndex = elements.findIndex(el => validElements.includes(el));
         foodElement = elements[elementIndex];
-    } while (erasedElements.includes(foodElement));
-
+    } while (elementIndex === -1);
+    
     // Assegna nome e numero dell’elemento selezionato
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
@@ -531,10 +532,11 @@ function generateFoodII() {
     
     let elementIndex;
     // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
+    const invalidElements = diets[selectedDiet] || [];
     do {
-        elementIndex = Math.floor(Math.random() * elements.length);
+        elementIndex = elements.findIndex(el => !invalidElements.includes(el));
         foodIIElement = elements[elementIndex];
-    } while (erasedElements.includes(foodIIElement));
+    } while (elementIndex === -1);
 
     // Assegna nome e numero dell’elemento selezionato
     foodIIElementName = elementNames[elementIndex];
