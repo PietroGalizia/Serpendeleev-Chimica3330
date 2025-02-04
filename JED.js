@@ -448,7 +448,6 @@ function startNewGame() {
     score = 0;
     updateScore(score);
     generateFood();
-    generateFoodII();
     startGameLoop(ctx);
 }
 
@@ -477,72 +476,30 @@ function calculateValidDietElements() {
 }
 
 function generateFood() {
-    const margin = SIZE;
-    const maxX = Math.floor((CANVAS_WIDTH - margin * 2) / SIZE);
-    const maxY = Math.floor((CANVAS_HEIGHT - margin * 2) / SIZE);
+    const availableElements = diets[selectedDiet] || [];
+    const nonDietElements = elements.filter(el => !availableElements.includes(el));
 
-    let foodPositionValid = false;
-
-    // Continua a generare una posizione valida finché non trovi una che non è sopra il serpente
-    while (!foodPositionValid) {
-        food = {
-            x: Math.floor(Math.random() * maxX) * SIZE + margin,
-            y: Math.floor(Math.random() * maxY) * SIZE + margin
-        };
-
-        // Verifica che il cibo non sia sopra il serpente
-        foodPositionValid = !snake.some(part => part.x === food.x && part.y === food.y);
+    if (availableElements.length > 0) {
+        foodElement = availableElements[Math.floor(Math.random() * availableElements.length)];
+    } else {
+        foodElement = elements[Math.floor(Math.random() * elements.length)];
     }
-    
-    let elementIndex;
-    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
-    do {
-        elementIndex = Math.floor(Math.random() * elements.length);
-        foodElement = elements[elementIndex];
-    } while (erasedElements.includes(foodElement));
 
-    // Assegna nome e numero dell’elemento selezionato
-    foodElementName = elementNames[elementIndex];
-    foodElementNumber = elementNumbers[elementIndex];
-
-    drawFood();
-    drawFoodII();
-    updateScore(score);
-}
-
-function generateFoodII() {
-    const margin = SIZE;
-    const maxX = Math.floor((CANVAS_WIDTH - margin * 2) / SIZE);
-    const maxY = Math.floor((CANVAS_HEIGHT - margin * 2) / SIZE);
-
-    let foodPositionValid = false;
-
-    // Continua a generare una posizione valida finché non trovi una che non è sopra il serpente
-    while (!foodPositionValid) {
-        foodII = {
-            x: Math.floor(Math.random() * maxX) * SIZE + margin,
-            y: Math.floor(Math.random() * maxY) * SIZE + margin
-        };
-
-       // Verifica che il cibo non sia sopra il serpente e non sia sopra il cibo già generato
-       foodPositionValid = !snake.some(part => part.x === foodII.x && part.y === foodII.y) &&
-       !(foodII.x === food.x && foodII.y === food.y);
+    if (nonDietElements.length > 0) {
+        foodIIElement = nonDietElements[Math.floor(Math.random() * nonDietElements.length)];
+    } else {
+        foodIIElement = elements[Math.floor(Math.random() * elements.length)];
     }
-    
-    let elementIndex;
-    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
-    do {
-        elementIndex = Math.floor(Math.random() * elements.length);
-        foodIIElement = elements[elementIndex];
-    } while (erasedElements.includes(foodIIElement));
 
-    // Assegna nome e numero dell’elemento selezionato
-    foodIIElementName = elementNames[elementIndex];
-    foodIIElementNumber = elementNumbers[elementIndex];
+    food = {
+        x: Math.floor(Math.random() * (canvas.width / SIZE)) * SIZE,
+        y: Math.floor(Math.random() * (canvas.height / SIZE)) * SIZE
+    };
 
-    drawFood();
-    drawFoodII();
-    updateScore(score);
+    foodII = {
+        x: Math.floor(Math.random() * (canvas.width / SIZE)) * SIZE,
+        y: Math.floor(Math.random() * (canvas.height / SIZE)) * SIZE
+    };
 }
 
 function startGameLoop(ctx) {
@@ -676,7 +633,6 @@ function updateGame(ctx) {
         }
         updateScore(score);
         generateFood();
-        generateFoodII();
     } 
     // Controlla se il serpente mangia foodII
     else if (head.x === foodII.x && head.y === foodII.y) {
@@ -725,7 +681,6 @@ function updateGame(ctx) {
         }
         updateScore(score);
         generateFood();
-        generateFoodII();
     } 
     else {
         snake.pop();
