@@ -239,11 +239,15 @@ const CANVAS_HEIGHT = 520;
 let gameInterval = null;
 let direction = { x: 1, y: 0 };
 let score = 0;
-let food = {};
+let foodI = {};
+let foodII = {};
 let selectedDiet = "";
-let foodElement = "";
-let foodElementName = "";
-let foodElementNumber = "";
+let foodIElement = "";
+let foodIIElement = "";
+let foodIElementName = "";
+let foodIIElementName = "";
+let foodIElementNumber = "";
+let foodIIElementNumber = "";
 // Posizione iniziale del serpente
 let snake = [{ x: 100, y: 100 }];
 let snakeColors = ["green"];
@@ -331,7 +335,6 @@ document.addEventListener('keydown', (event) => {
 
     if (event.key === ' ') {
         event.preventDefault(); // Previene il comportamento predefinito della barra spaziatrice
-        updateHPBar();
         changeFoodElement();    // Cambia l'elemento del cibo senza cambiarne la posizione
         
     } else {
@@ -375,16 +378,15 @@ document.addEventListener('keydown', (event) => {
 });
 
 function changeFoodElement() {
-    generateFood();
-    drawFood();
-    updateScore(score); 
-}
+    drawFoodI();
+    drawFoodII();
+    }
 
-function drawFood() {
+function drawFoodI() {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
-    ctx.clearRect(food.x, food.y, SIZE, SIZE);
+    ctx.clearRect(foodI.x, foodI.y, SIZE, SIZE);
 
     ctx.fillStyle = "red"; // Colore per il simbolo dell'elemento
     ctx.font = "20px Arial"; // Imposta la dimensione del font
@@ -392,7 +394,22 @@ function drawFood() {
     ctx.textBaseline = "middle";
 
     // Disegna il simbolo dell'elemento nel punto (x, y) del cibo
-    ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
+    ctx.fillText(foodIElement, foodI.x + SIZE / 2, foodI.y + SIZE / 2);
+}
+
+function drawFoodII() {
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.clearRect(foodII.x, foodII.y, SIZE, SIZE);
+
+    ctx.fillStyle = "red"; // Colore per il simbolo dell'elemento
+    ctx.font = "20px Arial"; // Imposta la dimensione del font
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // Disegna il simbolo dell'elemento nel punto (x, y) del cibo
+    ctx.fillText(foodIIElement, foodII.x + SIZE / 2, foodII.y + SIZE / 2);
 }
 
 function showDietSelection() {
@@ -434,7 +451,8 @@ function startNewGame() {
     direction = { x: 1, y: 0 };
     score = 0;
     updateScore(score);
-    generateFood();
+    generateFoodI();
+    generateFoodII();
     startGameLoop(ctx);
 }
 
@@ -462,36 +480,69 @@ function calculateValidDietElements() {
     return validDietElements.length;
 }
 
-function generateFood() {
+function generateFoodI() {
     const margin = SIZE;
     const maxX = Math.floor((CANVAS_WIDTH - margin * 2) / SIZE);
     const maxY = Math.floor((CANVAS_HEIGHT - margin * 2) / SIZE);
 
-    let foodPositionValid = false;
+    let foodIPositionValid = false;
 
     // Continua a generare una posizione valida finché non trovi una che non è sopra il serpente
-    while (!foodPositionValid) {
-        food = {
+    while (!foodIPositionValid) {
+        foodI = {
             x: Math.floor(Math.random() * maxX) * SIZE + margin,
             y: Math.floor(Math.random() * maxY) * SIZE + margin
         };
 
         // Verifica che il cibo non sia sopra il serpente
-        foodPositionValid = !snake.some(part => part.x === food.x && part.y === food.y);
+        foodIPositionValid = !snake.some(part => part.x === foodI.x && part.y === foodI.y);
     }
     
     let elementIndex;
     // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
     do {
         elementIndex = Math.floor(Math.random() * elements.length);
-        foodElement = elements[elementIndex];
-    } while (erasedElements.includes(foodElement));
+        foodIElement = elements[elementIndex];
+    } while (erasedElements.includes(foodIElement));
 
     // Assegna nome e numero dell’elemento selezionato
-    foodElementName = elementNames[elementIndex];
-    foodElementNumber = elementNumbers[elementIndex];
+    foodIElementName = elementNames[elementIndex];
+    foodIElementNumber = elementNumbers[elementIndex];
 
-    drawFood();
+    drawFoodI();
+    updateScore(score);
+}
+
+function generateFoodII() {
+    const margin = SIZE;
+    const maxX = Math.floor((CANVAS_WIDTH - margin * 2) / SIZE);
+    const maxY = Math.floor((CANVAS_HEIGHT - margin * 2) / SIZE);
+
+    let foodIIPositionValid = false;
+
+    // Continua a generare una posizione valida finché non trovi una che non è sopra il serpente
+    while (!foodIIPositionValid) {
+        foodII = {
+            x: Math.floor(Math.random() * maxX) * SIZE + margin,
+            y: Math.floor(Math.random() * maxY) * SIZE + margin
+        };
+
+        // Verifica che il cibo non sia sopra il serpente
+        foodIIPositionValid = !snake.some(part => part.x === foodII.x && part.y === foodII.y);
+    }
+    
+    let elementIndex;
+    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
+    do {
+        elementIndex = Math.floor(Math.random() * elements.length);
+        foodIIElement = elements[elementIndex];
+    } while (erasedElements.includes(foodIIElement));
+
+    // Assegna nome e numero dell’elemento selezionato
+    foodIIElementName = elementNames[elementIndex];
+    foodIIElementNumber = elementNumbers[elementIndex];
+
+    drawFoodII();
     updateScore(score);
 }
 
@@ -581,55 +632,109 @@ function updateGame(ctx) {
     snake.unshift(head);
 
     // Controlla se il serpente mangia il cibo
-    if (head.x === food.x && head.y === food.y) {
-        if (diets[selectedDiet] && diets[selectedDiet].includes(foodElement)) {
+    if (head.x === foodI.x && head.y === foodI.y) {
+        if (diets[selectedDiet] && diets[selectedDiet].includes(foodIElement)) {
             score += scoreIncrement;
 
             scoreText = {
                 value: `+${scoreIncrement}`,
-                x: food.x + SIZE/2 ,
-                y: food.y - 10,
+                x: foodI.x + SIZE/2 ,
+                y: foodI.y - 10,
                 opacity: 1.0 // Trasparenza iniziale
             };
 
             createInfoRect({
-                atomicNumber: foodElementNumber,
-                symbol: foodElement,
-                name: foodElementName
-            }, food.x, food.y);
+                atomicNumber: foodIElementNumber,
+                symbol: foodIElement,
+                name: foodIElementName
+            }, foodI.x, foodI.y);
             
             snakeColors.unshift("green");
-            expandFoodEffect(food.x, food.y); // Espansione prima di sparire
+            expandFoodEffect(foodI.x, foodI.y); // Espansione prima di sparire
             
         } else {
             score -= scoreDecrement;
 
              scoreTextNo = {
                 value: `-${scoreDecrement}`,
-                x: food.x + SIZE/2 ,
-                y: food.y - 10,
+                x: foodI.x + SIZE/2 ,
+                y: foodI.y - 10,
                 opacity: 1.0 // Trasparenza iniziale
             };
 
             createInfoRectNo({
-                atomicNumber: foodElementNumber,
-                symbol: foodElement,
-                name: foodElementName
-            }, food.x, food.y);
+                atomicNumber: foodIElementNumber,
+                symbol: foodIElement,
+                name: foodIElementName
+            }, foodI.x, foodI.y);
             
             snakeColors.unshift("red");
-            flashEffect("rgba(229, 26, 75, 0.5)", food.x, food.y); // Lampeggio per errore
+            flashEffect("rgba(229, 26, 75, 0.5)", foodI.x, foodI.y); // Lampeggio per errore
         }
          // Rimuove i colori extra se il serpente è più corto della lista colori
         if (snakeColors.length > snake.length) {
             snakeColors.pop();
         }
         updateScore(score);
-        generateFood();
+        generateFoodI();
+        generateFoodII();
     } else {
         snake.pop();
     }
 
+
+
+    // Controlla se il serpente mangia il cibo
+    if (head.x === foodII.x && head.y === foodII.y) {
+        if (diets[selectedDiet] && diets[selectedDiet].includes(foodIIElement)) {
+            score += scoreIncrement;
+
+            scoreText = {
+                value: `+${scoreIncrement}`,
+                x: foodII.x + SIZE/2 ,
+                y: foodII.y - 10,
+                opacity: 1.0 // Trasparenza iniziale
+            };
+
+            createInfoRect({
+                atomicNumber: foodIIElementNumber,
+                symbol: foodIIElement,
+                name: foodIIElementName
+            }, foodII.x, foodII.y);
+            
+            snakeColors.unshift("green");
+            expandFoodEffect(foodII.x, foodII.y); // Espansione prima di sparire
+            
+        } else {
+            score -= scoreDecrement;
+
+             scoreTextNo = {
+                value: `-${scoreDecrement}`,
+                x: foodII.x + SIZE/2 ,
+                y: foodII.y - 10,
+                opacity: 1.0 // Trasparenza iniziale
+            };
+
+            createInfoRectNo({
+                atomicNumber: foodIIElementNumber,
+                symbol: foodIIElement,
+                name: foodIIElementName
+            }, foodII.x, foodII.y);
+            
+            snakeColors.unshift("red");
+            flashEffect("rgba(229, 26, 75, 0.5)", foodII.x, foodII.y); // Lampeggio per errore
+        }
+         // Rimuove i colori extra se il serpente è più corto della lista colori
+        if (snakeColors.length > snake.length) {
+            snakeColors.pop();
+        }
+        updateScore(score);
+        generateFoodI();
+        generateFoodII();
+    } else {
+        snake.pop();
+    }
+    
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     // Gestione animazione della scritta del punteggio positivo
@@ -782,7 +887,10 @@ function updateGame(ctx) {
 
     // Disegna sfondo cibo
     ctx.fillStyle = "rgb(120, 179, 224)";
-    ctx.fillRect(food.x, food.y, SIZE, SIZE);
+    ctx.fillRect(foodI.x, foodI.y, SIZE, SIZE);
+
+    ctx.fillStyle = "rgb(120, 179, 224)";
+    ctx.fillRect(foodII.x, foodII.y, SIZE, SIZE);
 
     // Reset shadowBlur per evitare che influenzi altri elementi
     //ctx.shadowBlur = 0;
@@ -792,11 +900,22 @@ function updateGame(ctx) {
     ctx.font = "14px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
+    ctx.fillText(foodIElement, foodI.x + SIZE / 2, foodI.y + SIZE / 2);
+
+    // Draw the food element symbol
+    ctx.fillStyle = "rgb(229, 26, 75)"; // Colore del simbolo
+    ctx.font = "14px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(foodIIElement, foodII.x + SIZE / 2, foodII.y + SIZE / 2);
 
     // Disegna il numero atomico sotto il simbolo
     //ctx.font = "12px Arial"; // Numero atomico più piccolo
-    //ctx.fillText(foodElementNumber, food.x + SIZE / 2, food.y + (2 * SIZE) / 3);
+    //ctx.fillText(foodIElementNumber, foodI.x + SIZE / 2, foodI.y + (2 * SIZE) / 3);
+
+    // Disegna il numero atomico sotto il simbolo
+    //ctx.font = "12px Arial"; // Numero atomico più piccolo
+    //ctx.fillText(foodIIElementNumber, foodII.x + SIZE / 2, foodII.y + (2 * SIZE) / 3);
 
     // Draw game area border
     ctx.strokeStyle = "#83B7DE";
@@ -822,44 +941,6 @@ function initializeHPBar() {
     hpBarContainer.style.display = 'flex'; // Mostra la barra
 }
 
-function updateHPBar() {
-      if (selectedDiet && diets[selectedDiet]?.includes(foodElement)) {
-        // L'elemento corrente è valido
-        if (hpSquares > 0) {
-            // Rimuovi un quadratino dalla barra HP
-            const hpBarContainer = document.getElementById('hpBarContainer');
-            hpBarContainer.removeChild(hpBarContainer.lastChild);
-            hpSquares--;
-            console.log("Elemento valido! HP -1");
-        } else {
-            console.log("Non ci sono più HP disponibili!");
-        }
-    } else {
-        // L'elemento corrente non è valido
-        if (hpSquares < 10) {
-            const square = document.createElement('div');
-            square.className = 'hpSquare';
-
-            // Imposta il colore in base alla posizione
-            if (hpSquares < 4) {
-                square.style.backgroundColor = 'red';
-            } else if (hpSquares < 6) {
-                square.style.backgroundColor = 'orange';
-            } else {
-                square.style.backgroundColor = 'green';
-            }
-
-            document.getElementById('hpBarContainer').appendChild(square);
-            hpSquares++;
-            console.log("Elemento non valido! HP +1");
-        }
-    }
-
-    // Controlla se la barra HP è a 0, termina il gioco
-    if (hpSquares <= 0) {
-        exitGame();
-    }
-}
 
 // Function to exit the game
 function exitGame() {
