@@ -476,32 +476,41 @@ function calculateValidDietElements() {
     return validDietElements.length;
 }
 
-function generateFood() {
+function generateFood() { 
     const margin = SIZE;
     const maxX = Math.floor((CANVAS_WIDTH - margin * 2) / SIZE);
     const maxY = Math.floor((CANVAS_HEIGHT - margin * 2) / SIZE);
 
     let foodPositionValid = false;
 
-    // Continua a generare una posizione valida finché non trovi una che non è sopra il serpente
+    // Ottieni gli elementi validi della dieta selezionata
+    const validDietElements = (diets[selectedDiet] || []).filter(el => !erasedElements.includes(el));
+
+    // Se non ci sono elementi validi, interrompi la funzione
+    if (validDietElements.length === 0) {
+        console.error("Nessun elemento valido per la dieta selezionata.");
+        return;
+    }
+
+    // Genera una posizione valida per il cibo
     while (!foodPositionValid) {
         food = {
             x: Math.floor(Math.random() * maxX) * SIZE + margin,
             y: Math.floor(Math.random() * maxY) * SIZE + margin
         };
 
-        // Verifica che il cibo non sia sopra il serpente
         foodPositionValid = !snake.some(part => part.x === food.x && part.y === food.y);
     }
     
     let elementIndex;
-    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
+    // Seleziona un elemento che appartiene alla dieta selezionata e non è stato cancellato
     do {
-        elementIndex = Math.floor(Math.random() * elements.length);
-        foodElement = elements[elementIndex];
-    } while (!dietElements.includes(foodElement) || erasedElements.includes(foodElement));
+        elementIndex = Math.floor(Math.random() * validDietElements.length);
+        foodElement = validDietElements[elementIndex];
+    } while (erasedElements.includes(foodElement)); 
 
     // Assegna nome e numero dell’elemento selezionato
+    elementIndex = elements.indexOf(foodElement); 
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
 
@@ -517,26 +526,38 @@ function generateFoodII() {
 
     let foodPositionValid = false;
 
-    // Continua a generare una posizione valida finché non trovi una che non è sopra il serpente
+    // Ottieni gli elementi validi della dieta selezionata
+    const validDietElements = (diets[selectedDiet] || []).filter(el => !erasedElements.includes(el));
+
+    // Ottieni gli elementi che NON appartengono alla dieta e non sono stati cancellati
+    const nonDietElements = elements.filter(el => !validDietElements.includes(el) && !erasedElements.includes(el));
+
+    // Se non ci sono elementi non appartenenti alla dieta, interrompi la funzione
+    if (nonDietElements.length === 0) {
+        console.error("Nessun elemento valido al di fuori della dieta selezionata.");
+        return;
+    }
+
+    // Genera una posizione valida per il cibo
     while (!foodPositionValid) {
         foodII = {
             x: Math.floor(Math.random() * maxX) * SIZE + margin,
             y: Math.floor(Math.random() * maxY) * SIZE + margin
         };
 
-       // Verifica che il cibo non sia sopra il serpente e non sia sopra il cibo già generato
-       foodPositionValid = !snake.some(part => part.x === foodII.x && part.y === foodII.y) &&
-       !(foodII.x === food.x && foodII.y === food.y);
+        foodPositionValid = !snake.some(part => part.x === foodII.x && part.y === foodII.y) &&
+                            !(foodII.x === food.x && foodII.y === food.y);
     }
     
     let elementIndex;
-    // Continua a generare un elemento finché non ne trovi uno che non è in erasedElements
+    // Seleziona un elemento che NON appartiene alla dieta selezionata e non è stato cancellato
     do {
-        elementIndex = Math.floor(Math.random() * elements.length);
-        foodIIElement = elements[elementIndex];
-    } while (dietElements.includes(foodIIElement) || erasedElements.includes(foodIIElement));
+        elementIndex = Math.floor(Math.random() * nonDietElements.length);
+        foodIIElement = nonDietElements[elementIndex];
+    } while (erasedElements.includes(foodIIElement));
 
     // Assegna nome e numero dell’elemento selezionato
+    elementIndex = elements.indexOf(foodIIElement);
     foodIIElementName = elementNames[elementIndex];
     foodIIElementNumber = elementNumbers[elementIndex];
 
