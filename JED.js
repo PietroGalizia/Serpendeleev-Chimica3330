@@ -499,7 +499,7 @@ function generateFood() {
     do {
         elementIndex = Math.floor(Math.random() * elements.length);
         foodElement = elements[elementIndex];
-    } while (erasedElements.includes(foodElement));
+    } while (!dietElements.includes(foodElement) || erasedElements.includes(foodElement));
 
     // Assegna nome e numero dell’elemento selezionato
     foodElementName = elementNames[elementIndex];
@@ -534,7 +534,7 @@ function generateFoodII() {
     do {
         elementIndex = Math.floor(Math.random() * elements.length);
         foodIIElement = elements[elementIndex];
-    } while (erasedElements.includes(foodIIElement));
+    } while (dietElements.includes(foodIIElement) || erasedElements.includes(foodIIElement));
 
     // Assegna nome e numero dell’elemento selezionato
     foodIIElementName = elementNames[elementIndex];
