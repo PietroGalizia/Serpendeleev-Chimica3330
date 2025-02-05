@@ -377,12 +377,13 @@ document.addEventListener('keydown', (event) => {
 });
 
 function changeFoodElement() {
-    // Scambia le coordinate dei due cibi
-    let tempFood = { ...food };
+    // Scambia solo le coordinate dei due cibi
+    let tempX = food.x;
+    let tempY = food.y;
     food.x = foodII.x;
     food.y = foodII.y;
-    foodII.x = tempFood.x;
-    foodII.y = tempFood.y;
+    foodII.x = tempX;
+    foodII.y = tempY;
 
     // Scambia gli elementi associati
     let tempElement = foodElement;
@@ -397,20 +398,9 @@ function changeFoodElement() {
     foodElementNumber = foodIIElementNumber;
     foodIIElementNumber = tempElementNumber;
 
-    // Cancella l'intero canvas per evitare residui grafici
-    clearCanvas();
-
-    // Ridisegna entrambi i cibi dopo lo scambio
+    // Ridisegna solo i due cibi senza cancellare tutto il canvas
     drawFood();
     drawFoodII();
-    updateScore(score);
-}
-
-// Funzione per pulire il canvas
-function clearCanvas() {
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawFood() {
