@@ -378,19 +378,14 @@ document.addEventListener('keydown', (event) => {
 
 function changeFoodElement() {
     // Scambia solo le coordinate dei due cibi
-    [food.x, foodII.x] = [foodII.x, food.x];
-    [food.y, foodII.y] = [foodII.y, food.y];
+    let tempX = food.x;
+    let tempY = food.y;
+    food.x = foodII.x;
+    food.y = foodII.y;
+    foodII.x = tempX;
+    foodII.y = tempY;
 
-    // Scambia gli elementi associati
-    [foodElement, foodIIElement] = [foodIIElement, foodElement];
-
-    // Scambia i nomi degli elementi
-    [foodElementName, foodIIElementName] = [foodIIElementName, foodElementName];
-
-    // Scambia i numeri atomici degli elementi
-    [foodElementNumber, foodIIElementNumber] = [foodIIElementNumber, foodElementNumber];
-
-    // Ridisegna solo i due cibi senza rigenerarli completamente
+    // Ridisegna solo i due cibi senza cancellare l'intero canvas
     drawFood();
     drawFoodII();
 }
