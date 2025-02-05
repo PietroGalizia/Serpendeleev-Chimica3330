@@ -377,14 +377,15 @@ document.addEventListener('keydown', (event) => {
 });
 
 function changeFoodElement() {
-    // Scambia le posizioni di food e foodII
-    let tempPosition = { x: food.x, y: food.y };
+    // Scambia le coordinate dei due cibi
+    let tempX = food.x;
+    let tempY = food.y;
     food.x = foodII.x;
     food.y = foodII.y;
-    foodII.x = tempPosition.x;
-    foodII.y = tempPosition.y;
+    foodII.x = tempX;
+    foodII.y = tempY;
 
-    // Scambia gli elementi associati a food e foodII
+    // Scambia gli elementi associati
     let tempElement = foodElement;
     foodElement = foodIIElement;
     foodIIElement = tempElement;
@@ -403,6 +404,7 @@ function changeFoodElement() {
     drawFood();
     drawFoodII();
 }
+
 
 function drawFood() {
     const canvas = document.getElementById('gameCanvas');
