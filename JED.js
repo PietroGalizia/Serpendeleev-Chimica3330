@@ -403,6 +403,7 @@ function changeFoodElement() {
     // Ridisegna entrambi i cibi dopo lo scambio
     drawFood();
     drawFoodII();
+    updateScore(score);
 }
 
 // Funzione per pulire il canvas
