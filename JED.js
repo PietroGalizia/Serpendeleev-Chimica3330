@@ -262,6 +262,7 @@ let scoreDecrement = 0;
 let touchStartX = 0;
 let touchStartY = 0;
 let lastTouchTime = 0;
+let isPaused = false;
 
 // Evitare il comportamento predefinito dei tasti freccia
 document.addEventListener('keydown', (event) => {
@@ -331,50 +332,66 @@ document.getElementById('touchArea').addEventListener('touchstart', handleTouchS
 document.getElementById('touchArea').addEventListener('touchmove', handleTouchMove);
 
 document.addEventListener('keydown', (event) => {
-
     if (event.key === ' ') {
-        event.preventDefault(); // Previene il comportamento predefinito della barra spaziatrice
-        changeFoodElement();    // Cambia l'elemento del cibo senza cambiarne la posizione
-        
-    } else {
-        const newDirection = { x: direction.x, y: direction.y };
+        event.preventDefault();
+        if (!isPaused) changeFoodElement();
+    } 
+    else if (event.key.toLowerCase() === 'p') { // Controlla se si preme "p"
+        togglePause();
+    } 
+    else {
+        if (!isPaused) { // Solo se il gioco non è in pausa
+            const newDirection = { x: direction.x, y: direction.y };
+            switch (event.key) {
+                case 'ArrowUp': case 'w': case 'W':
+                    if (direction.y === 0) newDirection.x = 0, newDirection.y = -1;
+                    break;
+                case 'ArrowDown': case 's': case 'S':
+                    if (direction.y === 0) newDirection.x = 0, newDirection.y = 1;
+                    break;
+                case 'ArrowLeft': case 'a': case 'A':
+                    if (direction.x === 0) newDirection.x = -1, newDirection.y = 0;
+                    break;
+                case 'ArrowRight': case 'd': case 'D':
+                    if (direction.x === 0) newDirection.x = 1, newDirection.y = 0;
+                    break;
+            }
 
-        // Determina la nuova direzione in base al tasto premuto
-        switch (event.key) {
-            case 'ArrowUp':
-            case 'w':
-            case 'W':
-                if (direction.y === 0) newDirection.x = 0, newDirection.y = -1;
-                break;
-            case 'ArrowDown':
-            case 's':
-            case 'S':
-                if (direction.y === 0) newDirection.x = 0, newDirection.y = 1;
-                break;
-            case 'ArrowLeft':
-            case 'a':
-            case 'A':
-                if (direction.x === 0) newDirection.x = -1, newDirection.y = 0;
-                break;
-            case 'ArrowRight':
-            case 'd':
-            case 'D':
-                if (direction.x === 0) newDirection.x = 1, newDirection.y = 0;
-                break;
-        }
+            const nextHead = {
+                x: snake[0].x + newDirection.x * SIZE,
+                y: snake[0].y + newDirection.y * SIZE
+            };
 
-        // Verifica che il cambio di direzione non causi una collisione immediata
-        const nextHead = {
-            x: snake[0].x + newDirection.x * SIZE,
-            y: snake[0].y + newDirection.y * SIZE
-        };
-
-        // Se la nuova posizione della testa non collide con il corpo, aggiorna la direzione
-        if (!snake.some(part => part.x === nextHead.x && part.y === nextHead.y)) {
-            direction = newDirection;
+            if (!snake.some(part => part.x === nextHead.x && part.y === nextHead.y)) {
+                direction = newDirection;
+            }
         }
     }
 });
+
+function togglePause() {
+    isPaused = !isPaused;
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    if (isPaused) {
+        clearInterval(gameInterval); // Ferma il loop del gioco
+
+        // Disegna il messaggio di pausa
+        ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; // Sfondo semi-trasparente
+        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        
+        ctx.fillStyle = "white";
+        ctx.font = "30px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("PAUSA", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+        ctx.font = "20px Arial";
+        ctx.fillText("Premi 'P' per riprendere", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
+    } else {
+        startGameLoop(ctx); // Riprendi il gioco
+    }
+}
 
 function changeFoodElement() {
     // Scambia solo le coordinate dei due cibi
@@ -577,8 +594,12 @@ function generateFoodII() {
 }
 
 function startGameLoop(ctx) {
+    if (isPaused) return; // Se il gioco è in pausa, esci subito
+    
     gameInterval = setInterval(() => {
-        updateGame(ctx);
+        if (!isPaused) { // Controlla sempre se il gioco è in pausa
+            updateGame(ctx);
+        }
     }, window.SPEED);
 }
 
