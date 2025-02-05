@@ -377,7 +377,31 @@ document.addEventListener('keydown', (event) => {
 });
 
 function changeFoodElement() {
-     
+    // Scambia le posizioni di food e foodII
+    let tempPosition = { x: food.x, y: food.y };
+    food.x = foodII.x;
+    food.y = foodII.y;
+    foodII.x = tempPosition.x;
+    foodII.y = tempPosition.y;
+
+    // Scambia gli elementi associati a food e foodII
+    let tempElement = foodElement;
+    foodElement = foodIIElement;
+    foodIIElement = tempElement;
+
+    // Scambia i nomi degli elementi
+    let tempElementName = foodElementName;
+    foodElementName = foodIIElementName;
+    foodIIElementName = tempElementName;
+
+    // Scambia i numeri degli elementi
+    let tempElementNumber = foodElementNumber;
+    foodElementNumber = foodIIElementNumber;
+    foodIIElementNumber = tempElementNumber;
+
+    // Ridisegna entrambi i cibi per aggiornare la grafica
+    drawFood();
+    drawFoodII();
 }
 
 function drawFood() {
