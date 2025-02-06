@@ -496,6 +496,7 @@ function initializeScoreValues() {
     scoreDecrement= -1;
     //scoreIncrement = Math.round(100 * (rangeValue - validDietElementsCount) / rangeValue);
     //scoreDecrement = Math.round(100 * validDietElementsCount / rangeValue);
+}
 
 function calculateValidDietElements() {
     // Calcola il numero di elementi nella dieta effettivamente validi
