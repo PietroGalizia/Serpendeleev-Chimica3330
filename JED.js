@@ -259,6 +259,7 @@ let infoRectsNo = [];
 let erasedElements = [];
 let scoreIncrement = 0;
 let scoreDecrement = 0;
+let totalFoodEaten = 1;
 let touchStartX = 0;
 let touchStartY = 0;
 let lastTouchTime = 0;
@@ -493,7 +494,7 @@ function initializeScoreValues() {
     const rangeValue = parseInt(document.getElementById('elementRange').value);
     const validDietElementsCount = calculateValidDietElements();
     scoreIncrement = 1;
-    scoreDecrement= -1;
+    scoreDecrement= 0;
     //scoreIncrement = Math.round(100 * (rangeValue - validDietElementsCount) / rangeValue);
     //scoreDecrement = Math.round(100 * validDietElementsCount / rangeValue);
 }
@@ -542,6 +543,8 @@ function generateFood() {
     elementIndex = elements.indexOf(foodElement); 
     foodElementName = elementNames[elementIndex];
     foodElementNumber = elementNumbers[elementIndex];
+
+    totalFoodEaten++;
 
     drawFood();
     drawFoodII();
@@ -629,7 +632,7 @@ function createInfoRectNo(element, x, y) {
 
 function updateScore(newScore) {
     const scoreBoard = document.getElementById('scoreBoard');
-    scoreBoard.style.color = "fff";
+    scoreBoard.style.color = "#fff";
     scoreBoard.style.padding = "5px";
     scoreBoard.style.border = "2px solid #78b3e0";
     scoreBoard.style.borderRadius = "0px";
@@ -647,9 +650,12 @@ function updateScore(newScore) {
     selectedDietDiv.style.color = 'white'; // Colore del testo
     selectedDietDiv.textContent = selectedDiet;
 
+    // Calcola la percentuale degli elementi corretti
+    let percentage = totalFoodEaten > 0 ? ((newScore / totalFoodEaten) * 100).toFixed(1) : 0;
+
     scoreBoard.innerHTML = `
         <div style="font-size: 1.2em; margin-bottom: 5px;">
-            <b>${newScore}</b>
+            <b>Correct elements eaten: ${newScore} / ${totalFoodEaten} (${percentage}%)</b>
         </div>`;
 }
 
@@ -805,21 +811,21 @@ function updateGame(ctx) {
     }
 
     // Gestione animazione della scritta del punteggio negativo
-    if (scoreTextNo) {
-        ctx.fillStyle = `rgba(247, 157, 39, ${scoreTextNo.opacity})`; // Imposta trasparenza
-        ctx.font = "16px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText(scoreTextNo.value, scoreTextNo.x, scoreTextNo.y);
+    //if (scoreTextNo) {
+        //ctx.fillStyle = `rgba(247, 157, 39, ${scoreTextNo.opacity})`; // Imposta trasparenza
+        //ctx.font = "16px Arial";
+        //ctx.textAlign = "center";
+        //ctx.fillText(scoreTextNo.value, scoreTextNo.x, scoreTextNo.y);
 
         // Aggiorna la posizione e la trasparenza
-        scoreTextNo.y += 1; // Si sposta verso il basso
-        scoreTextNo.opacity -= 0.06; // Si dissolve
+        //scoreTextNo.y += 1; // Si sposta verso il basso
+        //scoreTextNo.opacity -= 0.06; // Si dissolve
 
         // Rimuovi la scritta quando diventa completamente trasparente
-        if (scoreTextNo.opacity <= 0) {
-            scoreTextNo = null;
-        }
-    }
+        //if (scoreTextNo.opacity <= 0) {
+            //scoreTextNo = null;
+        //}
+    //}
 
     function flashEffect(color, x, y) {
         let flashCount = 0;
