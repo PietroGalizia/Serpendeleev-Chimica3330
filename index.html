@@ -289,44 +289,45 @@ select:hover {
     <div id="startScreen">
 
        <div class="section">
-        <h2>Snake's Diet</h2>
+        <h2>Dieta di Snakeleev</h2>
         <select id="dietDropdown"></select>
     </div>
 
     <div class="section slider-container">
-        <p id="selectedElementCount" class="slider-value">Element Range: 1 ≤ Z ≤ 40</p>
+        <p id="selectedElementCount" class="slider-value">Elementi: 1 ≤ Z ≤ 40</p>
         <input id="elementRange" type="range" min="1" max="118" value="40" oninput="updateElementCount()">
     </div>
 
     <div class="section slider-container">
-        <p id="selectedSpeed" class="slider-value">Speed: 3</p>
+        <p id="selectedSpeed" class="slider-value">Velocità: 3</p>
         <input id="speedRange" type="range" min="1" max="5" value="3" oninput="updateSpeedLabel()">
     </div>
 
     <div class="section button-container">
-        <button class="button" onclick="toggleInstructions()">Instructions</button>
+        <button class="button" onclick="toggleInstructions()">Istruzioni</button>
         <button class="button" onclick="finalSelection()">Play</button>
     </div>
 
 
     <!-- Istruzioni inizialmente nascoste -->
     <div id="instructions">
-        <h3>INSTRUCTIONS</h3>
+        <h3>ISTRUZIONI</h3>
         <ol>
-            <li>Control the snake using the arrow keys or W, A, S, and D.</li>
-            <li id="eat-instruction">Eat only the elements of the selected diet.</li>
-            <li>Press the spacebar to swap the two elements.</li>
-            <li>Press "P" to pause or resume the game.</li>
-            <li>Refresh the page to start a new game.</li>
+                <li>Controlla il serpente con le frecce direzionali o i tasti W, A, S e D.</li>
+                <li id="eat-instruction">Mangia gli elementi della dieta.</li>
+                <li>Scambia la posizione dei due elementi con la barra spaziatrice.</li>
+                <li>Metti in pausa o riprendere il gioco con il tasto P.</li>
+                <li>Aggiorna la pagina per iniziare una nuova partita.</li>
         </ol>
-        <h3>SCORING SYSTEM</h3>
+        <h3>SISTEMA DI PUNTEGGIO</h3>
         <p>
-            Your score increases when you eat an element that belongs to the selected diet.
-            Eating an element outside the diet does not increase the score but still adds to the total elements eaten.
+            Il tuo punteggio aumenta quando mangi un elemento che appartiene alla dieta selezionata.  
+            Mangiare un elemento al di fuori della dieta non aumenta il punteggio,  
+            ma viene comunque conteggiato nel totale degli elementi mangiati.
         </p>
         <p>
-            The score display shows:
-            <br><b>Score / Total Elements Eaten (Percentage)</b>
+            Il display del punteggio mostra:
+            <br><b>Punteggio / Totale Elementi Mangiati (Percentuale)</b>
         </p>
     </div>
 </div>
@@ -378,7 +379,7 @@ select:hover {
     function updateElementCount() {
         maxElementsToUse = parseInt(document.getElementById('elementRange').value);
     
-        document.getElementById('selectedElementCount').textContent = `Element Range: 1 ≤ Z ≤ ${maxElementsToUse}`;
+        document.getElementById('selectedElementCount').textContent = `Elementi: 1 ≤ Z ≤ ${maxElementsToUse}`;
     
         isElementCountChanged = true; // Segnala che lo slider è stato modificato
     }
@@ -390,7 +391,7 @@ select:hover {
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('speedRange').addEventListener('input', updateSpeedLabel);
         document.getElementById('elementRange').addEventListener('input', updateElementCount);
-        document.getElementById('selectedElementCount').textContent = `Element Range: 1 ≤ Z ≤ 40`;
+        document.getElementById('selectedElementCount').textContent = `Elementi: 1 ≤ Z ≤ 40`;
         // Imposta la velocità predefinita all'avvio
         const speedSlider = document.getElementById('speedRange');
         window.SPEED = SPEED_LEVELS[speedSlider.value];
@@ -401,23 +402,26 @@ select:hover {
         // Popola il dropdown delle diete
         const dietDropdown = document.getElementById("dietDropdown");
         const diets = [
-            "Critical elements", "Elements of a smartphone", "Elements of life", "Elements of DNA",
-            "Elements essential for man", "Elements used in therapy", "Elements used in diagnosis", 
-            "Medical radioisotopes",  "Radioactive elements (U-Th decay series)", 
-            "Elements considered safety (grades A-E) in the first wall of fusion power plan",
-            "Potentially toxic trace elements (PTEs)", "Toxic trace elements in dried mushrooms",
-            "Elements dedicated to scientists", "Elements with names of Latin derivation",
-            "Elements with names of Greek derivation",
-            "Elements named after geographical locations and celestial bodies",
-            "Elements with names not derived from Latin or Greek, nor from cities or countries",
-            "Elements known since antiquity", "Elementary substances in solid state at STP",
-            "Elementary substances in liquid state at STP", "Elementary substances in gas state at STP",
-            "Ferromagnetic elements", "Ultra-high temperature metals", "Metals", "Nonmetals",
-            "Elements of group I (Hydrogen & alkali metals)", "Elements of group II (Alkaline earth metals)",
-            "Elements of group XV (Pnictogens)", "Elements of group XVI (Chalcogens)", "Elements of group XVII (Halogens)",
-            "Elements of group XVIII (Noble gases)", "Lanthanides", "Actinides",
-            "Transition metals", "Post-transition metals", "Metalloids", "Reactive nonmetals",
-            "s-block elements", "p-block elements", "d-block elements", "f-block elements"
+            "Elementi critici", "Elementi degli smartphone", "Elementi della vita",  "Elementi del DNA",
+            "Elementi essenziali per l'uomo", "Elementi usati nelle terapie",
+            "Elementi usati nelle diagnosi", "Radioisotopi medici", "Elementi radioattivi (serie di decadimento U-Th)", 
+            "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione",
+            "Elementi in traccia potenzialmente tossici (PTE)","Elementi tossici in tracce nei funghi essiccati",
+            "Elementi dedicati a scienziati", "Elementi con nome di derivazione latina",
+            "Elementi con nome di derivazione greca",
+            "Elementi con nomi di città, stati, o corpi celesti",
+            "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati",
+            "Sostanze elementari allo stato solido alle condizioni standard di temperatura e pressione",
+            "Sostanze elementari allo stato liquido alle condizioni standard di temperatura e pressione",
+            "Sostanze elementari allo stato gassoso alle condizioni standard di temperatura e pressione", 
+            "Elementi ferromagnetici", "Metalli ultrarefrattari","Metalli", "Nonmetalli",
+            "Elementi del primo gruppo (idrogeno & metalli alcalini)",
+            "Elementi del secondo gruppo (metalli alcalino terrosi)", "Elementi del 15esimo gruppo (pnicogeni)",
+            "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
+            "Elementi del 18esimo gruppo (gas nobili)", "Lantanidi", "Attinidi",
+            "Metalli di transizione", "Metalli post-transizione", "Semimetalli", "Non metalli reattivi",
+            "Elementi del blocco s", "Elementi del blocco p", "Elementi del blocco d", "Elementi del blocco f",
+            "Elementi noti fin dai tempi antichi"
         ];
 
         // Aggiunge le opzioni al dropdown
