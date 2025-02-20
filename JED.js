@@ -85,15 +85,15 @@ const dietMessages = {
         "Gli smartphone sono preziose risorse nella circolarità economica, contenendo elementi come oro (Au), argento (Ag), platino (Pt) e palladio (Pd). Tuttavia, il loro scarso riciclo ha impatti negativi sull'ambiente e sulla salute umana"
     ],
     "Elementi della vita": [
-        "Ogni essere vivente, compreso l'uomo, è principalmente costituito da soli 11 elementi dei 90 presenti naturalemnte sulla Terra.<br>Sorprendente, vero?"
+        "Ogni essere vivente, compreso l'uomo, è principalmente costituito da soli 11 elementi dei 90 presenti naturalmente sulla Terra.<br>Sorprendente, vero?"
     ],
         "Elementi del DNA": [
         "5 elementi compongono il linguaggio della vita."
     ],
-    "Elements essential for man": [""],
-    "Elements used in therapy": [""],
-    "Elements used in diagnosis": [""],
-    "Medical radioisotopes": [""],
+    "Elementi essenziali per l'uomo": [""],
+    "Elementi usati nelle terapie": [""],
+    "Elementi usati nelle diagnosi": [""],
+    "Radioisotopi medici": [""],
     "Elementi radioattivi (serie di decadimento U-Th)": [
         "Elevate concentrazioni di elementi radioattivi spesso derivano da attività umane, come l'estrazione e la lavorazione dell'uranio (U), e la combustione del carbone. Il combustibile nucleare esaurito rappresenta una vasta riserva di tali materiali."
     ],
@@ -136,7 +136,7 @@ const dietMessages = {
         "Take a look on <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>"
     ],
     "Elementi ferromagnetici": [""],
-    "Metali ultrarefrattari": [""],
+    "Metalli ultrarefrattari": [""],
     "Metalli": [
         "Take a look on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>", 
         "Take a look on <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>",
