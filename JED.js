@@ -11,19 +11,16 @@ const elementNumbers = [
 ];
 
 const DietsList = [
-    "Elementi critici", "Elementi degli smartphone", "Elementi della vita",  "Elementi del DNA",
-    "Elementi essenziali per l'uomo", "Elementi usati nelle terapie",
-    "Elementi usati nelle diagnosi", "Radioisotopi medici", "Elementi radioattivi (serie di decadimento U-Th)", 
+    "Elementi degli smartphone", "Elementi della vita", "Elementi critici", "Elementi del DNA", "Elementi radioattivi (serie di decadimento U-Th)",
     "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione",
-    "Elementi in traccia potenzialmente tossici (PTE)","Elementi tossici in tracce nei funghi essiccati",
+    "Elementi in traccia potenzialmente tossici (PTE)",
     "Elementi dedicati a scienziati", "Elementi con nome di derivazione latina",
     "Elementi con nome di derivazione greca",
-    "Elementi con nomi di città, stati, o corpi celesti",
+    "Elementi con nomi di città, stati, o di chissà dove",
     "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati",
-    "Sostanze elementari allo stato solido alle condizioni standard di temperatura e pressione",
-    "Sostanze elementari allo stato liquido alle condizioni standard di temperatura e pressione",
-    "Sostanze elementari allo stato gassoso alle condizioni standard di temperatura e pressione", 
-    "Elementi ferromagnetici", "Metalli ultrarefrattari", "Metalli", "Nonmetalli",
+    "Elementi allo stato solido alle condizioni standard di temperatura e pressione",
+    "Elementi allo stato liquido alle condizioni standard di temperatura e pressione",
+    "Elementi allo stato gassoso alle condizioni standard di temperatura e pressione", "Metalli", "Nonmetalli",
     "Elementi del primo gruppo (idrogeno & metalli alcalini)",
     "Elementi del secondo gruppo (metalli alcalino terrosi)", "Elementi del 15esimo gruppo (pnicogeni)",
     "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
@@ -34,28 +31,21 @@ const DietsList = [
 ]; 
 
 const diets = {
-    "Elementi critici": ["Sb", "Ba", "Al", "Be", "Bi", "B", "Co", "F", "Ga", "Ge", "Hf", "In", "Li", "Mg","Nb","P", "Sc","Si","Sr","Ta","Ti","W","V"],
     "Elementi degli smartphone": ["H", "Li", "Be", "B", "C", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "K", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Br", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "Ba", "La", "Ce", "Pr", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Os", "Ir", "Pt", "Au", "Hg", "Pb", "Bi"],
     "Elementi della vita": ["O", "C", "H", "N", "P", "Ca", "S", "K", "Na", "Cl", "Mg", "Fe", "Zn", "Cr", "Co", "Cu", "Mn", "Mo", "Ni", "V", "Si", "B", "Se", "F", "I", "Br"],
+    "Elementi critici": ["Sb", "Ba", "Al", "Be", "Bi", "B", "Co", "F", "Ga", "Ge", "Hf", "In", "Li", "Mg","Nb","P", "Sc","Si","Sr","Ta","Ti","W","V"],
     "Elementi del DNA": ["C", "H", "O", "N", "P"],
-    "Elementi essenziali per l'uomo": ["H", "C", "N", "O", "F", "Na", "Mg", "Si", "P", "S", "Cl", "K", "Ca", "V", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Se", "Mo", "Sn", "I"], 
-    "Elementi usati nelle terapie": ["H", "He", "Li", "B", "C", "N", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Cu", "Zn", "Ga", "As", "Se", "Sr", "Mo", "Ru", "Pd", "Ag", "Sb", "Xe", "La", "Ce", "Ta", "Os", "Pt", "Au", "Bi"],
-    "Elementi usati nelle diagnosi": ["He", "F", "Cu", "Ga", "Ge", "Rb", "Y", "Zr", "Tc", "In", "I", "Xe", "Ba", "Gd", "Tl"], 
-    "Radioisotopi medici": ["Sr", "Y", "Rh", "Pd", "I", "Cs", "Sm", "Ho", "Lu", "Re", "Ir", "Bi", "At", "Ra", "Ac"],
     "Elementi radioattivi (serie di decadimento U-Th)": ["U", "Th", "Pa", "Ra", "Rn", "Po", "Pb", "Bi", "Pu", "Ac", "Tl", "Am", "Np"],
     "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione": ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Mg", "Al", "Si", "P", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Fe", "Co", "Ni", "Cu", "Ge", "Se", "Kr", "Sr", "Y", "Ru", "Sn", "Te", "I", "Xe", "Cs", "Ba", "Ce", "Nd", "Sm", "Dy", "Yb", "Lu", "Tl"],
     "Elementi in traccia potenzialmente tossici (PTE)": ["Pb", "Hg", "Cr", "Cd", "As", "Co", "Cu", "Ni", "Zn", "Ag", "Sb", "Fe", "Mn", "Zr", "Se", "Sr", "Al", "F", "U", "La", "Pr", "Au"],
-    "Elementi tossici in tracce nei funghi essiccati": ["As", "Cd", "Hg", "Pb"],
-    "Elementi dedicati a scienziati": ["Ga", "Ge", "Sm", "Gd", "Bi", "Cm", "Es", "Fm", "No", "Lr", "Rf", "Sg", "Bh", "Mt", "Rg", "Og"],
+    "Elementi dedicati a scienziati": ["Ge", "Sm", "Gd", "Bi", "Cm", "Es", "Fm", "No", "Lr", "Rf", "Sg", "Bh", "Mt", "Rg", "Og"],
     "Elementi con nome di derivazione latina": ["B", "C", "F", "Na", "Al", "Si", "S", "K", "Ca", "Sc", "Mn", "Fe", "Cu", "Ga", "Ge", "Rb", "Ru", "Pd", "In", "Sn", "Sb", "Te", "Cs", "La", "Ce", "Pm", "Eu", "Ho", "Tm", "Lu", "Hf", "Ta", "Ir", "Au", "Hg", "Pb", "Bi", "Po", "Rn", "Ra", "Np", "Cm", "Hs"],
     "Elementi con nome di derivazione greca": ["H", "He", "Li", "Be", "N", "O", "Ne", "P", "Cl", "Ar", "Ti", "Cr", "Co", "As", "Se", "Br", "Kr", "Nb", "Mo", "Tc", "Rh", "Ag", "Cd", "Sb", "I", "Xe", "Ba", "La", "Pr", "Nd", "Dy", "Os", "Tl", "Bi", "At", "Ac", "Pa", "U", "Pu"],
-    "Elementi con nomi di città, stati, o corpi celesti": ["Mg", "Sc", "Mn", "Ga", "Ge", "Se", "Sr", "Y", "Nb", "Tc", "Ru", "Pd", "Cd", "Te", "Eu", "Tb", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Re", "Bi", "Po", "Fr", "U", "Np", "Am", "Bk", "Cf", "Db", "Hs", "Ds"],
-    "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati": ["V", "Co", "Ni", "Zn", "Zr", "Sb", "W", "Pt", "Bi", "Th"],
-    "Sostanze elementari  allo stato solido alle condizioni standard di temperatura e pressione": ["Li", "Be", "B", "C", "Na", "Mg", "Al", "Si", "P", "S",  "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Tl", "Pb", "Bi", "Po", "At", "Fr", "Ra", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"],
-    "Sostanze elementari  allo stato liquido alle condizioni standard di temperatura e pressione": ["Hg", "Br"],
-    "Sostanze elementari  allo stato gassoso alle condizioni standard di temperatura e pressione": ["H", "He", "N", "O", "F", "Ne","Cl", "Ar", "Kr", "Xe", "Rn"],
-    "Elementi ferromagnetici": ["Fe", "Co", "Ni", "Gd", "Tb", "Dy", "Ho", "Er", "Tm"], 
-    "Metalli ultrarefrattari": ["W", "Re", "Ta", "Os"],
+    "Elementi con nomi di città, stati, o di chissà dove": ["Mg", "Sc", "Mn", "Ga", "Ge", "Se", "Sr", "Y", "Nb", "Tc", "Ru", "Pd", "Cd", "Te", "Eu", "Tb", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Re", "Bi", "Po", "Fr", "U", "Np", "Am", "Bk", "Cf", "Db", "Hs", "Ds"],
+    "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati": ["V", "Ni", "Zn", "Zr", "Sb", "W", "Pt", "Th"],
+    "Elementi allo stato solido alle condizioni standard di temperatura e pressione": ["Li", "Be", "B", "C", "Na", "Mg", "Al", "Si", "P", "S",  "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Tl", "Pb", "Bi", "Po", "At", "Fr", "Ra", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"],
+    "Elementi allo stato liquido alle condizioni standard di temperatura e pressione": ["Hg", "Br"],
+    "Elementi allo stato gassoso alle condizioni standard di temperatura e pressione": ["H", "He", "N", "O", "F", "Ne","Cl", "Ar", "Kr", "Xe", "Rn"],
     "Metalli": ["Li", "Be", "Na", "Mg", "Al", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "Fr", "Ra", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"],
     "Nonmetalli": ["H", "He", "B", "C", "N", "O", "F", "Ne", "Si", "P", "S", "Cl", "Ar", "Ge", "As", "Se", "Br", "Kr", "Sb", "Te", "I", "Xe", "At", "Rn"],
     "Elementi del primo gruppo (idrogeno & metalli alcalini)": ["H", "Li", "Na", "K", "Rb", "Cs", "Fr"],
@@ -78,22 +68,18 @@ const diets = {
 };
 
 const dietMessages = {
-    "Elementi critici": [
-        "Le materie prime sono il cuore pulsante dell'economia europea, alimentando una vasta gamma di produzioni essenziali per la vita quotidiana e le tecnologie moderne. L'accesso affidabile a queste risorse vitali è una sfida crescente. Per affrontarla, l'UE ha identificato le materie prime critiche, fondamentali, ma a rischio."
-    ],
     "Elementi degli smartphone": [
         "Gli smartphone sono preziose risorse nella circolarità economica, contenendo elementi come oro (Au), argento (Ag), platino (Pt) e palladio (Pd). Tuttavia, il loro scarso riciclo ha impatti negativi sull'ambiente e sulla salute umana"
     ],
     "Elementi della vita": [
-        "Ogni essere vivente, compreso l'uomo, è principalmente costituito da soli 11 elementi dei 90 presenti naturalmente sulla Terra.<br>Sorprendente, vero?"
+        "Ogni essere vivente, compreso l'uomo, è principalmente costituito da soli 11 elementi dei 90 presenti naturalemnte sulla Terra.<br>Sorprendente, vero?"
     ],
-        "Elementi del DNA": [
+    "Elementi critici": [
+        "Le materie prime sono il cuore pulsante dell'economia europea, alimentando una vasta gamma di produzioni essenziali per la vita quotidiana e le tecnologie moderne. L'accesso affidabile a queste risorse vitali è una sfida crescente. Per affrontarla, l'UE ha identificato le materie prime critiche, fondamentali, ma a rischio."
+    ],
+    "Elementi del DNA": [
         "5 elementi compongono il linguaggio della vita."
     ],
-    "Elementi essenziali per l'uomo": [""],
-    "Elementi usati nelle terapie": [""],
-    "Elementi usati nelle diagnosi": [""],
-    "Radioisotopi medici": [""],
     "Elementi radioattivi (serie di decadimento U-Th)": [
         "Elevate concentrazioni di elementi radioattivi spesso derivano da attività umane, come l'estrazione e la lavorazione dell'uranio (U), e la combustione del carbone. Il combustibile nucleare esaurito rappresenta una vasta riserva di tali materiali."
     ],
@@ -103,7 +89,6 @@ const dietMessages = {
     "Elementi in traccia potenzialmente tossici (PTE)": [
         "Scopri il <a href='https://www.issmc.cnr.it/ricerca/progetti/progetti-ministeriali-2/selwa/' target='_blank' style='color: rgb(143, 125, 207);'>progetto SELWA</a>."
     ],
-    "Elementi tossici in tracce nei funghi essiccati": [""],
     "Elementi dedicati a scienziati": [
         "Storia degli elementi: da Mendeleev a Curie, una narrazione di scoperte e omaggi. La scienza rivela il suo tributo"
     ],
@@ -113,7 +98,7 @@ const dietMessages = {
     "Elementi con nome di derivazione greca": [
         "Nomi come Idrogeno (H), Elio (He) e Litio (Li) sono testimonianza della ricca eredità della lingua greca nella denominazione degli elementi chimici, rappresentando una connessione antica tra la mitologia e la moderna scienza."
     ],
-    "Elementi con nomi di città, stati, o corpi celesti": [
+    "Elementi con nomi di città, stati, o di chissà dove": [
         "Magnesio (Mg) prende il nome dalla città di Magnesia in Tessaglia, rinomata per la sua pietra purgativa. Scandio (Sc) deriva dal latino 'Scandia', che indica la Scandinavia, dove è stato per la prima volta isolato. Il selenio (Se) prende il suo nome dalla Luna, mentre il palladio (Pd) è dedicato all'asteroide Pallade.<br>Questi elementi ci ricordano che la geografia degli elementi non ha confini!"
     ],
     "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati": [
@@ -122,21 +107,19 @@ const dietMessages = {
         "Lo zirconio (Zr) deriva dall'arabo zerqun, 'colore dorato', a sua volta dal persiano azargun, composto da azar, 'fuoco', e gun, 'colore'.<br>Questi elementi ci ricordano che la geografia degli elementi non ha confini, ma si estende attraverso miti e culture, riflettendo la bellezza e la varietà del mondo che ci circonda.",
         "Il torio (Th) prende il nome da Thor, il dio del tuono nella mitologia norrena.<br>Questi elementi ci ricordano che la geografia degli elementi non ha confini, ma si estende attraverso miti e culture, riflettendo la bellezza e la varietà del mondo che ci circonda."
     ],
-    "Sostanze elementari allo stato solido alle condizioni standard di temperatura e pressione": [
+    "Elementi allo stato solido alle condizioni standard di temperatura e pressione": [
         "Take a look on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>", 
         "Take a look on <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>"
     ],
-    "Sostanze elementari allo stato liquido alle condizioni standard di temperatura e pressione": [
+    "Elementi allo stato liquido alle condizioni standard di temperatura e pressione": [
         "Take a look on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>", 
         "Take a look on <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>",
         "Il bromo (Br) è un liquido<br>rosso, ossidante,<br>d'odor sgradevole<br>e penetrante. (Alberto Cavaliere, Chimica in versi)"
     ],
-    "Sostanze elementari allo stato gassoso alle condizioni standard di temperatura e pressione": [
+    "Elementi allo stato gassoso alle condizioni standard di temperatura e pressione": [
         "Take a look on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>", 
         "Take a look on <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>"
     ],
-    "Elementi ferromagnetici": [""],
-    "Metalli ultrarefrattari": [""],
     "Metalli": [
         "Take a look on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>", 
         "Take a look on <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>",
@@ -249,6 +232,7 @@ function getRandomDietMessage(diet) {
     return messages[Math.floor(Math.random() * messages.length)];
 }
 
+// Initialize game state
 const SIZE = 20;
 const CANVAS_WIDTH = 620;
 const CANVAS_HEIGHT = 520;
@@ -395,17 +379,16 @@ function togglePause() {
     if (isPaused) {
         clearInterval(gameInterval); // Ferma il loop del gioco
 
-        ctx.fillStyle = "rgba(0, 47, 95, 0.75)";
+        // Disegna il messaggio di pausa
+        ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; // Sfondo semi-trasparente
         ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         
-        ctx.fillStyle = "#F79D27";  // Colore del testo (arancione)
-        ctx.font = "bold 40px Arial";
+        ctx.fillStyle = "white";
+        ctx.font = "30px Arial";
         ctx.textAlign = "center";
-        ctx.fillText("PAUSA", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 - 20);
-
+        ctx.fillText("PAUSA", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
         ctx.font = "20px Arial";
-        ctx.fillStyle = "#FFFFFF";
-        ctx.fillText("Premi 'P' per riprendere", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 20);
+        ctx.fillText("Premi 'P' per riprendere", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
     } else {
         startGameLoop(ctx); // Riprendi il gioco
     }
@@ -429,54 +412,30 @@ function drawFood() {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
-    const foodSize = SIZE * 1.5; // Aumenta la dimensione del cibo del 50%
-    const x = food.x + SIZE / 2;
-    const y = food.y + SIZE / 2;
-
     ctx.clearRect(food.x, food.y, SIZE, SIZE);
 
-    ctx.fillStyle = "rgb(120, 179, 224)";
-    ctx.beginPath();
-    ctx.arc(x, y, foodSize / 2, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = "#E51A4B"; // Rosso brillante per il testo
-    ctx.font = "bold 22px Arial";
+    ctx.fillStyle = "red"; // Colore per il simbolo dell'elemento
+    ctx.font = "20px Arial"; // Imposta la dimensione del font
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // Effetto glow
-    ctx.shadowColor = "#F79D27"; // Glow arancione
-    ctx.shadowBlur = 10;
-    ctx.fillText(foodElement, x, y);
-    ctx.shadowBlur = 0; // Reset glow
+    // Disegna il simbolo dell'elemento nel punto (x, y) del cibo
+    ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
 }
 
 function drawFoodII() {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
-    const foodSize = SIZE * 1.5; // Aumenta la dimensione del cibo del 50%
-    const x = foodII.x + SIZE / 2;
-    const y = foodII.y + SIZE / 2;
-    
     ctx.clearRect(foodII.x, foodII.y, SIZE, SIZE);
 
-    ctx.fillStyle = "rgb(120, 179, 224)";
-    ctx.beginPath();
-    ctx.arc(x, y, foodSize / 2, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = "#E51A4B"; // Rosso brillante per il testo
-    ctx.font = "bold 22px Arial";
+    ctx.fillStyle = "red"; // Colore per il simbolo dell'elemento
+    ctx.font = "20px Arial"; // Imposta la dimensione del font
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // Effetto glow
-    ctx.shadowColor = "#F79D27"; // Glow arancione
-    ctx.shadowBlur = 10;
-    ctx.fillText(foodIIElement, x, y);
-    ctx.shadowBlur = 0; // Reset glow
+    // Disegna il simbolo dell'elemento nel punto (x, y) del cibo
+    ctx.fillText(foodIIElement, foodII.x + SIZE / 2, foodII.y + SIZE / 2);
 }
 
 function showDietSelection() {
@@ -491,7 +450,7 @@ function showDietSelection() {
     });
     document.getElementById('title').style.display = 'block';
     document.getElementById('mainMenu').style.display = 'none';
-    document.getElementById('startScreen').style.display = 'block';
+    document.getElementById('dietSelection').style.display = 'block';
 }
 
 function startNewGame() {
@@ -508,7 +467,7 @@ function startNewGame() {
     canvas.width = CANVAS_WIDTH;
     canvas.height = CANVAS_HEIGHT;
 
-    document.getElementById('startScreen').style.display = 'none';
+    document.getElementById('dietSelection').style.display = 'none';
     canvas.style.display = 'block';
 
     snake = [{ x: 100, y: 100 }];
@@ -535,7 +494,7 @@ function initializeScoreValues() {
     const rangeValue = parseInt(document.getElementById('elementRange').value);
     const validDietElementsCount = calculateValidDietElements();
     scoreIncrement = 1;
-    scoreDecrement = 0;
+    scoreDecrement= 0;
     //scoreIncrement = Math.round(100 * (rangeValue - validDietElementsCount) / rangeValue);
     //scoreDecrement = Math.round(100 * validDietElementsCount / rangeValue);
 }
@@ -673,47 +632,38 @@ function createInfoRectNo(element, x, y) {
 
 function updateScore(newScore) {
     const scoreBoard = document.getElementById('scoreBoard');
-    scoreBoard.style.fontSize = "1.1em";
-    //scoreBoard.style.color = "#fff";
-    scoreBoard.style.padding = "4px";
-    scoreBoard.style.border = "2px solid #83B7DE";  // Stesso colore del bordo del canvas
-    scoreBoard.style.borderRadius = "8px";
+    scoreBoard.style.color = "#fff";
+    scoreBoard.style.padding = "5px";
+    scoreBoard.style.border = "2px solid #78b3e0";
+    scoreBoard.style.borderRadius = "0px";
     scoreBoard.style.fontFamily = "Arial, sans-serif";
-    scoreBoard.style.backgroundColor = "rgba(0, 47, 95, 0.9)";  
+    scoreBoard.style.backgroundColor = "rgb(0, 47, 95)";
     scoreBoard.style.textAlign = "center";
-    scoreBoard.style.margin = "5px auto";
+    scoreBoard.style.margin = "0px auto";
     scoreBoard.style.width = CANVAS_WIDTH;
 
     const selectedDietDiv = document.getElementById('selectedDietText');
     selectedDietDiv.style.display = 'block';
-    selectedDietDiv.style.fontSize = '1.1em';  
+    selectedDietDiv.style.fontSize = '1.5em';
     selectedDietDiv.style.fontWeight = 'bold';
-    selectedDietDiv.style.marginBottom = '8px';
-    selectedDietDiv.style.color = '#78B3E0';  
-    selectedDietDiv.textContent = selectedDiet.toUpperCase();  
+    selectedDietDiv.style.marginBottom = '5px';
+    selectedDietDiv.style.color = 'white';
+    selectedDietDiv.textContent = selectedDiet;
 
-    // Calcola la percentuale degli elementi validi mangiati
+    // Calcola la percentuale degli elementi corretti
     let percentage = totalFoodEaten > 0 ? ((newScore / totalFoodEaten) * 100).toFixed(1) : 0;
 
-    // Interpolazione dal rosso (229, 26, 75) al verde (150, 174, 33)
-    let r = Math.round(229 + (150 - 229) * (percentage / 100));
-    let g = Math.round(26 + (174 - 26) * (percentage / 100));
-    let b = Math.round(75 + (33 - 75) * (percentage / 100));
+    // Interpola tra rosso (229, 26, 75) e verde (150, 174, 33)
+    let r = Math.round(229 + (150 - 229) * (percentage / 100)); // Da 229 a 150
+    let g = Math.round(26 + (174 - 26) * (percentage / 100));   // Da 26 a 174
+    let b = Math.round(75 + (33 - 75) * (percentage / 100));    // Da 75 a 33
     let color = `rgb(${r}, ${g}, ${b})`;
 
-    // Layout con riquadri per score e percentuale
+    // Aggiorna il punteggio con il colore sfumato
     scoreBoard.innerHTML = `
-        <div style="display: flex; justify-content: center; align-items: center; gap: 15px;">
-            <div style="border: 2px solid #78b3e0; padding: 5px 10px; border-radius: 5px; background-color: rgb(0, 47, 95); font-size: 1.2em;">
-                <b>${newScore} / ${totalFoodEaten}</b>
-            </div>
-            <div style="border: 2px solid #78b3e0; padding: 5px 10px; border-radius: 5px; background-color: rgb(0, 47, 95);">
-                <b style="color: ${color}; font-size: 1.2em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); transition: color 0.5s ease-in-out;">
-                    ${percentage}%
-                </b>
-            </div>
-        </div>
-    `;
+        <div style="font-size: 1.2em; margin-bottom: 5px; color: ${color};">
+            <b>Elementi validi mangiati: ${newScore} / ${totalFoodEaten} (${percentage}%)</b>
+        </div>`;
 }
 
 function updateGame(ctx) {
@@ -868,7 +818,7 @@ function updateGame(ctx) {
     }
 
     // Gestione animazione della scritta del punteggio negativo
-   // if (scoreTextNo) {
+    //if (scoreTextNo) {
         //ctx.fillStyle = `rgba(247, 157, 39, ${scoreTextNo.opacity})`; // Imposta trasparenza
         //ctx.font = "16px Arial";
         //ctx.textAlign = "center";
@@ -902,7 +852,7 @@ function updateGame(ctx) {
         const expandInterval = setInterval(() => {
             size += 2;
             ctx.clearRect(x - size / 2, y - size / 2, size, size);
-            ctx.fillStyle = "rgb(150, 174, 33)";
+            ctx.fillStyle = "rgb(120, 179, 224)";
             ctx.fillRect(x - size / 2, y - size / 2, size, size);
         }, 30);
         setTimeout(() => {
@@ -1009,12 +959,12 @@ function updateGame(ctx) {
     
     // Draw the food element symbol
     ctx.fillStyle = "rgb(229, 26, 75)"; // Colore del simbolo
-    ctx.font = "16px Arial";
+    ctx.font = "14px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(foodElement, food.x + SIZE / 2, food.y + SIZE / 2);
     ctx.fillStyle = "rgb(229, 26, 75)"; // Colore del simbolo
-    ctx.font = "16px Arial";
+    ctx.font = "14px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(foodIIElement, foodII.x + SIZE / 2, foodII.y + SIZE / 2);
@@ -1037,6 +987,8 @@ function exitGame() {
     document.getElementById('title').style.display = 'none';
     document.getElementById('gameCanvas').style.display = 'none';
     document.getElementById('scoreBoard').style.display = 'none';
+    document.getElementById('elementSelection').style.display = 'none';
+    document.getElementById('dietSelection').style.display = 'none';
     document.getElementById('selectedDietText').style.display = 'none';
     document.getElementById('gameover').style.display = 'block';
     document.getElementById('touchArea').style.zIndex = -1;
@@ -1053,42 +1005,9 @@ function showGameOverScreen() {
     const randomMessage = getRandomDietMessage(window.selectedDiet);
 
     gameOverElement.innerHTML = `
-        <div style="
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            max-width: 500px;
-            padding: 20px;
-            background: rgba(0, 47, 95, 0.95);
-            color: white;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-            font-family: Arial, sans-serif;
-        ">
-            <h2 style="color: #F79D27; font-size: 28px; margin-bottom: 10px;">
-                Stay Hungry! Stay Periodic!
-            </h2>
-            <p style="font-size: 18px; color: #96AE21; margin-bottom: 15px;">
-                ${randomMessage}
-            </p>
-            <button style="
-                background-color: #E51A4B;
-                border: none;
-                padding: 12px 20px;
-                font-size: 18px;
-                color: white;
-                font-weight: bold;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: background-color 0.3s, transform 0.2s;
-            " 
-            onmouseover="this.style.backgroundColor='#A81E47'; this.style.transform='scale(1.1)';"
-            onmouseout="this.style.backgroundColor='#E51A4B'; this.style.transform='scale(1)';"
-            onclick="resetGameState()">Restart</button>
-        </div>
+        <h2>Stay Hungry! Stay Periodic!</h2>
+        <p>${randomMessage}</p>
+        <button class="button" onclick="resetGameState()">Reset</button>
     `;
     gameOverElement.style.display = "block";
 }
