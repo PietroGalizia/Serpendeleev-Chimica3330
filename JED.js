@@ -12,7 +12,7 @@ const elementNumbers = [
 
 const DietsList = [
     "Elementi critici", "Elementi degli smartphone", "Elementi della vita",  "Elementi del DNA",
-    "Elementi eenziali per l'uomo", "Elementi usai nelle terapie",
+    "Elementi essenziali per l'uomo", "Elementi usati nelle terapie",
     "Elementi usati nelle diagnosi", "Radioisotopi medici", "Elementi radioattivi (serie di decadimento U-Th)", 
     "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione",
     "Elementi in traccia potenzialmente tossici (PTE)","Elementi tossici in tracce nei funghi essiccati",
@@ -23,7 +23,7 @@ const DietsList = [
     "Sostanze elementari allo stato solido alle condizioni standard di temperatura e pressione",
     "Sostanze elementari allo stato liquido alle condizioni standard di temperatura e pressione",
     "Sostanze elementari allo stato gassoso alle condizioni standard di temperatura e pressione", 
-    "Elementi ferromagnetici", "Metali ultrarefrattari", "Metalli", "Nonmetalli",
+    "Elementi ferromagnetici", "Metalli ultrarefrattari", "Metalli", "Nonmetalli",
     "Elementi del primo gruppo (idrogeno & metalli alcalini)",
     "Elementi del secondo gruppo (metalli alcalino terrosi)", "Elementi del 15esimo gruppo (pnicogeni)",
     "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
@@ -38,8 +38,8 @@ const diets = {
     "Elementi degli smartphone": ["H", "Li", "Be", "B", "C", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "K", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Br", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "Ba", "La", "Ce", "Pr", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Os", "Ir", "Pt", "Au", "Hg", "Pb", "Bi"],
     "Elementi della vita": ["O", "C", "H", "N", "P", "Ca", "S", "K", "Na", "Cl", "Mg", "Fe", "Zn", "Cr", "Co", "Cu", "Mn", "Mo", "Ni", "V", "Si", "B", "Se", "F", "I", "Br"],
     "Elementi del DNA": ["C", "H", "O", "N", "P"],
-    "Elementi eenziali per l'uomo": ["H", "C", "N", "O", "F", "Na", "Mg", "Si", "P", "S", "Cl", "K", "Ca", "V", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Se", "Mo", "Sn", "I"], 
-    "Elementi usai nelle terapie": ["H", "He", "Li", "B", "C", "N", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Cu", "Zn", "Ga", "As", "Se", "Sr", "Mo", "Ru", "Pd", "Ag", "Sb", "Xe", "La", "Ce", "Ta", "Os", "Pt", "Au", "Bi"],
+    "Elementi essenziali per l'uomo": ["H", "C", "N", "O", "F", "Na", "Mg", "Si", "P", "S", "Cl", "K", "Ca", "V", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Se", "Mo", "Sn", "I"], 
+    "Elementi usati nelle terapie": ["H", "He", "Li", "B", "C", "N", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Cu", "Zn", "Ga", "As", "Se", "Sr", "Mo", "Ru", "Pd", "Ag", "Sb", "Xe", "La", "Ce", "Ta", "Os", "Pt", "Au", "Bi"],
     "Elementi usati nelle diagnosi": ["He", "F", "Cu", "Ga", "Ge", "Rb", "Y", "Zr", "Tc", "In", "I", "Xe", "Ba", "Gd", "Tl"], 
     "Radioisotopi medici": ["Sr", "Y", "Rh", "Pd", "I", "Cs", "Sm", "Ho", "Lu", "Re", "Ir", "Bi", "At", "Ra", "Ac"],
     "Elementi radioattivi (serie di decadimento U-Th)": ["U", "Th", "Pa", "Ra", "Rn", "Po", "Pb", "Bi", "Pu", "Ac", "Tl", "Am", "Np"],
@@ -55,7 +55,7 @@ const diets = {
     "Sostanze elementari  allo stato liquido alle condizioni standard di temperatura e pressione": ["Hg", "Br"],
     "Sostanze elementari  allo stato gassoso alle condizioni standard di temperatura e pressione": ["H", "He", "N", "O", "F", "Ne","Cl", "Ar", "Kr", "Xe", "Rn"],
     "Elementi ferromagnetici": ["Fe", "Co", "Ni", "Gd", "Tb", "Dy", "Ho", "Er", "Tm"], 
-    "Metali ultrarefrattari": ["W", "Re", "Ta", "Os"],
+    "Metalli ultrarefrattari": ["W", "Re", "Ta", "Os"],
     "Metalli": ["Li", "Be", "Na", "Mg", "Al", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "Fr", "Ra", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"],
     "Nonmetalli": ["H", "He", "B", "C", "N", "O", "F", "Ne", "Si", "P", "S", "Cl", "Ar", "Ge", "As", "Se", "Br", "Kr", "Sb", "Te", "I", "Xe", "At", "Rn"],
     "Elementi del primo gruppo (idrogeno & metalli alcalini)": ["H", "Li", "Na", "K", "Rb", "Cs", "Fr"],
@@ -239,6 +239,7 @@ const dietMessages = {
     "Elementi noti fin dai tempi antichi": [
         "Le prime tracce di lavorazione dell'oro risalgono a circa 6000 anni fa in Mesopotamia e in Egitto."
     ]
+};
 
 function getRandomDietMessage(diet) {
     const messages = dietMessages[diet];
