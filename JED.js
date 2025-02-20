@@ -11,28 +11,27 @@ const elementNumbers = [
 ];
 
 const DietsList = [
-    "Critical elements", "Elements of a smartphone", "Elements of life",
-    "Elements of DNA", "Elements essential for man", "Elements used in therapy", 
-    "Elements used in diagnosis", "Medical radioisotopes",
-    "Radioactive elements (U-Th decay series)",
-    "Elements considered safety (grades A-E) in the first wall of fusion power plan",
-    "Potentially toxic trace elements (PTEs)", "Toxic trace elements in dried mushrooms",
-    "Elements dedicated to scientists", "Elements with names of latin derivation",
-    "Elements with names of greek derivation",
-    "Elements named after geographical locations and celestial bodies",
-    "Elements with names not derived from latin or greek, nor from cities or countries",
-    "Elements known since antiquity",
-    "Elementary substances in solid state at standard temperature and pressure",
-    "Elementary substances in liquid state at standard temperature and pressure",
-    "Elementary substances in gas state at standard temperature and pressure", "Metals", "Nonmetals",
-    "Ferromagnetic elements", "Ultra-high temperature metals",
-    "Elements of group I (Hydrogen & alkali metals)",
-    "Elements of group II (Alkaline earth metals)", "Elements of group XV (Pnictogens)",
-    "Elements of group XVI (Chalcogens)", "Elements of group XVII (Halogens)",
-    "Elements of group XVIII (Noblegases)", "Lanthanides", "Actinides",
-    "Transition metals", "Post-transition metals", "Metalloids", "Reactive nonmetals",
-    "s-block elements", "p-block elements", "d-block elements", "f-block elements"
-];
+    "Elementi critici", "Elementi degli smartphone", "Elementi della vita", "Elementi del DNA",
+    "Elementi essenziali per l'uomo", "Elementi usati nelle terapie",
+    "Elementi usati nelle diagnosi", "Radioisotopi medici", "Elementi radioattivi (serie di decadimento U-Th)", 
+    "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione",
+    "Elementi in traccia potenzialmente tossici (PTE)", "Elementi tossici in tracce nei funghi essiccati",
+    "Elementi dedicati a scienziati", "Elementi con nome di derivazione latina",
+    "Elementi con nome di derivazione greca",
+    "Elementi con nomi di città, stati, o corpi celesti",
+    "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati",
+    "Sostanze elementari allo stato solido alle condizioni standard di temperatura e pressione",
+    "Sostanze elementari allo stato liquido alle condizioni standard di temperatura e pressione",
+    "Sostanze elementari allo stato gassoso alle condizioni standard di temperatura e pressione", 
+    "Elementi ferromagnetici", "Metalli ultrarefrattari", "Metalli", "Nonmetalli",
+    "Elementi del primo gruppo (idrogeno & metalli alcalini)",
+    "Elementi del secondo gruppo (metalli alcalino terrosi)", "Elementi del 15esimo gruppo (pnicogeni)",
+    "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
+    "Elementi del 18esimo gruppo (gas nobili)", "Lantanidi", "Attinidi",
+    "Metalli di transizione", "Metalli post-transizione", "Semimetalli", "Non metalli reattivi",
+    "Elementi del blocco s", "Elementi del blocco p", "Elementi del blocco d", "Elementi del blocco f",
+    "Elementi noti fin dai tempi antichi"
+]; 
 
 const diets = {
     "Critical elements": ["Sb", "Ba", "Al", "Be", "Bi", "B", "Co", "F", "Ga", "Ge", "Hf", "In", "Li", "Mg","Nb","P", "Sc","Si","Sr","Ta","Ti","W","V"],
