@@ -1,129 +1,250 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serpendeleev</title>
-    <style>
-        html,
-         body {
-            height: 100%;
-            margin: 0;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #002F5F;
-            color: white;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+ /* ---- IMPOSTAZIONI GENERALI ---- */
+/* Generale */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #002F5F 30%, #013A74 100%);
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        #logoCNR-container {
-            position: absolute; /* Rende il posizionamento relativo al bordo della finestra */
-            top: 20px;
-            left: 10px;
-            cursor: pointer;
-        }
-        #logoCNR {
-            width: 300px;
-            height: auto;
-        }
+/* Loghi */
+#logoCNR-container, #logoCG-container {
+    position: absolute;
+    top: 20px;
+    cursor: pointer;
+}
 
-        #logoCG-container {
-            position: absolute;
-            top: 0px;
-            rigth: 10px;
-            cursor: pointer;
-        }
+#logoCNR-container { left: 10px; }
+#logoCG-container { right: 10px; }
 
-        #logoCG {
-            width: 100px;
-            height: auto;
-        }
+#logoCNR { width: 250px; height: auto; }
+#logoCG { width: 90px; height: auto; }
 
-        /* Aggiungi spazio sotto il logo */
-        #content {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centra orizzontalmente */
-            justify-content: flex-start; /* Non separa troppo gli elementi */
-            text-align: center;
-            padding-top: 20px;
-            width: 100%;
-            margin-top: 50px
-        }
+/* Contenitore principale */
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin-top: 50px;
+}
 
-       h1 {
-            font-size: 3rem;
-            margin: 20px;
-        }
+/* Titoli */
+h1 {
+    font-size: 3.8rem;
+    margin: 15px;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
+}
 
-        #dietSelection {
-            text-align: center;
-            margin-bottom: 10px; 
-        }
+/* Schermata iniziale */
+#startScreen {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    width: 80%;
+    max-width: 600px;
+    justify-content: space-evenly; 
+}
 
-        #dietSelection {
-            display: none;
-            text-align: center;
-            margin: 25px 0;
-        }
+#startScreen h2 {
+    margin-bottom: 5px; /* Ridotto rispetto al valore predefinito */
+}
+
+        .section {
+    width: 100%;
+    text-align: center;
+    margin: 15px 0; /* Spazio tra le sezioni */
+}
+
+/* Contenitore per gli slider */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(150, 174, 33, 0.6);
+}
+
+/* Etichette */
+.slider-label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
         
-        .button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #96AE21;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
+/* Slider */
+.speed-container, input[type="range"] {
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
 
-        .button:hover {
-            background-color: #739A1A;
-            transition: background-color 0.3s;
-        }
+.speed-label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-        #instructions {
-            margin: 40px auto;
-            text-align: left;
-            width: 80%;
-            color: white;
-        }
-        #instructions h3 {
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        #instructions ol {
-            padding-left: 20px;
-        }
-        #instructions h4:last-of-type {
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: rgb(229, 26, 75); /* Rosso specifico */
-        }
+/* Slider */
+input[type="range"] {
+    width: 85%;
+    height: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(90deg, #96AE21 0%, #417F45 100%);
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
 
-        #citation {
-            margin: 15px auto;
-            font-size: 14px;
-            text-align: center;
-            color: white;
-            padding: 5px;
-        }
+input[type="range"]:hover {
+    background: linear-gradient(90deg, #A2C627 0%, #3D773D 100%);
+}
         
-        #citation a {
-            text-decoration: none;
-            color: #96AE21;
-        }
-        #citation a:hover {
-            color: #e51a4b;
-        }
+/* Valore della velocità */
+#selectedSpeed {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #96AE21;
+}
+
+/* Valori dinamici */
+.slider-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #96AE21; 
+}
+
+/* Pulsanti */
+/* Contenitore per i pulsanti Instructions e Play */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* Spazio tra i pulsanti */
+    margin-top: 15px;
+}
+
+/* Pulsanti */
+.button {
+    padding: 12px 20px;
+    background-color: #96AE21;
+    border: 2px solid rgba(150, 174, 33, 0.6);
+    border-radius: 12px;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    width: 150px; /* Assicura che i pulsanti abbiano la stessa dimensione */
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #417F45;
+    transform: scale(1.05);
+    box-shadow: 0px 5px 10px rgba(65, 127, 69, 0.7);
+}
+        
+/* Menu a tendina */
+select {
+    width: 85%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.2rem;
+    text-align: center;
+    background: white;
+    color: #002F5F;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+select:hover {
+    background: #f3f3f3;
+}
+
+/* Istruzioni */
+#instructions {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+#instructions h3 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #96AE21;
+}
+
+#instructions ol {
+    margin-left: 20px;
+    font-size: 1.1rem;
+}
+
+/* Canvas */
+#gameCanvas {
+    display: none;
+    background-color: #002F5F;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Punteggio */
+#scoreBoard {
+    display: none;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Citazione */
+#citation {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+}
+
+#citation a {
+    text-decoration: none;
+    color: #96AE21;
+    transition: color 0.3s;
+}
+
+#citation a:hover {
+    color: #e51a4b;
+}
+
 
         #touchArea {
             position: absolute;
@@ -139,10 +260,10 @@
             display: none;
             background-color: #002F5F;
             margin: 0px auto;
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 100%;
+            max-height: 100%;
         }
-
+        
     </style>
 </head>
 <body>
@@ -155,49 +276,61 @@
     </div>
     
     <div id="content">
-        <h1 id="title">Serpendeleev</h1>
-        
-    <!-- Schermata iniziale: scelta della velocità -->
+        <h1 id="title">Snakeleev</h1>
+
+    <!-- Schermata iniziale-->
     <div id="startScreen">
-        <h2>Seleziona la velocità del serpente</h2>
-        <div id="speedButtons"></div>
+
+       <div class="section">
+        <h2>Dieta di Snakeleev</h2>
+         <select id="dietDropdown"></select>
     </div>
 
-    <!-- Schermata per scegliere il numero di elementi -->
-    <div id="elementSelection" style="display: none;">
-        <h2>Seleziona il range di elementi</h2>
-        <label for="elementRange">Massimo numero atomico (Z):</label>
+    <div class="section slider-container">
+        <p id="selectedElementCount" class="slider-value">Elementi: 1 ≤ Z ≤ 40</p>
         <input id="elementRange" type="range" min="1" max="118" value="40" oninput="updateElementCount()">
-        <p id="selectedElementCount"> 40</p>
-        <button class="button" onclick="proceedToDietSelection()()">Next</button>
-     </div>
-
-    <!-- Selezione della dieta -->
-    <div id="dietSelection" style="display: none;">
-        <h2>Seleziona la dieta di Serpendeleev</h2>
-        <select id="dietDropdown"></select>
-        <button class="button" onclick="finalSelection()">Play</button>
-        <div id="instructions">
-            <h3>ISTRUZIONI</h3>
-            <ol>
-                <li>Controlla il serpente usando le frecce direzionali o i tasti W, A, S e D.</li>
-                <li id="eat-instruction">Mangia gli elementi che corrispondono alla dieta selezionata.</li>
-                <li>Premi la barra spaziatrice per scambiare la posizione dei due elementi.</li>
-                <li>Premi "P" per mettere in pausa o riprendere il gioco.</li>
-                <li>Aggiorna la pagina per iniziare una nuova partita.</li>
-
-            </ol>
-        </div>
     </div>
 
-    <!-- Canvas del gioco -->
+    <div class="section slider-container">
+        <p id="selectedSpeed" class="slider-value">Velocità: 3</p>
+        <input id="speedRange" type="range" min="1" max="5" value="3" oninput="updateSpeedLabel()">
+    </div>
+
+    <div class="section button-container">
+        <button class="button" onclick="toggleInstructions()">Istruzioni</button>
+        <button class="button" onclick="finalSelection()">Play</button>
+    </div>
+       
+<!-- Istruzioni inizialmente nascoste -->
+    <div id="instructions">
+        <h3>ISTRUZIONI</h3>
+        <ol>
+                <li>Controlla il serpente con le frecce direzionali o i tasti W, A, S e D.</li>
+                <li id="eat-instruction">Mangia gli elementi della dieta.</li>
+                <li>Scambia la posizione dei due elementi con la barra spaziatrice.</li>
+                <li>Metti in pausa o riprendere il gioco con il tasto P.</li>
+                <li>Aggiorna la pagina per iniziare una nuova partita.</li>
+        </ol>
+        <h3>SISTEMA DI PUNTEGGIO</h3>
+        <p>
+            Il tuo punteggio aumenta quando mangi un elemento che appartiene alla dieta selezionata.  
+            Mangiare un elemento al di fuori della dieta non aumenta il punteggio,  
+            ma viene comunque conteggiato nel totale degli elementi mangiati.
+        </p>
+        <p>
+            Il display del punteggio mostra:
+            <br><b>Punteggio / Totale Elementi Mangiati (Percentuale)</b>
+        </p>
+    </div>
+        
+     <!-- Canvas del gioco -->
     <div id="selectedDietText" style="display: none;"></div>
     <div id="scoreBoard" style="display: none;"></div>
     <div id="touchArea"></div>
     <canvas id="gameCanvas"></canvas>
 
 
-        <!-- Game Over -->
+    <!-- Game Over -->
     <div id="gameover" style="display: none;"></div>
 
     <!-- Citazione -->
@@ -209,102 +342,1547 @@
     </div>
         
     <script>
-        // Setup degli elementi principali
-        const SPEED_LEVELS = [250, 200, 150, 125, 100];
-        let maxElementsToUse = 50;
+       // Mappa dei livelli di velocità
+    const SPEED_LEVELS = {
+        1: { speed: 1, delay: 333.335682979179 },
+        2: { speed: 2, delay: 222.22180439293 },
+        3: { speed: 3, delay: 166.666353296221 },
+        4: { speed: 4, delay: 111.11027381 },
+        5: { speed: 5, delay: 83.3333325282574 }
+    };
 
-        // Mostra la schermata iniziale
+    let maxElementsToUse = 40;
+    let isElementCountChanged = false;
+    let isSpeedChanged = false;  
+    let rangeValue = 40;
+
+    // Funzione per aggiornare l'etichetta della velocità
+    function updateSpeedLabel() {
+        const speedValue = document.getElementById('speedRange').value;
+        const selectedSpeed = SPEED_LEVELS[speedValue].speed; // Ottiene la velocità in px/sec
+
+        document.getElementById('selectedSpeed').textContent = `Velocit: ${selectedSpeed}`;
+        window.SPEED = SPEED_LEVELS[speedValue].delay; // Imposta il ritardo in ms
+        isSpeedChanged = true;
+    }
+
+    // Funzione per aggiornare il numero massimo di elementi
+    function updateElementCount() {
+        maxElementsToUse = parseInt(document.getElementById('elementRange').value);
+    
+        document.getElementById('selectedElementCount').textContent = `Elementi: 1 ≤ Z ≤ ${maxElementsToUse}`;
+    
+        isElementCountChanged = true; // Segnala che lo slider è stato modificato
+    }
+
+        // Mostra la schermata iniziale al caricamento della pagina
         document.addEventListener('DOMContentLoaded', () => {
-            const speedButtons = document.getElementById('speedButtons');
-            SPEED_LEVELS.forEach((speed, index) => {
-                const button = document.createElement('button');
-                button.className = 'button';
-                button.innerText = `Livello ${index + 1}`;
-                button.onclick = () => selectSpeed(speed);
-                speedButtons.appendChild(button);
-            });
-            document.getElementById('title').style.display = 'block';
-            document.getElementById('gameover').style.display = 'none';
-            document.getElementById('startScreen').style.display = 'block';
+        document.getElementById('speedRange').addEventListener('input', updateSpeedLabel);
+        document.getElementById('elementRange').addEventListener('input', updateElementCount);
+        document.getElementById('selectedElementCount').textContent = `Element Range: 1 ≤ Z ≤ 40`;
+        // Imposta la velocità predefinita all'avvio
+        const speedSlider = document.getElementById('speedRange');
+        window.SPEED = SPEED_LEVELS[speedSlider.value];
+
+        // Aggiorna dinamicamente la velocità mentre si sposta lo slider
+        speedSlider.addEventListener('input', updateSpeedLabel);
+
+        // Popola il dropdown delle diete
+        const dietDropdown = document.getElementById("dietDropdown");
+        const diets = [
+            "Elementi critici", "Elementi degli smartphone", "Elementi della vita",  "Elementi del DNA",
+            "Elementi eenziali per l'uomo", "Elementi usai nelle terapie",
+            "Elementi usati nelle diagnosi", "Radioisotopi medici", "Elementi radioattivi (serie di decadimento U-Th)", 
+            "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione",
+            "Elementi in traccia potenzialmente tossici (PTE)","Elementi tossici in tracce nei funghi essiccati",
+            "Elementi dedicati a scienziati", "Elementi con nome di derivazione latina",
+            "Elementi con nome di derivazione greca",
+            "Elementi con nomi di città, stati, o corpi celesti",
+            "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati",
+            "Sostanze elementari allo stato solido alle condizioni standard di temperatura e pressione",
+            "Sostanze elementari allo stato liquido alle condizioni standard di temperatura e pressione",
+            "Sostanze elementari allo stato gassoso alle condizioni standard di temperatura e pressione", 
+            "Elementi ferromagnetici", "Metali ultrarefrattari","Metalli", "Nonmetalli",
+            "Elementi del primo gruppo (idrogeno & metalli alcalini)",
+            "Elementi del secondo gruppo (metalli alcalino terrosi)", "Elementi del 15esimo gruppo (pnicogeni)",
+            "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
+            "Elementi del 18esimo gruppo (gas nobili)", "Lantanidi", "Attinidi",
+            "Metalli di transizione", "Metalli post-transizione", "Semimetalli", "Non metalli reattivi",
+            "Elementi del blocco s", "Elementi del blocco p", "Elementi del blocco d", "Elementi del blocco f",
+            "Elementi noti fin dai tempi antichi"
+        ];
+ // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
         });
 
-        // Funzione per selezionare la velocità e passare alla selezione della dieta
-        function selectSpeed(speed) {
-            window.SPEED = speed;
-            document.getElementById('title').style.display = 'block';
-            document.getElementById('startScreen').style.display = 'none';
-            document.getElementById('elementSelection').style.display = 'block';
-            updateElementCount();
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
         }
+    }
 
-        function updateElementCount() {
-            const rangeValue = document.getElementById('elementRange').value;
-            maxElementsToUse = parseInt(rangeValue);
-            document.getElementById('selectedElementCount').textContent = `1 ≤ Z ≤ ${maxElementsToUse}`;
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
         }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
 
-        function proceedToDietSelection() {
-                document.getElementById('title').style.display = 'block';
-                document.getElementById('startScreen').style.display = 'none';
-                document.getElementById('elementSelection').style.display = 'none';
-                document.getElementById('dietSelection').style.display = 'block';
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
 
-            const dietDropdown = document.getElementById("dietDropdown");
-            const diets = [
-                "Elementi degli smartphone", "Elementi della vita", "Elementi critici", "Elementi del DNA", "Elementi radioattivi (serie di decadimento U-Th)",
-                "Elementi considerati sicuri (grado A-E) in un reattore nucleare a fusione",
-                "Elementi in traccia potenzialmente tossici (PTE)",
-                "Elementi dedicati a scienziati", "Elementi con nome di derivazione latina",
-                "Elementi con nome di derivazione greca",
-                "Elementi con nomi di città, stati, o di chissà dove",
-                "Elementi con nomi che non derivano nè dal latino, nè dal greco, e nemmeno da città o stati",
-                "Elementi allo stato solido alle condizioni standard di temperatura e pressione",
-                "Elementi allo stato liquido alle condizioni standard di temperatura e pressione",
-                "Elementi allo stato gassoso alle condizioni standard di temperatura e pressione", "Metalli", "Nonmetalli",
-                "Elementi del primo gruppo (idrogeno & metalli alcalini)",
-                "Elementi del secondo gruppo (metalli alcalino terrosi)", "Elementi del 15esimo gruppo (pnicogeni)",
-                "Elementi del gruppo XVI (calcogeni)", "Elementi del gruppo XVII (alogeni)",
-                "Elementi del 18esimo gruppo (gas nobili)", "Lantanidi", "Attinidi",
-                "Metalli di transizione", "Metalli post-transizione", "Semimetalli", "Non metalli reattivi",
-                "Elementi del blocco s", "Elementi del blocco p", "Elementi del blocco d", "Elementi del blocco f",
-                "Elementi noti fin dai tempi antichi"
-            ]; 
-            
-            // Aggiungi altre opzioni
-            diets.forEach(diet => {
-                const option = document.createElement("option");
-                option.value = diet;
-                option.textContent = diet;
-                dietDropdown.appendChild(option);
-            });
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
         }
+    }
 
-        function finalSelection() {
-            selectedDiet = document.getElementById("dietDropdown").value;
-            window.selectedDiet = document.getElementById("dietDropdown").value;
-            document.getElementById('title').style.display = 'none';
-            document.getElementById('dietSelection').style.display = 'none';
-            document.getElementById('gameCanvas').style.display = 'block';
-            document.getElementById('selectedDietText').style.display = 'block';
-            document.getElementById('scoreBoard').style.display = 'block';
-            document.getElementById('touchArea').style.zIndex = 10;
-            startNewGame();
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
         }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
 
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
 
-        // Funzione per avviare il gioco
-        function startNewGame() {
-            document.getElementById('title').style.display = 'none';
-            document.getElementById('dietSelection').style.display = 'none'; // Nascondi la schermata
-            document.getElementById('gameCanvas').style.display = 'block'; // Mostra il canvas del gioco
-            startGame(); // Funzione definita in JED.js
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
         }
+    }
 
-        function resetGameState() {
-            // Ricarica la pagina
-            location.reload();
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
         }
-    </script>
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
+    <script src="Snakeleev.js"></script>
+</body>
+</html> // Aggiunge le opzioni al dropdown
+        diets.forEach(diet => {
+            const option = document.createElement("option");
+            option.value = diet;
+            option.textContent = diet;
+            dietDropdown.appendChild(option);
+        });
+
+        // Mostra la schermata iniziale
+        document.getElementById('title').style.display = 'block';
+        document.getElementById('gameover').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'block';
+    });
+
+        function toggleInstructions() {
+        var instructions = document.getElementById('instructions');
+        var button = document.querySelector('[onclick="toggleInstructions()"]');
+    
+        if (instructions.style.display === "none") {
+            instructions.style.display = "block";
+            button.textContent = "Hide Instructions";
+        } else {
+            instructions.style.display = "none";
+            button.textContent = "Show Instructions";
+        }
+    }
+
+    // Funzione per avviare il gioco
+    function finalSelection() {
+
+        // Se l'utente non ha modificato lo slider, imposta il valore predefinito
+           if (!isElementCountChanged) {
+                updateElementCount();
+            }
+
+        if (!isSpeedChanged) {
+            document.getElementById('speedRange').value = 3;
+            updateSpeedLabel(); // Aggiorna l'interfaccia
+        }
+        
+        selectedDiet = document.getElementById("dietDropdown").value;
+        window.selectedDiet = selectedDiet;
+        window.maxElementsToUse = maxElementsToUse;
+
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        document.getElementById('selectedDietText').style.display = 'block';
+        document.getElementById('scoreBoard').style.display = 'block';
+        document.getElementById('touchArea').style.zIndex = 10;
+        
+        startNewGame();
+    }
+
+    function startNewGame() {
+        document.getElementById('title').style.display = 'none';
+        document.getElementById('gameCanvas').style.display = 'block';
+        startGame(); // Funzione definita in Snakeleev.js
+    }
+
+    function resetGameState() {
+        location.reload(); // Ricarica la pagina
+    }
+</script>
+
     <script src="JED.js"></script>
 </body>
 </html>
