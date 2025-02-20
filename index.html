@@ -368,7 +368,7 @@ select:hover {
         const speedValue = document.getElementById('speedRange').value;
         const selectedSpeed = SPEED_LEVELS[speedValue].speed; // Ottiene la velocità in px/sec
 
-        document.getElementById('selectedSpeed').textContent = `Velocit: ${selectedSpeed}`;
+        document.getElementById('selectedSpeed').textContent = `Velocità: ${selectedSpeed}`;
         window.SPEED = SPEED_LEVELS[speedValue].delay; // Imposta il ritardo in ms
         isSpeedChanged = true;
     }
