@@ -79,7 +79,8 @@ const diets = {
 
 const dietMessages = {
     "Elementi critici": [
-        "Le materie prime sono il cuore pulsante dell'economia europea, alimentando una vasta gamma di produzioni essenziali per la vita quotidiana e le tecnologie moderne. L'accesso affidabile a queste risorse vitali è una sfida crescente. Per affrontarla, l'UE ha identificato le materie prime critiche, fondamentali, ma a rischio."
+        "Le materie prime sono il cuore pulsante dell'economia europea, alimentando una vasta gamma di produzioni essenziali per la vita quotidiana e le tecnologie moderne. L'accesso affidabile a queste risorse vitali è una sfida crescente. Per affrontarla, l'UE ha identificato le materie prime critiche, fondamentali, ma a rischio.",
+        "'Il Salar de Ulyuni potrebbe contenere la metà di tutto il litio che si può trovare sulla Terra, 5,4 milioni di tonnellate. Per un mondo affamato di batterie com'è il nostro, che oggi hanno il litio come componente principale, questo non è certo un dettaglio trascurabile'<a href='https://www.youtube.com/@chimicainpillole' target='_blank' style='color: rgb(143, 125, 207);'>Eva Munter @chimica_in_pillole,'Storie periodiche: Racconti e curiosità dietro gli elementi chimici', 2024 Apogeo, Giangiacomo Feltrinelli Editore S.r.l.</a>"
     ],
     "Elementi degli smartphone": [
         "Gli smartphone sono preziose risorse nella circolarità economica, contenendo elementi come oro (Au), argento (Ag), platino (Pt) e palladio (Pd). Tuttavia, il loro scarso riciclo ha impatti negativi sull'ambiente e sulla salute umana"
@@ -150,7 +151,8 @@ const dietMessages = {
     "Elementi del primo gruppo (idrogeno & metalli alcalini)": [
         "Take a look on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>", 
         "Take a look on <a href='https://pubchem.ncbi.nlm.nih.gov/periodic-table/' target='_blank' style='color: rgb(143, 125, 207);'>Periodic Table of Elements</a>",
-        "Che occorre diffidare del quasi uguale (il sodio [Na] è quasi uguale al potassio [K]: ma col sodio [Na] non sarebbe successo nulla), del paranoicamente identico, del pressapoco, dell'oppure, di tutti i surrogati e di tutti i rappezzi. Le differenze possono essere piccole, ma portare a conseguenze radicalmente diverse, come gli aghi degli scambi; il mestiere del chimico consiste in buona parte nel quadrassi da queste differenze, nel conoscerle da vicino, nel prevederne gli effetti. Non solo il mestiere del chimico. (Primo Levi, Il sistema periodico)"
+        "Che occorre diffidare del quasi uguale (il sodio [Na] è quasi uguale al potassio [K]: ma col sodio [Na] non sarebbe successo nulla), del paranoicamente identico, del pressapoco, dell'oppure, di tutti i surrogati e di tutti i rappezzi. Le differenze possono essere piccole, ma portare a conseguenze radicalmente diverse, come gli aghi degli scambi; il mestiere del chimico consiste in buona parte nel quadrassi da queste differenze, nel conoscerle da vicino, nel prevederne gli effetti. Non solo il mestiere del chimico. (Primo Levi, Il sistema periodico)",
+        "'Il Salar de Ulyuni potrebbe contenere la metà di tutto il litio che si può trovare sulla Terra, 5,4 milioni di tonnellate. Per un mondo affamato di batterie com'è il nostro, che oggi hanno il litio come componente principale, questo non è certo un dettaglio trascurabile'<a href='https://www.youtube.com/@chimicainpillole' target='_blank' style='color: rgb(143, 125, 207);'>Eva Munter @chimica_in_pillole,'Storie periodiche: Racconti e curiosità dietro gli elementi chimici', 2024 Apogeo, Giangiacomo Feltrinelli Editore S.r.l.</a>"
     ],
     "Elementi del secondo gruppo (metalli alcalino terrosi)": [
         "Take a look on <a href='https://ptable.com/?lang=it#Propriet%C3%A0' target='_blank' style='color: rgb(143, 125, 207);'>Ptable</a>", 
