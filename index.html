@@ -5,14 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snakeleev</title>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2RXJ2MPCL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+   <!-- Overlay di consenso -->
+<div id="consent-overlay">
+    <div id="consent-box">
+        <p>Questo sito utilizza Google Analytics per analizzare il traffico. Devi accettare per continuare a giocare.</p>
+        <button onclick="acceptConsent()">Accetta e gioca</button>
+    </div>
+</div>
 
-      gtag('config', 'G-B2RXJ2MPCL');
-    </script>
+<!-- Stili per l'overlay -->
+<style>
+    #consent-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    #consent-box {
+        background: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    #consent-box button {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    #consent-box button:hover {
+        background: #218838;
+    }
+</style>
+
+<!-- Script per gestire il consenso -->
+<script>
+    function acceptConsent() {
+        localStorage.setItem("analyticsConsent", "true"); // Salva il consenso nel browser
+        document.getElementById("consent-overlay").style.display = "none"; // Nasconde l'overlay
+        
+        // Carica Google Analytics dopo il consenso
+        var script = document.createElement("script");
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-B2RXJ2MPCL";
+        script.async = true;
+        document.head.appendChild(script);
+
+        script.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-B2RXJ2MPCL');
+        };
+    }
+
+    // Controlla se il consenso è stato già dato
+    window.onload = function() {
+        if (localStorage.getItem("analyticsConsent") === "true") {
+            document.getElementById("consent-overlay").style.display = "none";
+            acceptConsent(); // Carica subito Analytics se il consenso è già stato dato
+        }
+    };
+</script>
     
     <style>
        /* ---- IMPOSTAZIONI GENERALI ---- */
