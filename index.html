@@ -74,14 +74,6 @@
             gtag('config', 'G-B2RXJ2MPCL');
         };
     }
-
-    // Controlla se il consenso è già stato dato
-    window.onload = function() {
-        if (localStorage.getItem("analyticsConsent") === "true") {
-            document.getElementById("consent-overlay").style.display = "none";
-            acceptConsent(); // Carica subito Analytics se il consenso è già stato dato
-        }
-    };
 </script>
     
     <style>
