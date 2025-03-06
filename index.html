@@ -8,7 +8,7 @@
 <!-- Overlay di consenso -->
 <div id="consent-overlay">
     <div id="consent-box">
-        <p>Questo sito utilizza Google Analytics per analizzare il traffico. Devi accettare per continuare a giocare.</p>
+        <p id="consent-text">Questo sito utilizza Google Analytics per analizzare il traffico. Devi accettare per continuare a giocare.</p>
         <button onclick="acceptConsent()">Accetta e gioca</button>
     </div>
 </div>
@@ -34,13 +34,18 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         max-width: 400px;
+        font-family: Arial, sans-serif;
+    }
+    #consent-text {
+        color: black;
+        font-size: 16px;
+        margin-bottom: 15px;
     }
     #consent-box button {
         background: #28a745;
         color: white;
         border: none;
         padding: 10px 20px;
-        margin-top: 10px;
         cursor: pointer;
         font-size: 16px;
         border-radius: 5px;
@@ -78,7 +83,6 @@
         }
     };
 </script>
-
     
     <style>
        /* ---- IMPOSTAZIONI GENERALI ---- */
