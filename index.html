@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snakeleev</title>
 
-  <!-- Overlay di consenso -->
+<!-- Overlay di consenso -->
 <div id="consent-overlay">
     <div id="consent-box">
-        <p>Questo sito utilizza Google Analytics per analizzare il traffico.</p>
+        <p>Questo sito utilizza Google Analytics per analizzare il traffico. Devi accettare per continuare a giocare.</p>
         <button onclick="acceptConsent()">Accetta e gioca</button>
     </div>
 </div>
@@ -69,7 +69,16 @@
             gtag('config', 'G-B2RXJ2MPCL');
         };
     }
+
+    // Controlla se il consenso è già stato dato
+    window.onload = function() {
+        if (localStorage.getItem("analyticsConsent") === "true") {
+            document.getElementById("consent-overlay").style.display = "none";
+            acceptConsent(); // Carica subito Analytics se il consenso è già stato dato
+        }
+    };
 </script>
+
     
     <style>
        /* ---- IMPOSTAZIONI GENERALI ---- */
