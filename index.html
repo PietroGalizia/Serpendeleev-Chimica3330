@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snakeleev</title>
 
-   <!-- Overlay di consenso -->
+  <!-- Overlay di consenso -->
 <div id="consent-overlay">
     <div id="consent-box">
-        <p>Questo sito utilizza Google Analytics per analizzare il traffico. Devi accettare per continuare a giocare.</p>
+        <p>Questo sito utilizza Google Analytics per analizzare il traffico.</p>
         <button onclick="acceptConsent()">Accetta e gioca</button>
     </div>
 </div>
@@ -33,6 +33,7 @@
         text-align: center;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        max-width: 400px;
     }
     #consent-box button {
         background: #28a745;
@@ -69,7 +70,7 @@
         };
     }
 
-    // Controlla se il consenso è stato già dato
+    // Controlla se il consenso è già stato dato
     window.onload = function() {
         if (localStorage.getItem("analyticsConsent") === "true") {
             document.getElementById("consent-overlay").style.display = "none";
