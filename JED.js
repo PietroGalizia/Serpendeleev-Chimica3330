@@ -1053,6 +1053,8 @@ function showGameOverScreen() {
     const gameOverElement = document.getElementById("gameover");
     const diet = window.selectedDiet || "default";
     const randomMessage = getRandomDietMessage(window.selectedDiet);
+    const citationElement = document.getElementById("citation");
+    if (citationElement) citationElement.style.display = "none";
 
     gameOverElement.innerHTML = `
         <div style="
