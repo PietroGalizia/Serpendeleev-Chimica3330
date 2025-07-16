@@ -89,7 +89,18 @@ const dietMessages = {
         "Gli smartphone sono preziose risorse nella circolarità economica, contenendo elementi come oro (Au), argento (Ag), platino (Pt) e palladio (Pd). Tuttavia, il loro scarso riciclo ha impatti negativi sull'ambiente e sulla salute umana"
     ],
     "Elementi della vita": [
-        "Ogni essere vivente, compreso l'uomo, è principalmente costituito da soli 11 elementi dei 90 presenti naturalmente sulla Terra.<br>Sorprendente, vero?"
+        "Ogni essere vivente, compreso l'uomo, è principalmente costituito da soli 11 elementi dei 90 presenti naturalmente sulla Terra.<br>Sorprendente, vero?",
+        "Carbonio (<b>C</b>), idrogeno (<b>H</b>), azoto (<b>N</b>) e ossigeno (<b>O</b>) costituiscono circa il 95% di tutta la materia vivente, mentre fosforo (<b>P</b>) e zolfo (<b>S</b>) ne formano circa il 4%. Questi 6 elementi compongono quindi il 99% della materia vivente!",
+    `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; text-align: center; width: 100%;">
+            <tr><th>Elemento</th><th>Essere umano</th><th>Erba medica</th><th>Batterio %</th></tr>
+            <tr><td>Carbonio (C)</td><td>19,37%</td><td>11,34%</td><td>12,14%</td></tr>
+            <tr><td>Idrogeno (H)</td><td>9,31%</td><td>8,72%</td><td>9,94%</td></tr>
+            <tr><td>Azoto (N)</td><td>5,14%</td><td>0,83%</td><td>3,04%</td></tr>
+            <tr><td>Ossigeno (O)</td><td>62,81%</td><td>77,90%</td><td>73,68%</td></tr>
+            <tr><td>Fosforo (P)</td><td>0,63%</td><td>0,71%</td><td>0,60%</td></tr>
+            <tr><td>Zolfo (S)</td><td>0,64%</td><td>0,10%</td><td>0,32%%</td></tr>
+            <tr><td>Totale</td><td>97,90</td><td>99,60</td><td>99,72%</td></tr>
+        </table>`
     ],
         "Elementi del DNA": [
         "5 elementi compongono il linguaggio della vita."
