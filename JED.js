@@ -98,7 +98,7 @@ const dietMessages = {
             <tr><td>Azoto (N)</td><td>5,14%</td><td>0,83%</td><td>3,04%</td></tr>
             <tr><td>Ossigeno (O)</td><td>62,81%</td><td>77,90%</td><td>73,68%</td></tr>
             <tr><td>Fosforo (P)</td><td>0,63%</td><td>0,71%</td><td>0,60%</td></tr>
-            <tr><td>Zolfo (S)</td><td>0,64%</td><td>0,10%</td><td>0,32%%</td></tr>
+            <tr><td>Zolfo (S)</td><td>0,64%</td><td>0,10%</td><td>0,32%</td></tr>
             <tr><td>Totale</td><td>97,90</td><td>99,60</td><td>99,72%</td></tr>
         </table>`
     ],
