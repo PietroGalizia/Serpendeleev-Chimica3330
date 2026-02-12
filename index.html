@@ -375,8 +375,8 @@ select:hover {
     </div>
 
     <div class="section slider-container">
-        <p id="selectedElementCount" class="slider-value">Elementi: 1 ≤ Z ≤ 40</p>
-        <input id="elementRange" type="range" min="1" max="118" value="40" oninput="updateElementCount()">
+        <p id="selectedElementCount" class="slider-value">Elementi: 1 ≤ Z ≤ 25</p>
+        <input id="elementRange" type="range" min="1" max="118" value="25" oninput="updateElementCount()">
     </div>
 
     <div class="section slider-container">
@@ -441,10 +441,10 @@ select:hover {
         5: { speed: 5, delay: 83.3333325282574 }
     };
 
-    let maxElementsToUse = 40;
+    let maxElementsToUse = 25;
     let isElementCountChanged = false;
     let isSpeedChanged = false;  
-    let rangeValue = 40;
+    let rangeValue = 25;
 
     // Funzione per aggiornare l'etichetta della velocità
     function updateSpeedLabel() {
@@ -472,7 +472,7 @@ select:hover {
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('speedRange').addEventListener('input', updateSpeedLabel);
         document.getElementById('elementRange').addEventListener('input', updateElementCount);
-        document.getElementById('selectedElementCount').textContent = `Elementi: 1 ≤ Z ≤ 40`;
+        document.getElementById('selectedElementCount').textContent = `Elementi: 1 ≤ Z ≤ 25`;
         // Imposta la velocità predefinita all'avvio
         const speedSlider = document.getElementById('speedRange');
         window.SPEED = SPEED_LEVELS[speedSlider.value];
@@ -573,6 +573,7 @@ select:hover {
     <script src="JED.js"></script>
 </body>
 </html>
+
 
 
 
