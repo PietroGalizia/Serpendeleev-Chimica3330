@@ -441,10 +441,10 @@ select:hover {
         5: { speed: 5, delay: 83.3333325282574 }
     };
 
-    let maxElementsToUse = 25;
+    let maxElementsToUse = 40;
     let isElementCountChanged = false;
     let isSpeedChanged = false;  
-    let rangeValue = 25;
+    let rangeValue = 40;
 
     // Funzione per aggiornare l'etichetta della velocità
     function updateSpeedLabel() {
@@ -472,7 +472,7 @@ select:hover {
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('speedRange').addEventListener('input', updateSpeedLabel);
         document.getElementById('elementRange').addEventListener('input', updateElementCount);
-        document.getElementById('selectedElementCount').textContent = `Elementi: 1 ≤ Z ≤ 25`;
+        document.getElementById('selectedElementCount').textContent = `Elementi: 1 ≤ Z ≤ 40`;
         // Imposta la velocità predefinita all'avvio
         const speedSlider = document.getElementById('speedRange');
         window.SPEED = SPEED_LEVELS[speedSlider.value];
@@ -573,5 +573,6 @@ select:hover {
     <script src="JED.js"></script>
 </body>
 </html>
+
 
 
